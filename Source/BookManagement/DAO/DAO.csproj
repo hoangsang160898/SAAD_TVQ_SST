@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D7CB9AA-7735-4F30-8CE3-FCCE21316C64}</ProjectGuid>
+    <ProjectGuid>{B592662A-ECEE-4D23-9563-0E441A7D24B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAO</RootNamespace>
     <AssemblyName>DAO</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{259d49c0-9dfc-4baf-b9a8-0252cf317792}</Project>
+      <Project>{d65b4720-08a9-4fc3-a0fd-8b5bfe59efed}</Project>
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
