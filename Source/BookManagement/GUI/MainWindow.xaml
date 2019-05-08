@@ -3,10 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:GUI"
+         Icon="icons/logo.png"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+         Title="Shop Management" Height="180" Width="768"  ResizeMode="NoResize" Background="Transparent" AllowsTransparency="True" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Border BorderBrush="#3498db" BorderThickness="2" CornerRadius="10" Background="#fff" MouseLeftButtonDown="MoveWindow" Height="180" Width="360" Margin="0,0,300,0">
+        <Grid Margin="-124,0,-139,0">
+            <Button Cursor="Hand" HorizontalAlignment="Left" Margin="442,10,0,0" VerticalAlignment="Top" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" Click="btn_CloseWindow" RenderTransformOrigin="0.6,0.3">
+                <Button.Content>
+                    <materialDesign:PackIcon Kind="Close" Height="30" Width="30" RenderTransformOrigin="4.857,1.465"/>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#fff"/>
+                        <Setter Property="Foreground" Value="#BDBDBD"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="0,15,0,0">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#fff"/>
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Image Source="icons/logo.png" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="134,10,0,0" RenderTransformOrigin="0.389,0.767"/>
+            <PasswordBox MaxLength="29" materialDesign:HintAssist.Hint="Enter password here to continue..." VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Height="34" FontSize="14"  Margin="180,99,189,43" VerticalAlignment="Center" Width="250" BorderBrush="Transparent" Name="pwb_SignIn" RenderTransformOrigin="0.509,0.284"/>
+            <Label Content="Welcom to SSTeam ✌" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="122,45,137,97" VerticalAlignment="Center" Width="360" Height="34" FontWeight="Bold" Background="{x:Null}" FontSize="17"/>
+            <Label Content="Have a good day 😍" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="122,69,137,73" VerticalAlignment="Center" Width="360" Height="34" FontWeight="Bold" Background="{x:Null}" FontSize="15"/>
+            <Button Cursor="Hand" IsDefault="True" BorderBrush="#f39c12" Foreground="#fff" Padding="0" HorizontalAlignment="Center" Margin="290,138,299,8" VerticalAlignment="Center" Click="btn_SignIn" Width="30" Height="30" FontWeight="Bold">
+                <Button.Content>
+                    <materialDesign:PackIcon Kind="ArrowRightBold"></materialDesign:PackIcon>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#f39c12"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="15">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Rectangle Visibility="Hidden" Name="angle_Error" Fill="#be4b49" HorizontalAlignment="Left" Height="15" Margin="487,108,0,0"  VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Border Visibility="Hidden" Name="content_Error" CornerRadius="3" Background="#be4b49" HorizontalAlignment="Left" Height="35" Margin="491,98,-195,0" VerticalAlignment="Top" Width="323">
+                <Label Foreground="#fff" FontSize="15" Height="35" HorizontalContentAlignment="left" VerticalContentAlignment="Center" Margin="4,0,0,0">The password that you've entered is incorrect.</Label>
+            </Border>
+
+        </Grid>
+    </Border>
 </Window>
