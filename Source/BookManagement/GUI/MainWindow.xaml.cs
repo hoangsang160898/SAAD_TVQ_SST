@@ -43,7 +43,7 @@ namespace GUI
 
         private void btn_SignIn(object sender, RoutedEventArgs e)
         {
-            string pw = pwb_SignIn.Password.ToString();
+            string pw = pwd_SignIn.Password.ToString();
             if (pw == password)
             {
                 var window = new DashboardWindow();
@@ -54,7 +54,7 @@ namespace GUI
             {
                 angle_Error.Visibility = Visibility.Visible;
                 content_Error.Visibility = Visibility.Visible;
-                pwb_SignIn.Clear();
+                pwd_SignIn.Clear();
                 dispatcherTimer.Start();
             }
         }
@@ -68,7 +68,7 @@ namespace GUI
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            pwb_SignIn.Focus();
+            pwd_SignIn.Focus();
         }
     }
 
