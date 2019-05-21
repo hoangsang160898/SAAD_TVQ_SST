@@ -65,6 +65,11 @@ namespace GUI
             content_Error.Visibility = Visibility.Collapsed;
             dispatcherTimer.IsEnabled = false;
         }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            pwb_SignIn.Focus();
+        }
     }
 
 }
