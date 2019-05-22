@@ -87,7 +87,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Frame x:Name="GridPrincipal" Margin="50,25,0,0" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="GridPrincipal" Margin="60,35,0,10" NavigationUIVisibility="Hidden"/>
             <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#fcfafa">
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="8" ShadowDepth="1" Color="#efeff1"/>
@@ -124,32 +124,44 @@
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="FileChart" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab2_icon"/>
-                                <TextBlock Text="2" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab2_content"/>
+                                <materialDesign:PackIcon Kind="Book" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab2_icon"/>
+                                <TextBlock Text="Sell" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab2_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ChartPie" Height="25" Foreground="#b6b8ba" Width="25" Margin="5" Name="ListViewMenu__tab3_icon"/>
-                                <TextBlock Text="3" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab3_content"/>
+                                <TextBlock Text="Reports" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab3_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Server" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab4_icon"/>
-                                <TextBlock Text="4" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab4_content"/>
+                                <materialDesign:PackIcon Kind="BookMultipleVariant" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab4_icon"/>
+                                <TextBlock Text="Books" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab4_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Sale" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab5_icon"/>
-                                <TextBlock Text="5" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab5_content"/>
+                                <TextBlock Text="Promotions" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab5_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Information" Height="25" Foreground="#b6b8ba" Width="25" Margin="5" Name="ListViewMenu__tab6_icon"/>
-                                <TextBlock Text="About" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab6_content"/>
+                                <materialDesign:PackIcon Kind="Receipt" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab6_icon"/>
+                                <TextBlock Text="Receipts" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab6_content"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Server" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab7_icon"/>
+                                <TextBlock Text="Rules" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab7_content"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Information" Height="25" Foreground="#b6b8ba" Width="25" Margin="5" Name="ListViewMenu__tab8_icon"/>
+                                <TextBlock Text="About" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab8_content"/>
                             </StackPanel>
                         </ListViewItem>
                     </ListView>
