@@ -10,6 +10,6 @@
       Title="Report Page">
 
     <Grid>
-        <Label>3</Label>
+        <Label>5</Label>
     </Grid>
 </Page>

@@ -66,19 +66,19 @@ namespace GUI
                     GridPrincipal.Content = new SellPage();
                     break;
                 case 2:
-                    GridPrincipal.Content = new ReportPage();
+                    GridPrincipal.Content = new ManageBillPage();
                     break;
                 case 3:
-                    GridPrincipal.Content = new ManageBookPage();
-                    break;
-                case 4:
-                    GridPrincipal.Content = new ManageSalePage();
-                    break;
-                case 5:
                     GridPrincipal.Content = new ManageCustomerPage();
                     break;
+                case 4:
+                    GridPrincipal.Content = new ReportPage();
+                    break;
+                case 5:
+                    GridPrincipal.Content = new ManageBookPage();
+                    break;
                 case 6:
-                    GridPrincipal.Content = new ManageBillPage();
+                    GridPrincipal.Content = new ManageSalePage();
                     break;
                 case 7:
                     GridPrincipal.Content = new ManageRulePage();

@@ -10,6 +10,6 @@
       Title="Manage Book Page">
 
     <Grid>
-        <Label>4</Label>
+        <Label>6</Label>
     </Grid>
 </Page>
