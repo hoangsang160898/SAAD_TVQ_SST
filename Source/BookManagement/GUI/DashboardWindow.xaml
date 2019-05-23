@@ -33,7 +33,6 @@
     <Border BorderBrush="#2980b9" BorderThickness="1,1,1,1">
         <Grid>
             <Grid Height="25" VerticalAlignment="Top" Background="#fff"  MouseLeftButtonDown="MoveWindow">
-
             </Grid>
             <Button  Cursor="Hand" Margin="1337,7,9,0" VerticalAlignment="Top" Height="18" Width="18" Padding="0" BorderBrush="{x:Null}" FontWeight="Bold" Click="btn_CloseWindow" RenderTransformOrigin="-5.75,0.361">
                 <Button.Content>
@@ -105,7 +104,7 @@
                         <Button x:Name="ButtonOpenMenu" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
                             <materialDesign:PackIcon Foreground="#e67e22" Kind="Menu" Width="35" Height="35"/>
                         </Button>
-                        <Button x:Name="ButtonCloseMenu"  Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
+                        <Button x:Name="ButtonCloseMenu"  Visibility="Collapsed" Height="50" Width="50" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
                             <materialDesign:PackIcon Foreground="#e67e22" Kind="ArrowLeft" Width="25" Height="25"/>
                         </Button>
                         <Image  Height="63" VerticalAlignment="Bottom" Source="icons/logo.png" Margin="7,0,7,25"/>
@@ -173,7 +172,6 @@
                     </ListView>
                 </Grid>
             </Grid>
-
         </Grid>
     </Border>
 </Window>
