@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\App.xaml
-10-1030358558
+111397906336
 
-181843076379
+191779098045
 172143027361
-AboutPage.xaml;DashboardWindow.xaml;HomePage.xaml;MainWindow.xaml;ManageBillPage.xaml;ManageBookPage.xaml;ManageRolePage.xaml;ManageSalePage.xaml;ReportPage.xaml;SellPage.xaml;
+AboutPage.xaml;DashboardWindow.xaml;HomePage.xaml;MainWindow.xaml;ManageBillPage.xaml;ManageBookPage.xaml;ManageCustomerPage.xaml;ManageRulePage.xaml;ManageSalePage.xaml;ReportPage.xaml;SellPage.xaml;
 
-False
+True
 

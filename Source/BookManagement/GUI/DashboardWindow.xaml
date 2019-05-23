@@ -148,20 +148,26 @@
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Receipt" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab6_icon"/>
-                                <TextBlock Text="Receipts" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab6_content"/>
+                                <materialDesign:PackIcon Kind="AccountMultiple" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab6_icon"/>
+                                <TextBlock Text="Customers" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab6_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Server" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab7_icon"/>
-                                <TextBlock Text="Rules" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab7_content"/>
+                                <materialDesign:PackIcon Kind="Receipt" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab7_icon"/>
+                                <TextBlock Text="Receipts" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab7_content"/>
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="50">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Information" Height="25" Foreground="#b6b8ba" Width="25" Margin="5" Name="ListViewMenu__tab8_icon"/>
-                                <TextBlock Text="About" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab8_content"/>
+                                <materialDesign:PackIcon Kind="Server" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab8_icon"/>
+                                <TextBlock Text="Rules" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab8_content"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="50">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Information" Height="25" Foreground="#b6b8ba" Width="25" Margin="5" Name="ListViewMenu__tab9_icon"/>
+                                <TextBlock Text="About" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab9_content"/>
                             </StackPanel>
                         </ListViewItem>
                     </ListView>

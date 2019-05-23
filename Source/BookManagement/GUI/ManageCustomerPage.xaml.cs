@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GUI
 {
     /// <summary>
-    /// Interaction logic for ManageRolePage.xaml
+    /// Interaction logic for ManageCustomer.xaml
     /// </summary>
-    public partial class ManageRolePage : Page
+    public partial class ManageCustomerPage : Page
     {
-        public ManageRolePage()
+        public ManageCustomerPage()
         {
             InitializeComponent();
         }

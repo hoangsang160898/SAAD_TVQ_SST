@@ -75,12 +75,15 @@ namespace GUI
                     GridPrincipal.Content = new ManageSalePage();
                     break;
                 case 5:
-                    GridPrincipal.Content = new ManageBillPage();
+                    GridPrincipal.Content = new ManageCustomerPage();
                     break;
                 case 6:
-                    GridPrincipal.Content = new ManageRolePage();
+                    GridPrincipal.Content = new ManageBillPage();
                     break;
                 case 7:
+                    GridPrincipal.Content = new ManageRulePage();
+                    break;
+                case 8:
                     GridPrincipal.Content = new AboutPage();
                     break;
                 default:
@@ -110,6 +113,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 1:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -128,6 +133,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 2:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -146,6 +153,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 3:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -164,6 +173,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 4:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -182,6 +193,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 5:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -200,6 +213,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 6:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -218,6 +233,8 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     break;
                 case 7:
                     ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
@@ -236,6 +253,28 @@ namespace GUI
                     ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
                     ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000"));
                     ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    break;
+                case 8:
+                    ListViewMenu__tab1_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab1_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab2_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab2_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab3_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab3_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab4_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab4_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab5_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab5_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab6_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab6_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab7_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab7_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab8_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab8_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#b6b8ba"));
+                    ListViewMenu__tab9_icon.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000"));
+                    ListViewMenu__tab9_content.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#000"));
                     break;
                 default:
                     break;

@@ -70,8 +70,11 @@
     <Compile Include="ManageBookPage.xaml.cs">
       <DependentUpon>ManageBookPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ManageRolePage.xaml.cs">
-      <DependentUpon>ManageRolePage.xaml</DependentUpon>
+    <Compile Include="ManageCustomerPage.xaml.cs">
+      <DependentUpon>ManageCustomerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ManageRulePage.xaml.cs">
+      <DependentUpon>ManageRulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ManageSalePage.xaml.cs">
       <DependentUpon>ManageSalePage.xaml</DependentUpon>
@@ -120,7 +123,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ManageRolePage.xaml">
+    <Page Include="ManageCustomerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ManageRulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
