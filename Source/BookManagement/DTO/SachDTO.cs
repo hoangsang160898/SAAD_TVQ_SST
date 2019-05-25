@@ -7,7 +7,7 @@ using System.Windows.Media.Imaging;
 
 namespace DTO
 {
-    class SachDTO
+    public class SachDTO
     {
         private int maSach;
         private string tenSach;

@@ -1,0 +1,9 @@
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Debug\DAO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Debug\DAO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Debug\DTO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Debug\DTO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Debug\DAO.csprojAssemblyReference.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Debug\DAO.csproj.CoreCompileInputs.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Debug\DAO.csproj.CopyComplete
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Debug\DAO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Debug\DAO.pdb
