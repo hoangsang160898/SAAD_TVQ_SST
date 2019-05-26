@@ -7,7 +7,7 @@ using DTO;
 
 namespace BUS
 {
-    class Global
+    public class Global
     {
         public static List<SachDTO> Books;
     }

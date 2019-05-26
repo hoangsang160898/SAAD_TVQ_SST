@@ -6,10 +6,129 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
-      d:DesignHeight="673" d:DesignWidth="1304"
-      Title="Home Page">
+      d:DesignHeight="683" d:DesignWidth="1314"
+      Title="Home Page" Loaded="Page_Loaded">
 
+    <Page.Resources>
+        <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
+        <DataTemplate x:Key="ProductLastestTemplate" DataType="SachDTO">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="375">
+                    <Canvas Panel.ZIndex="2">
+                    <Button Canvas.Top="-27" Canvas.Right="0" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0">
+                        <Button.Content>
+                            <materialDesign:PackIcon HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="25" Height="25" Kind="Plus"></materialDesign:PackIcon>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="#fff"></Setter>
+                                    <Setter Property="Background" Value="#ffc107"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <!--<Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.9"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>-->
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    </Canvas>
+                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="150" RadiusX="10" RadiusY="10">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Margin="20,10,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Width="275" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="15" Height="40">
+                                <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" FontWeight="Bold"></AccessText>
+                            </Label>
+                            <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
+                                <Label FontSize="15" Padding="0" Foreground="#dc3545" FontWeight="Bold">$</Label>
+                                <Label Margin="0,0,0,0" Content="{Binding DonGiaBan}" Width="75" Padding="0" FontSize="14" Foreground="#dc3545" FontWeight="Bold" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:TransitioningContent>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductMostBoughtTemplate" DataType="SachDTO">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Margin="0,-25,0,0">
+                    <Canvas Panel.ZIndex="2">
+                        <Button Canvas.Top="-27" Canvas.Right="10" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0">
+                            <Button.Content>
+                                <materialDesign:PackIcon HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="25" Height="25" Kind="Plus"></materialDesign:PackIcon>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#fff"></Setter>
+                                    <Setter Property="Background" Value="#ffc107"></Setter>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <!--<Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Opacity" Value="0.9"></Setter>
+                                    </Trigger>
+                                </Style.Triggers>-->
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Canvas>
+                    <Rectangle Effect="{StaticResource z-depth}" Width="150" Height="200" RadiusX="5" RadiusY="5">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Margin="25,10,25,0" Width="200">
+                        <Label Padding="0,0,0,0" FontSize="15">
+                            <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" FontWeight="Bold"></AccessText>
+                        </Label>
+                        <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
+                            <Label FontWeight="Bold" FontSize="14" Padding="0" Foreground="#dc3545">$</Label>
+                            <Label Content="{Binding DonGiaBan}" Foreground="#dc3545" Padding="0" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:TransitioningContent>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
-        <Label>1</Label>
+        <materialDesign:Badged Name="countProductBuy" Badge="0" BadgeColorZoneMode="PrimaryMid" FontWeight="Bold" Height="35" Margin="1255,23,0,0" Width="35">
+            <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="35" Height="35">
+                <materialDesign:PackIcon Kind="Basket" Height="35" Foreground="#bdbdbd"  Width="35"/>
+            </Button>
+        </materialDesign:Badged>
+        <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Top Books Lastest</Label>
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,77,0,341" PreviewMouseWheel="ListViewProductsLastest_PreviewMouseWheel" Height="250">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Height="250" Margin="0"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListView>
+        <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Top Most Bought</Label>
+        <ListView  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsMostBought" ItemTemplate="{StaticResource ProductMostBoughtTemplate}" Margin="0,375,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" Height="327"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ListView>
     </Grid>
 </Page>

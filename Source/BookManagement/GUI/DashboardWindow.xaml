@@ -86,7 +86,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Frame x:Name="GridPrincipal" Margin="60,35,0,10" NavigationUIVisibility="Hidden"/>
+            <Frame x:Name="GridPrincipal" Margin="50,35,0,0" NavigationUIVisibility="Hidden"/>
             <Grid x:Name="GridMenu" Width="50" HorizontalAlignment="Left" Background="#fcfafa">
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="8" ShadowDepth="1" Color="#efeff1"/>

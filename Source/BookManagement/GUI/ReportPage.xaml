@@ -6,7 +6,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
-      d:DesignHeight="673" d:DesignWidth="1304"
+      d:DesignHeight="683" d:DesignWidth="1314"
       Title="Report Page">
 
     <Grid>
