@@ -1,0 +1,11 @@
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\BUS.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\BUS.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\DAO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\DTO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\DAO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Release\DTO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Release\BUS.csprojAssemblyReference.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Release\BUS.csproj.CoreCompileInputs.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Release\BUS.csproj.CopyComplete
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Release\BUS.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Release\BUS.pdb

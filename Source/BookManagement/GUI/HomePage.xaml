@@ -41,7 +41,7 @@
                         </Button.Style>
                     </Button>
                     </Canvas>
-                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="190" RadiusX="10" RadiusY="10">
+                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="195" RadiusX="10" RadiusY="10">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceCover}"/>
                         </Rectangle.Fill>
@@ -61,7 +61,7 @@
         </DataTemplate>
         <DataTemplate x:Key="ProductMostBoughtTemplate" DataType="SachDTO">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-30,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-32,0,0">
                     <Canvas Panel.ZIndex="2">
                         <Button Click="BtnBuyProductMostBought_Click" Canvas.Top="-25" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0">
                             <Button.Content>
@@ -89,7 +89,7 @@
                             </Button.Style>
                         </Button>
                     </Canvas>
-                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="220" RadiusX="5" RadiusY="5">
+                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="225" RadiusX="5" RadiusY="5">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
@@ -124,7 +124,7 @@
                 </Button.Style>
             </Button>
         </materialDesign:Badged>
-        <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Top Books Lastest</Label>
+        <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Lastest Book</Label>
         <ScrollViewer Name="sv" PreviewMouseWheel="ScrollViewerProductsLastest_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,77,0,308">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,0,0,0" Height="298">
                 <ListView.ItemContainerStyle>
@@ -152,7 +152,7 @@
             </ItemsControl.ItemsPanel>
         </ListView>
         </ScrollViewer>
-            <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Top Best-selling Books</Label>
+        <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Best-selling Book</Label>
         <ScrollViewer PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,375,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled"  Name="ListViewProductsMostBought" ItemTemplate="{StaticResource ProductMostBoughtTemplate}" >
             <ListView.ItemContainerStyle>
