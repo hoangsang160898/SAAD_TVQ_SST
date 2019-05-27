@@ -152,7 +152,7 @@
             </ItemsControl.ItemsPanel>
         </ListView>
         </ScrollViewer>
-            <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Top Most Bought</Label>
+            <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Top Best-selling Books</Label>
         <ScrollViewer PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,375,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled"  Name="ListViewProductsMostBought" ItemTemplate="{StaticResource ProductMostBoughtTemplate}" >
             <ListView.ItemContainerStyle>
