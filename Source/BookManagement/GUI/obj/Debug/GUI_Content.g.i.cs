@@ -8,6 +8,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/1_landscape.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/10_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/11_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/3_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/4_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/5_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/6_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/7_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/8_cover.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("products/9_cover.jpg")]
 
 

@@ -196,5 +196,22 @@
     <Resource Include="products\8.jpg" />
     <Resource Include="products\9.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products\1_cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products\2_cover.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="products\10_cover.jpg" />
+    <Resource Include="products\11_cover.jpg" />
+    <Resource Include="products\3_cover.jpg" />
+    <Resource Include="products\4_cover.jpg" />
+    <Resource Include="products\5_cover.jpg" />
+    <Resource Include="products\6_cover.jpg" />
+    <Resource Include="products\7_cover.jpg" />
+    <Resource Include="products\8_cover.jpg" />
+    <Resource Include="products\9_cover.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
