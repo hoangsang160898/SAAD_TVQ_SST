@@ -32,21 +32,21 @@
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
-                                <!--<Style.Triggers>
+                                <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Opacity" Value="0.9"></Setter>
+                                        <Setter Property="Background" Value="#ff662b"></Setter>
                                     </Trigger>
-                                </Style.Triggers>-->
+                                </Style.Triggers>
                             </Style>
                         </Button.Style>
                     </Button>
                     </Canvas>
-                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="150" RadiusX="10" RadiusY="10">
+                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="165" RadiusX="10" RadiusY="10">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <StackPanel Margin="20,10,0,0">
+                    <StackPanel Margin="20,5,0,0">
                         <StackPanel Orientation="Horizontal">
                             <Label Width="275" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="15" Height="40">
                                 <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" FontWeight="Bold"></AccessText>
@@ -81,11 +81,11 @@
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
-                                    <!--<Style.Triggers>
+                                    <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Opacity" Value="0.9"></Setter>
+                                            <Setter Property="Background" Value="#ff662b"></Setter>
                                     </Trigger>
-                                </Style.Triggers>-->
+                                </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
@@ -95,7 +95,7 @@
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <StackPanel Margin="25,10,25,0" Width="200">
+                    <StackPanel Margin="25,5,25,0" Width="200">
                         <Label Padding="0,0,0,0" FontSize="15">
                             <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" VerticalAlignment="Bottom" TextWrapping="WrapWithOverflow" FontWeight="Bold"></AccessText>
                         </Label>
@@ -110,12 +110,24 @@
     </Page.Resources>
     <Grid>
         <materialDesign:Badged Name="countProductBuy" Badge="0" BadgeColorZoneMode="PrimaryMid" FontWeight="Bold" Height="35" Margin="1255,23,0,0" Width="35">
-            <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="35" Height="35">
-                <materialDesign:PackIcon Kind="Basket" Height="35" Foreground="#bdbdbd"  Width="35"/>
+            <Button Cursor="Hand" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="35" Height="35">
+                <Button.Content>
+                    <materialDesign:PackIcon Kind="Basket" Background="#fff" Height="35" Width="35"/>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#bdbdbd"></Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#000"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </materialDesign:Badged>
         <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Top Books Lastest</Label>
-        <ListView ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,77,0,341" PreviewMouseWheel="ListViewProductsLastest_PreviewMouseWheel" Height="250">
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,77,0,341" Height="250">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows="1" Height="250" Margin="0"/>

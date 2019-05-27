@@ -48,9 +48,23 @@ namespace GUI
             ListViewProductsMostBought.ItemsSource = Global.Books;
         }
 
-        private void ListViewProductsLastest_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        private void ScrollViewerProductsLastest_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-
+            ScrollViewer scrollviewer = sender as ScrollViewer;
+            if (e.Delta > 0)
+                scrollviewer.LineLeft();
+            else
+                scrollviewer.LineRight();
+            e.Handled = true;
+        }
+        private void ScrollViewerProductsMostBought_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scrollviewer = sender as ScrollViewer;
+            if (e.Delta > 0)
+                scrollviewer.LineLeft();
+            else
+                scrollviewer.LineRight();
+            e.Handled = true;
         }
     }
 }
