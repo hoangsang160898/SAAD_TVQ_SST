@@ -47,15 +47,18 @@ namespace GUI
             ListViewProductsLastest.ItemsSource = Global.Books;
             ListViewProductsMostBought.ItemsSource = Global.Books;
         }
-        //private void ScrollViewerProductsMostBought_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        //{
-        //    ScrollViewer scrollviewer = sender as ScrollViewer;
-        //    if (e.Delta > 0)
-        //        scrollviewer.LineLeft();
-        //    else
-        //        scrollviewer.LineRight();
-        //    e.Handled = true;
-        //}
+        private void ScrollViewerProductsMostBought_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToHorizontalOffset(scv.HorizontalOffset - e.Delta);
+            e.Handled = true;
+        }
+        private void ScrollViewerProductsLastest_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToHorizontalOffset(scv.HorizontalOffset - e.Delta);
+            e.Handled = true;
+        }
         private void BtnBuyProductLastest_Click(object sender, RoutedEventArgs e)
         {
             SachDTO item = (SachDTO)((Button)sender).DataContext;
@@ -66,5 +69,6 @@ namespace GUI
             SachDTO item = (SachDTO)((Button)sender).DataContext;
             MessageBox.Show(item.TenSach);
         }
+       
     }
 }
