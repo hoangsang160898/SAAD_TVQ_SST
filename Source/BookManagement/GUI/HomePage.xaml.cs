@@ -69,6 +69,5 @@ namespace GUI
             SachDTO item = (SachDTO)((Button)sender).DataContext;
             MessageBox.Show(item.TenSach);
         }
-       
     }
 }

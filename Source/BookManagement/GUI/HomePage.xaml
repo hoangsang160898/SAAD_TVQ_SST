@@ -13,55 +13,58 @@
         <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
         <DataTemplate x:Key="ProductLastestTemplate" DataType="SachDTO">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="385" Margin="0,17,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="385" Margin="0,-10,0,0">
                     <Canvas Panel.ZIndex="2">
-                    <Button Canvas.Top="-26" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0" Click="BtnBuyProductLastest_Click">
-                        <Button.Content>
-                            <materialDesign:PackIcon HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="25" Height="25" Kind="Plus"></materialDesign:PackIcon>
-                        </Button.Content>
-                        <Button.Style>
-                            <Style TargetType="{x:Type Button}">
-                                <Setter Property="Foreground" Value="#fff"></Setter>
+                        <Button Canvas.Top="-26" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0" Click="BtnBuyProductLastest_Click">
+                            <Button.Content>
+                                <materialDesign:PackIcon HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="25" Height="25" Kind="Plus"></materialDesign:PackIcon>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#fff"></Setter>
                                     <Setter Property="Background" Value="#ffc107"></Setter>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="{x:Type Button}">
-                                            <Border Background="{TemplateBinding Background}" CornerRadius="25">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                                <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="#ff662b"></Setter>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="3" BorderBrush="#fff">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#ff662b"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
                     </Canvas>
-                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="195" RadiusX="10" RadiusY="10">
+                    <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="185" RadiusX="10" RadiusY="10">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceCover}"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Margin="20,7,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <Label Width="285" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="15" Height="90">
+                            <Label Width="285" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="15">
                                 <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
                             </Label>
                             <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
-                                <Label Margin="0,0,0,0" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Width="45" Padding="0" FontSize="14" Foreground="#dc3545" FontWeight="Bold" HorizontalContentAlignment="Right"/>
+                                <Label Margin="0,0,0,0" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Width="45" Padding="0" FontSize="14" Foreground="#dc3545" FontWeight="DemiBold" HorizontalContentAlignment="Right"/>
                             </StackPanel>
                         </StackPanel>
+                        <Label Width="380" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14" Height="50">
+                            <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                        </Label>
                     </StackPanel>
                 </StackPanel>
             </materialDesign:TransitioningContent>
         </DataTemplate>
         <DataTemplate x:Key="ProductMostBoughtTemplate" DataType="SachDTO">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-32,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-35,0,0">
                     <Canvas Panel.ZIndex="2">
                         <Button Click="BtnBuyProductMostBought_Click" Canvas.Top="-25" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0">
                             <Button.Content>
@@ -74,32 +77,35 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="3" BorderBrush="#fff">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger Property="IsMouseOver" Value="True">
                                             <Setter Property="Background" Value="#ff662b"></Setter>
-                                    </Trigger>
-                                </Style.Triggers>
+                                        </Trigger>
+                                    </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
                     </Canvas>
-                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="225" RadiusX="5" RadiusY="5">
+                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="215" RadiusX="5" RadiusY="5">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Margin="17.5,7,17.5,0" Width="200">
-                        <Label Width="200" Padding="0,0,0,0" FontSize="15">
+                        <Label Width="200" Padding="0,0,0,0" FontSize="14">
                             <AccessText Width="180" Foreground="#242426" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
                         </Label>
+                        <Label Width="285" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14">
+                            <AccessText Foreground="#242426" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                        </Label>
                         <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
-                            <Label Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="14" FontWeight="Bold"/>
+                            <Label Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="13" FontWeight="DemiBold"/>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -125,7 +131,7 @@
             </Button>
         </materialDesign:Badged>
         <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Lastest Book</Label>
-        <ScrollViewer Name="sv" PreviewMouseWheel="ScrollViewerProductsLastest_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,77,0,308">
+        <ScrollViewer Name="ScrollViewer_ProductsLastest" PreviewMouseWheel="ScrollViewerProductsLastest_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,77,0,308">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,0,0,0" Height="298">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -146,40 +152,40 @@
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Rows="1" Height="320"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ListView>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1" Height="320"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ListView>
         </ScrollViewer>
         <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Best-selling Book</Label>
-        <ScrollViewer PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,375,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,373,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled"  Name="ListViewProductsMostBought" ItemTemplate="{StaticResource ProductMostBoughtTemplate}" >
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Border x:Name="RootBorder">
-                                    <ContentPresenter/>
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <UniformGrid Rows="1" Height="350"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-        </ListView>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border x:Name="RootBorder">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="1" Height="350"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ListView>
         </ScrollViewer>
     </Grid>
 </Page>
