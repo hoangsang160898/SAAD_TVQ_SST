@@ -28,7 +28,7 @@ namespace GUI
             books.Add(new SachDTO(1, "Python Crash Course, 2nd Edition", "Eric Matthes", 59.5, 161.65, 10, 1, "05/2019", "05/26/2019", "products/1.jpg", "products/1_cover.jpg"));
             books.Add(new SachDTO(2, "Clean Code", "Robert C. Martin", 60, 67.7, 5, 1, "05/2019", "05/26/2019", "products/2.jpg", "products/2_cover.jpg"));
             books.Add(new SachDTO(3, "The Clean Coder", "Robert C. Martin", 55.1, 59.85, 5, 1, "05/2019", "05/26/2019", "products/3.jpg", "products/3_cover.jpg"));
-            books.Add(new SachDTO(3, "Refactoring", "Martin Fowler", 55.1, 59.85, 5, 1, "05/2019", "05/26/2019", "products/4.jpg", "products/4_cover.jpg"));
+            books.Add(new SachDTO(4, "Refactoring", "Martin Fowler", 55.1, 59.85, 5, 1, "05/2019", "05/26/2019", "products/4.jpg", "products/4_cover.jpg"));
             books.Add(new SachDTO(5, "Clean Architecture", "Robert C. Martin", 46, 54.11, 5, 1, "05/2019", "05/26/2019", "products/5.jpg", "products/5_cover.jpg"));
             books.Add(new SachDTO(6, "Building Microservices", "Sam Newman", 41.25, 48.69, 5, 1, "05/2019", "05/26/2019", "products/6.jpg", "products/6_cover.jpg"));
             books.Add(new SachDTO(7, "Patterns of Enterprise Application Architecture", "Martin Fowler", 65, 80.62, 5, 1, "05/2019", "05/26/2019", "products/7.jpg", "products/7_cover.jpg"));
@@ -40,7 +40,7 @@ namespace GUI
 
             InitializeComponent();
         }
-
+ 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             countProductBuy.Badge = 0;

@@ -13,7 +13,7 @@
         <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
         <DataTemplate x:Key="ProductLastestTemplate" DataType="SachDTO">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="385" Margin="0,-10,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="385" Margin="0,-15,0,0">
                     <Canvas Panel.ZIndex="2">
                         <Button Canvas.Top="-26" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0" Click="BtnBuyProductLastest_Click">
                             <Button.Content>
@@ -52,7 +52,7 @@
                                 <AccessText Foreground="#242426" Text="{Binding TenSach}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
                             </Label>
                             <StackPanel Margin="5,0,0,0" Orientation="Horizontal">
-                                <Label Margin="0,0,0,0" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Width="45" Padding="0" FontSize="14" Foreground="#dc3545" FontWeight="DemiBold" HorizontalContentAlignment="Right"/>
+                                <Label Margin="7,0,0,0" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Width="45" Padding="0" FontSize="14" Foreground="#dc3545" FontWeight="DemiBold" HorizontalContentAlignment="Right"/>
                             </StackPanel>
                         </StackPanel>
                         <Label Width="380" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14" Height="50">
@@ -64,7 +64,7 @@
         </DataTemplate>
         <DataTemplate x:Key="ProductMostBoughtTemplate" DataType="SachDTO">
             <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=ExpandIn, Duration=0:0:0.6}">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-35,0,0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="215" Margin="0,-34,0,0">
                     <Canvas Panel.ZIndex="2">
                         <Button Click="BtnBuyProductMostBought_Click" Canvas.Top="-25" Canvas.Right="5" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnBuy" Padding="0" Width="40" Height="40" Margin="0,15,0,0">
                             <Button.Content>
@@ -92,7 +92,7 @@
                             </Button.Style>
                         </Button>
                     </Canvas>
-                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="215" RadiusX="5" RadiusY="5">
+                    <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="222" RadiusX="5" RadiusY="5">
                         <Rectangle.Fill>
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
@@ -113,25 +113,15 @@
         </DataTemplate>
     </Page.Resources>
     <Grid>
-        <materialDesign:Badged Name="countProductBuy" Badge="0" BadgeColorZoneMode="PrimaryMid" FontWeight="Bold" Height="35" Margin="1255,23,0,0" Width="35">
-            <Button  Cursor="Hand" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="35" Height="35">
+        <materialDesign:Badged Background="Transparent" Name="countProductBuy" Badge="0" BadgeColorZoneMode="PrimaryMid" FontWeight="Bold" Height="25" Margin="1255,18,0,0" Width="25" BadgeBackground="#FFF17734">
+            <Button Background="Transparent" Cursor="Hand" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="25" Height="25">
                 <Button.Content>
-                    <materialDesign:PackIcon Kind="Basket" Background="#fff" Height="35" Width="35"/>
+                    <Image  Source="icons/shopping-bag.png"/>
                 </Button.Content>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Foreground" Value="#bdbdbd"></Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#000"></Setter>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
             </Button>
         </materialDesign:Badged>
-        <Label Margin="30,45,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Lastest Book</Label>
-        <ScrollViewer Name="ScrollViewer_ProductsLastest" PreviewMouseWheel="ScrollViewerProductsLastest_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,77,0,308">
+        <Label Margin="45,40,0,0" FontSize="24" Foreground="#434343" FontWeight="Bold">Lastest Book</Label>
+        <ScrollViewer Name="ScrollViewer_ProductsLastest" PreviewMouseWheel="ScrollViewerProductsLastest_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled" Margin="0,70,0,308">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled" Name="ListViewProductsLastest" ItemTemplate="{StaticResource ProductLastestTemplate}" Margin="0,0,0,0" Height="298">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -158,8 +148,8 @@
                 </ItemsControl.ItemsPanel>
             </ListView>
         </ScrollViewer>
-        <Label Margin="15,340,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Best-selling Book</Label>
-        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,373,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <Label Margin="25,335,0,0" FontSize="20" Foreground="#434343" FontWeight="Bold">Best-selling Book</Label>
+        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProductsMostBought_PreviewMouseWheel" Margin="0,368,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled">
             <ListView ScrollViewer.VerticalScrollBarVisibility="Disabled"  Name="ListViewProductsMostBought" ItemTemplate="{StaticResource ProductMostBoughtTemplate}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -182,7 +172,7 @@
 
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Rows="1" Height="350"/>
+                        <UniformGrid Rows="1" Height="352"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ListView>

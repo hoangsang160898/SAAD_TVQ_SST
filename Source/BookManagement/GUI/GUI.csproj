@@ -213,5 +213,11 @@
     <Resource Include="products\8_cover.jpg" />
     <Resource Include="products\9_cover.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\shopping-bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\icons8-search.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
