@@ -10,5 +10,6 @@ namespace BUS
     public class Global
     {
         public static List<SachDTO> Books;
+        public static List<TheLoaiDTO> Categories;
     }
 }

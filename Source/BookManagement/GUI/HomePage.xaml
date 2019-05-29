@@ -102,7 +102,7 @@
                             <AccessText Width="180" Foreground="#242426" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
                         </Label>
                         <Label Width="285" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14">
-                            <AccessText Foreground="#242426" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                            <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
                         </Label>
                         <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
                             <Label Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="13" FontWeight="DemiBold"/>

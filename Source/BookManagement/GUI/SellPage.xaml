@@ -45,12 +45,12 @@
                             <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
-                    <StackPanel Margin="17.5,7,17.5,0" Width="200">
+                    <StackPanel Margin="17.5,5,17.5,0" Width="200">
                         <Label Width="200" Padding="0,0,0,0" FontSize="14">
                             <AccessText Width="180" Foreground="#242426" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
                         </Label>
                         <Label Width="285" Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14">
-                            <AccessText Foreground="#242426" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                            <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" HorizontalAlignment="Center" MaxWidth="275" VerticalAlignment="Bottom" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
                         </Label>
                         <StackPanel Margin="0,0,0,0"  Orientation="Horizontal">
                             <Label Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="13" FontWeight="DemiBold"/>
@@ -79,7 +79,7 @@
         <Button Panel.ZIndex="2" Foreground="#333" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="33" Margin="864,9,0,0">
             <Image Width="25" Height="25" Source="icons/icons8-search.png"/>
         </Button>
-        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,100,0,0">
+        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,85,0,0">
             <ListView Name="ListViewProducts" ItemTemplate="{StaticResource ProductTemplate}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -107,5 +107,8 @@
                 </ItemsControl.ItemsPanel>
             </ListView>
         </ScrollViewer>
+        <ComboBox SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Name="Combobox_CategoriesBook" Loaded="Loaded_CategoriesBook" materialDesign:ComboBoxAssist.ClassicMode="true" Margin="754,48,0,607" HorizontalAlignment="Left" Width="150">
+
+        </ComboBox>
     </Grid>
 </Page>
