@@ -33,7 +33,7 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="#ff662b"></Setter>
+                                            <Setter Property="Background" Value="#d39e00"></Setter>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -59,10 +59,72 @@
                 </StackPanel>
             </materialDesign:TransitioningContent>
         </DataTemplate>
+        <DataTemplate x:Key="ProductBoughtTemplate" DataType="ChiTietHoaDonBanSachDTO">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.6}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="242" Width="909" VerticalAlignment="Center" Margin="0,7,0,0">
+                    <Rectangle Margin="15,0,0,0" Effect="{StaticResource z-depth}" Width="170" Height="215" RadiusX="5" RadiusY="5">
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <Canvas Panel.ZIndex="2">
+                        <Button Canvas.Top="-12" Canvas.Right="-12" Cursor="Hand" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="btnRemoveFromShoppingCart" Padding="0" Width="30" Height="30" Margin="0,15,0,0" Click="BtnRemoveFromShoppingCart_Click">
+                            <Button.Content>
+                                <materialDesign:PackIcon HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="15" Height="15" Kind="WindowMinimize"></materialDesign:PackIcon>
+                            </Button.Content>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Foreground" Value="#fff"></Setter>
+                                    <Setter Property="Background" Value="#dc3545"></Setter>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="25" BorderThickness="3" BorderBrush="#fff">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#bd2130"></Setter>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </Canvas>
+                    <StackPanel Margin="17.5,0,17.5,0" Width="460" VerticalAlignment="Center">
+                        <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14">
+                            <AccessText Foreground="#242426" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="Bold"></AccessText>
+                        </Label>
+                        <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13">
+                            <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
+                        </Label>
+                    </StackPanel>
+                    <Label HorizontalContentAlignment="Center" Height="242" Width="95" VerticalContentAlignment="Center" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="13"/>
+
+                    <ComboBox materialDesign:ComboBoxAssist.ClassicMode="true" Width="40" Margin="0,0,0,0" Name="Combobox_countBookBought" SelectedIndex="{Binding SoLuong}" Background="Transparent" SelectionChanged="Combobox_countBookBought_SelectionChanged">
+                        <ComboBoxItem Visibility="Collapsed">0</ComboBoxItem>
+                        <ComboBoxItem>1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                        <ComboBoxItem>7</ComboBoxItem>
+                        <ComboBoxItem>8</ComboBoxItem>
+                        <ComboBoxItem>9</ComboBoxItem>
+                    </ComboBox>
+                    <Label HorizontalContentAlignment="Center" Height="242" Width="95" VerticalContentAlignment="Center" Content="{Binding TongDonGia}" ContentStringFormat="${0}" Foreground="#dc3545" Padding="0" FontSize="13"/>
+                </StackPanel>
+            </materialDesign:TransitioningContent>
+        </DataTemplate>
     </Page.Resources>
+
     <Grid>
         <materialDesign:Badged Background="Transparent" Name="countProductBuy" Badge="0" BadgeColorZoneMode="PrimaryMid" FontWeight="Bold" Height="25" Margin="1255,18,0,0" Width="25" BadgeBackground="#FFF17734">
-            <Button Background="Transparent" Cursor="Hand" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="25" Height="25">
+            <Button Name="shoppingCart" Click="BtnShoppingCart_Click" Background="Transparent" Cursor="Hand" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0" Width="25" Height="25">
                 <Button.Content>
                     <Image  Source="icons/shopping-bag.png"/>
                 </Button.Content>
@@ -76,10 +138,10 @@
                 </Style>
             </TextBox.Resources>
         </TextBox>
-        <Button Panel.ZIndex="2" Foreground="#333" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="33" Margin="864,9,0,0">
+        <Button Name="btn_Search" Panel.ZIndex="2" Foreground="#333" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="33" Margin="864,9,0,0" Click="Btn_Search_Click">
             <Image Width="25" Height="25" Source="icons/icons8-search.png"/>
         </Button>
-        <ScrollViewer Name="ScrollViewer_ProductsMostBought" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,85,0,0">
+        <ScrollViewer Name="ScrollViewer_Products" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,85,0,0">
             <ListView Name="ListViewProducts" ItemTemplate="{StaticResource ProductTemplate}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
@@ -99,7 +161,6 @@
                         </Setter>
                     </Style>
                 </ListView.ItemContainerStyle>
-
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="6"/>
@@ -107,8 +168,137 @@
                 </ItemsControl.ItemsPanel>
             </ListView>
         </ScrollViewer>
-        <ComboBox SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Name="Combobox_CategoriesBook" Loaded="Loaded_CategoriesBook" materialDesign:ComboBoxAssist.ClassicMode="true" Margin="754,48,0,607" HorizontalAlignment="Left" Width="150">
-
+        <ComboBox SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Name="Combobox_CategoriesBook" Loaded="Loaded_CategoriesBook" materialDesign:ComboBoxAssist.ClassicMode="true" Margin="754,48,0,607" HorizontalAlignment="Left" Width="150" SelectionChanged="Combobox_CategoriesBook_SelectionChanged">
         </ComboBox>
+
+        <Canvas Visibility="Collapsed" Name="ProductsBought" Width="1314" Height="683" Background="#fff" Panel.ZIndex="2">
+            <Label Margin="10,0,0,0" HorizontalContentAlignment="Center" FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Width="160">Shopping Cart</Label>
+            <Canvas Visibility="Visible" Name="ShoppingCart_Empty" Height="49" Width="270" Canvas.Left="20" Canvas.Top="37">
+                <Label Visibility="Visible" FontWeight="DemiBold" FontSize="14">You have no items in your shopping cart.</Label>
+                <Canvas Height="28" Width="198" Canvas.Top="20">
+                    <Label Margin="0,0,0,0" FontSize="13">Click</Label>
+                    <Button Name="btn_BackBuyingMore" Cursor="Hand" Margin="0,0,0,0" Content="here" Padding="0" FontSize="13" Background="Transparent" BorderThickness="0" Canvas.Left="36" Canvas.Top="3" Height="22" Width="26" Click="Btn_BackBuyingMore_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Foreground" Value="#ffc107"></Setter>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <TextBlock TextDecorations="Underline" Text="{TemplateBinding Content}"/>
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Label Margin="0,0,0,0" FontSize="13" Canvas.Left="60">to continue shopping</Label>
+                </Canvas>
+            </Canvas>
+            <Canvas Visibility="Collapsed" Name="ShoppingCart_NoEmprty" Height="683" Width="1314">
+            <Border Name="Panel_HeaderListViewProductsBought" BorderBrush="#ccc" BorderThickness="0,0,0,1" Height="29" Canvas.Top="68" Canvas.Left="10" Width="909">
+                <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                    <Label Margin="5,0,0,0" FontSize="14" FontWeight="DemiBold" Width="659" Canvas.Top="68" Canvas.Left="10">Item</Label>
+                    <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="95" Canvas.Top="68" Canvas.Left="550">Price</Label>
+                    <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="40" Canvas.Top="68" Canvas.Left="645">Qty</Label>
+                    <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="95" Content="Sub total"/>
+                </StackPanel>
+            </Border>
+            <ScrollViewer  Name="ScrollViewer_ProductsBought" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="586" Width="909" Canvas.Top="97" Canvas.Left="10">
+                <ListView Name="ListViewProductsBought" ItemTemplate="{StaticResource ProductBoughtTemplate}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="RootBorder">
+                                            <ContentPresenter/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+            </ScrollViewer>
+            <Button Name="btn_BuyMore" Content="Buy more" Cursor="Hand" FontSize="13" Foreground="#000" Canvas.Left="718" Canvas.Top="36" Width="102" Height="27" Click="Btn_BuyMore_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="#ffc107"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="16" BorderBrush="#fff">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#d39e00"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Name="btn_DeleteAll" Content="Delete all" Padding="16,4,16,4" Cursor="Hand" FontSize="13" Foreground="#fff" Canvas.Left="825" Canvas.Top="36" Width="94" Height="27" Click="Btn_DeleteAll_Click">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#fff"></Setter>
+                        <Setter Property="Background" Value="#dc3545"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="16" BorderBrush="#fff">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#bd2130"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Label Name="Label_TitleSummary" Foreground="#FFF17734" FontSize="24" Width="147" Canvas.Left="958" Height="47" Canvas.Top="21">Summary</Label>
+            <Border Name="Panel_Pay" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Canvas.Left="958" Padding="20" Canvas.Top="68">
+                <StackPanel Width="257">
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64">Order Total</Label>
+                        <Label HorizontalContentAlignment="Right" ContentStringFormat="${0}" FontSize="18" Foreground="#000" FontWeight="DemiBold" Name="Label_SummaryPriceOfBill" Canvas.Left="1010" Canvas.Top="64" Width="150"></Label>
+                    </StackPanel>
+                    <Button Margin="0,10,0,0" Name="btn_Pay" Content="Pay" Background="#28a745" BorderBrush="#28a745" Width="257" Click="Btn_Pay_Click"/>
+                </StackPanel>
+            </Border>
+            </Canvas>
+        </Canvas>
+        <!--<Canvas Name="Receipt" Width="1314" Height="683" Visibility="Collapsed" Background="#000" Panel.ZIndex="3"></Canvas>-->
     </Grid>
 </Page>

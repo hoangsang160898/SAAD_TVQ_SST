@@ -19,6 +19,8 @@ namespace DTO
         private string ngaySX;
         private string ngayNhap;
         private BitmapImage hinhAnh;
+        private BitmapImage hinhAnhCover;
+
         public string sourceHinh;
         public string sourceCoverSach;
 
@@ -34,8 +36,9 @@ namespace DTO
         public string sourceHinhAnh { get => sourceHinh; set => sourceHinh = value; }
         public string sourceCover { get => sourceCoverSach; set => sourceCoverSach = value; }
         //public BitmapImage HinhAnh { get => hinhAnh; set => hinhAnh = value; }
+        //public BitmapImage HinhAnhCover { get => hinhAnhCover; set => hinhAnhCover = value; }
 
-        //public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, BitmapImage hinhAnh)
+        //public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, BitmapImage hinhAnh, BitmapImage hinhAnhCover)
         public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, string sourceImg, string sourceCover)
         {
             this.maSach = maSach;
@@ -50,6 +53,7 @@ namespace DTO
             this.sourceHinh = sourceImg;
             this.sourceCoverSach = sourceCover;
             //this.hinhAnh = hinhAnh;
+            //this.hinhAnhCover = hinhAnhCover;
         }
     }
 }

@@ -40,10 +40,18 @@ namespace GUI
 
             InitializeComponent();
         }
- 
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            countProductBuy.Badge = 0;
+            if(Global.BookBoughtBills == null)
+            {
+                countProductBuy.Badge = 0;
+            }
+            else
+            {
+                countProductBuy.Badge = Global.BookBoughtBills.Count;
+            }
+           
             ListViewProductsLastest.ItemsSource = Global.Books;
             ListViewProductsMostBought.ItemsSource = Global.Books;
         }
@@ -63,11 +71,22 @@ namespace GUI
         {
             SachDTO item = (SachDTO)((Button)sender).DataContext;
             MessageBox.Show(item.TenSach);
+            int countBooksBought = 0;
+            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            {
+                countBooksBought += Global.BookBoughtBills[i].SoLuong;
+            }
+            countProductBuy.Badge = countBooksBought;
         }
         private void BtnBuyProductMostBought_Click(object sender, RoutedEventArgs e)
         {
             SachDTO item = (SachDTO)((Button)sender).DataContext;
             MessageBox.Show(item.TenSach);
+        }
+
+        private void BtnShoppingCart_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

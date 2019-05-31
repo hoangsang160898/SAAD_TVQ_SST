@@ -11,5 +11,7 @@ namespace BUS
     {
         public static List<SachDTO> Books;
         public static List<TheLoaiDTO> Categories;
+        public static List<ChiTietHoaDonBanSachDTO> BookBoughtBills;
+        public static List<HoaDonBanSachDTO> Receipts;
     }
 }
