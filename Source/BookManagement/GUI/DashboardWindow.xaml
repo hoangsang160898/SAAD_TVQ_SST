@@ -151,7 +151,7 @@
                                 <TextBlock Text="Books" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab6_content"/>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem Height="50">
+                        <ListViewItem IsEnabled="False" Height="50">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Sale" Height="25" Foreground="#b6b8ba"  Width="25" Margin="5" Name="ListViewMenu__tab7_icon"/>
                                 <TextBlock Text="Promotions" VerticalAlignment="Center" Foreground="#b6b8ba" Margin="5"  FontSize="14" FontWeight="DemiBold" Name="ListViewMenu__tab7_content"/>

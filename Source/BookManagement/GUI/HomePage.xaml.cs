@@ -88,10 +88,5 @@ namespace GUI
             SachDTO item = (SachDTO)((Button)sender).DataContext;
             MessageBox.Show(item.TenSach);
         }
-
-        private void BtnShoppingCart_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }

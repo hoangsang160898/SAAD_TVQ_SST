@@ -64,7 +64,6 @@ namespace GUI
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
             if (Global.BookBoughtBills == null)
             {
                 countProductBuy.Badge = 0;
@@ -72,15 +71,11 @@ namespace GUI
             else
             {
                 int countBooksBought = 0;
-                double sumPrice = 0;
                 for (int i = 0; i < Global.BookBoughtBills.Count; i++)
                 {
                     countBooksBought += Global.BookBoughtBills[i].SoLuong;
-                    sumPrice += Global.BookBoughtBills[i].TongDonGia;
                 }
                 countProductBuy.Badge = countBooksBought;
-                ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
-                Label_SummaryPriceOfBill.Content = sumPrice;
             }
             ListViewProducts.ItemsSource = Global.Books;
             Combobox_CategoriesBook.ItemsSource = Global.Categories;
@@ -114,12 +109,22 @@ namespace GUI
         {
             if (Global.BookBoughtBills != null)
             {
+                double sumPrice = 0;
+                for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+                {
+                    sumPrice += Global.BookBoughtBills[i].SoLuong * Global.BookBoughtBills[i].DonGiaBan;
+                }
+                ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+                Label_SummaryPriceOfBill.Content = sumPrice;
                 ShoppingCart_Empty.Visibility = Visibility.Collapsed;
                 ShoppingCart_NoEmprty.Visibility = Visibility.Visible;
-
+            }
+            else
+            {
+                ShoppingCart_Empty.Visibility = Visibility.Visible;
+                ShoppingCart_NoEmprty.Visibility = Visibility.Collapsed;
             }
             ProductsBought.Visibility = Visibility.Visible;
-
         }
 
         private void Btn_DeleteAll_Click(object sender, RoutedEventArgs e)
@@ -134,12 +139,26 @@ namespace GUI
 
         private void Btn_BuyMore_Click(object sender, RoutedEventArgs e)
         {
+            int countBooksBought = 0;
+            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            {
+                countBooksBought += Global.BookBoughtBills[i].SoLuong;
+            }
+            countProductBuy.Badge = countBooksBought;
             ProductsBought.Visibility = Visibility.Collapsed;
         }
 
         private void Btn_Pay_Click(object sender, RoutedEventArgs e)
         {
-
+            Receipt.Visibility = Visibility.Visible;
+            ListViewProductsBoughtPreview.ItemsSource = Global.BookBoughtBills;
+            double sumPrice = 0;
+            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            {
+                sumPrice += Global.BookBoughtBills[i].SoLuong * Global.BookBoughtBills[i].DonGiaBan;
+            }
+            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+            Label_SumPriceFinal.Content = sumPrice;
         }
 
         private void BtnRemoveFromShoppingCart_Click(object sender, RoutedEventArgs e)
@@ -196,6 +215,28 @@ namespace GUI
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Btn_BackShoppingCart_Click(object sender, RoutedEventArgs e)
+        {
+            Receipt.Visibility = Visibility.Collapsed;
+        }
+
+        private void Btn_PlaceOrder_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_PhoneNumberCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TextBox_PayCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
