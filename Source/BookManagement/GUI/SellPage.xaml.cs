@@ -61,6 +61,7 @@ namespace GUI
 
             InitializeComponent();
         }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -71,7 +72,7 @@ namespace GUI
             else
             {
                 int countBooksBought = 0;
-                double sumPrice = 0; 
+                double sumPrice = 0;
                 for (int i = 0; i < Global.BookBoughtBills.Count; i++)
                 {
                     countBooksBought += Global.BookBoughtBills[i].SoLuong;
@@ -84,6 +85,7 @@ namespace GUI
             ListViewProducts.ItemsSource = Global.Books;
             Combobox_CategoriesBook.ItemsSource = Global.Categories;
         }
+
         private void BtnBuyProduct_Click(object sender, RoutedEventArgs e)
         {
             SachDTO item = (SachDTO)((Button)sender).DataContext;
@@ -95,6 +97,7 @@ namespace GUI
             }
             countProductBuy.Badge = countBooksBought;
         }
+
         private void ScrollViewerProducts_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             ScrollViewer scv = (ScrollViewer)sender;
@@ -109,7 +112,7 @@ namespace GUI
 
         private void BtnShoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            if (Global.BookBoughtBills!=null)
+            if (Global.BookBoughtBills != null)
             {
                 ShoppingCart_Empty.Visibility = Visibility.Collapsed;
                 ShoppingCart_NoEmprty.Visibility = Visibility.Visible;
@@ -121,7 +124,12 @@ namespace GUI
 
         private void Btn_DeleteAll_Click(object sender, RoutedEventArgs e)
         {
-
+            Global.BookBoughtBills.Clear();
+            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+            Label_SummaryPriceOfBill.Content = "";
+            countProductBuy.Badge = 0;
+            ShoppingCart_Empty.Visibility = Visibility.Visible;
+            ShoppingCart_NoEmprty.Visibility = Visibility.Collapsed;
         }
 
         private void Btn_BuyMore_Click(object sender, RoutedEventArgs e)
@@ -154,6 +162,8 @@ namespace GUI
                     sumPrice += Global.BookBoughtBills[i].TongDonGia;
                 }
                 countProductBuy.Badge = countBooksBought;
+                ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+                Label_SummaryPriceOfBill.Content = sumPrice;
             }
         }
 
@@ -162,11 +172,15 @@ namespace GUI
             ChiTietHoaDonBanSachDTO item = (ChiTietHoaDonBanSachDTO)((ComboBox)sender).DataContext; //Ở đây không dùng messagebox được. muốn test thì gán giá trị vào label nào đó test
             //Label_SummaryPriceOfBill.Content = item.TenSach;
             int countBooksBought = 0;
+            double sumPrice = 0;
             for (int i = 0; i < Global.BookBoughtBills.Count; i++)
             {
                 countBooksBought += Global.BookBoughtBills[i].SoLuong;
+                sumPrice += Global.BookBoughtBills[i].TongDonGia;
             }
             countProductBuy.Badge = countBooksBought;
+            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+            Label_SummaryPriceOfBill.Content = sumPrice;
         }
 
         private void Btn_BackBuyingMore_Click(object sender, RoutedEventArgs e)
@@ -176,7 +190,7 @@ namespace GUI
 
         private void Combobox_CategoriesBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            
         }
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)

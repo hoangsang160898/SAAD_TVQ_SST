@@ -43,15 +43,20 @@ namespace GUI
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(Global.BookBoughtBills == null)
+            if (Global.BookBoughtBills == null)
             {
                 countProductBuy.Badge = 0;
             }
             else
             {
-                countProductBuy.Badge = Global.BookBoughtBills.Count;
+                int countBooksBought = 0;
+                for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+                {
+                    countBooksBought += Global.BookBoughtBills[i].SoLuong;
+                }
+                countProductBuy.Badge = countBooksBought;
             }
-           
+
             ListViewProductsLastest.ItemsSource = Global.Books;
             ListViewProductsMostBought.ItemsSource = Global.Books;
         }
