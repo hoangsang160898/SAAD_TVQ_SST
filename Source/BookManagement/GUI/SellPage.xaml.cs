@@ -205,6 +205,7 @@ namespace GUI
         private void Btn_BackBuyingMore_Click(object sender, RoutedEventArgs e)
         {
             ProductsBought.Visibility = Visibility.Collapsed;
+            countProductBuy.Badge = 0;
         }
 
         private void Combobox_CategoriesBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
