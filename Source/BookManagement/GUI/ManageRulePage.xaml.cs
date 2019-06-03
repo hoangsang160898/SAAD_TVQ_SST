@@ -120,12 +120,48 @@ namespace GUI
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-
+            submit.Visibility = Visibility.Collapsed;
+            cancel.Visibility = Visibility.Collapsed;
+            edit.Visibility = Visibility.Visible;
+            TextBox_MaxDebt.IsEnabled = false;
+            TextBox_MinExAfterBuying.IsEnabled = false;
+            TextBox_MaxAddBeforeSupplying.IsEnabled = false;
+            TextBox_MinExBeforeSupplying.IsEnabled = false;
+            btnChangeRule4.IsEnabled = false;
+            btnChangeRule3.IsEnabled = false;
+            btnChangeRule2.IsEnabled = false;
+            btnChangeRule1.IsEnabled = false;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            submit.Visibility = Visibility.Collapsed;
+            cancel.Visibility = Visibility.Collapsed;
+            edit.Visibility = Visibility.Visible;
+            TextBox_MaxDebt.IsEnabled = false;
+            TextBox_MinExAfterBuying.IsEnabled = false;
+            TextBox_MaxAddBeforeSupplying.IsEnabled = false;
+            TextBox_MinExBeforeSupplying.IsEnabled = false;
+            btnChangeRule4.IsEnabled = false;
+            btnChangeRule3.IsEnabled = false;
+            btnChangeRule2.IsEnabled = false;
+            btnChangeRule1.IsEnabled = false;
+            Page_Loaded(sender, e);
+        }
 
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            submit.Visibility = Visibility.Visible;
+            cancel.Visibility = Visibility.Visible;
+            edit.Visibility = Visibility.Collapsed;
+            TextBox_MaxDebt.IsEnabled = true;
+            TextBox_MinExAfterBuying.IsEnabled = true;
+            TextBox_MaxAddBeforeSupplying.IsEnabled = true;
+            TextBox_MinExBeforeSupplying.IsEnabled = true;
+            btnChangeRule4.IsEnabled = true;
+            btnChangeRule3.IsEnabled = true;
+            btnChangeRule2.IsEnabled = true;
+            btnChangeRule1.IsEnabled = true;
         }
     }
 }

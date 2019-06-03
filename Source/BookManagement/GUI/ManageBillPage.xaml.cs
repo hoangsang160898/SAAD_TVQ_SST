@@ -156,7 +156,7 @@ namespace GUI
             DetailBill.Visibility = Visibility.Collapsed;
         }
     }
-    public class YesNoToBooleanConverter : IValueConverter
+    public class BooleanBooksConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {

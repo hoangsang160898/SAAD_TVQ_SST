@@ -10,7 +10,7 @@
       Title="Manage Bill Page" Loaded="Page_Loaded">
 
     <Page.Resources>
-        <local:YesNoToBooleanConverter x:Key="YesNoToBooleanConverter"/>
+        <local:BooleanBooksConverter x:Key="BooleanBooksConverter"/>
         <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
         <DataTemplate x:Key="BillTemplate" DataType="PhieuThuTienDTO">
             <Border BorderBrush="#ccc" BorderThickness="1" CornerRadius="5">
@@ -26,7 +26,7 @@
                         <Label  Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14">
                             <AccessText MaxWidth="370" Foreground="#242424" Text="{Binding TenSachBatKi}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"></AccessText>
                         </Label>
-                        <Label Foreground="#242424" Visibility="{Binding SoLuongSachKhac,Converter={StaticResource YesNoToBooleanConverter}}" Padding="0,0,0,0" Content="{Binding SoLuongSachKhac}" ContentStringFormat="and {0} others" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                        <Label Foreground="#242424" Visibility="{Binding SoLuongSachKhac,Converter={StaticResource BooleanBooksConverter}}" Padding="0,0,0,0" Content="{Binding SoLuongSachKhac}" ContentStringFormat="and {0} others" HorizontalContentAlignment="Left" FontSize="14"></Label>
                     </StackPanel>
                     <Label VerticalContentAlignment="Center" Content="{Binding SoTienHoaDonBanSach}" ContentStringFormat="${0}" Foreground="#242424" Width="100" Padding="0" FontSize="14"/>
                     <Label VerticalContentAlignment="Center" Content="{Binding SoTienThu}" ContentStringFormat="${0}" Foreground="#242424" Width="100" Padding="0" FontSize="14"/>
@@ -65,7 +65,7 @@
 
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
         <Grid>
-            <Label FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Margin="25,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38">Manage Bills</Label>
+            <Label FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38">Manage Bills</Label>
 
             <StackPanel Margin="10,42,10,601" Orientation="Horizontal">
                 <Label VerticalContentAlignment="Center" Foreground="#787878" Margin="0,0,0,0" FontSize="16" FontWeight="DemiBold" Width="95" Canvas.Top="68" Canvas.Left="10">ID</Label>
