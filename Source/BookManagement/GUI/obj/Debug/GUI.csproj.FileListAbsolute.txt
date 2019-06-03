@@ -41,3 +41,4 @@ S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\GUI.csproj.CopyComplete
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\GUI.exe
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\GUI.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\GeneratedInternalTypeHelper.g.cs
