@@ -111,7 +111,7 @@
                     <Label Name="Debt_IdCustomer" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="4" FontSize="15" Height="32" Width="267" Canvas.Left="50" Canvas.Top="10"></Label>
                     <Label Name="Debt_NameCustomer" FontWeight="DemiBold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Dang Vinh Phat" FontSize="15" Height="32" Width="276" Canvas.Left="41" Canvas.Top="52"></Label>
                     <Label Name="Debt_PhoneNumberCustomer" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="0123123221" FontSize="15" Height="32" Width="276" Canvas.Left="41" Canvas.Top="84"></Label>
-                    <TextBox Name="Debt_TextBoxCustomer" materialDesign:HintAssist.Hint="Debt" Height="32" Canvas.Left="93" FontSize="15" TextWrapping="Wrap" Canvas.Top="121" Width="125"/>
+                    <TextBox Name="Debt_TextBoxCustomer" materialDesign:HintAssist.Hint="Debt" Height="32" Canvas.Left="93" FontSize="15" TextWrapping="Wrap" Canvas.Top="121" Width="125" PreviewTextInput="Debt_TextBoxCustomer_PreviewTextInput"/>
                     <Button Name="Debt_BtnCusomer" Padding="0" Background="#28a745" BorderBrush="#28a745" Canvas.Left="223" Canvas.Top="121" Width="40" Click="Debt_BtnCusomer_Click">
                         <Button.Content>
                             <materialDesign:PackIcon Width="20" Height="20" Kind="Check"></materialDesign:PackIcon>

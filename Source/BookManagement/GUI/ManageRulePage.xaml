@@ -18,7 +18,7 @@
             <Border Name="Panel_Pay" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Canvas.Left="958" Padding="20" Canvas.Top="68" Margin="75,87,913,502">
                 <StackPanel Orientation="Horizontal" Margin="12,0">
                     <Label VerticalContentAlignment="Center" FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64">Max</Label>
-                    <TextBox IsEnabled="False" Name="TextBox_MaxDebt" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10"></TextBox>
+                    <TextBox IsEnabled="False" Name="TextBox_MaxDebt" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10" PreviewTextInput="TextBox_MaxDebt_PreviewTextInput"></TextBox>
                 </StackPanel>
             </Border>
             <local:ToggleButton IsEnabled="False" Panel.ZIndex="2" x:Name="btnChangeRule1" HorizontalAlignment="Center" Height="30" Margin="1170,122,98,531" VerticalAlignment="Center" Width="46" MouseLeftButtonDown="btnChangeRule1_MouseLeftButtonDown"/>
@@ -31,7 +31,7 @@
             <Border x:Name="Panel_Pay_Copy" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Padding="20" Margin="75,242,913,347">
                 <StackPanel Orientation="Horizontal" Margin="12,0">
                     <Label VerticalContentAlignment="Center" FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64" Content="Min"/>
-                    <TextBox IsEnabled="False" Name="TextBox_MinExAfterBuying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10"/>
+                    <TextBox IsEnabled="False" Name="TextBox_MinExAfterBuying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10" PreviewTextInput="TextBox_MinExAfterBuying_PreviewTextInput"/>
                 </StackPanel>
             </Border>
             <Border Panel.ZIndex="2" Margin="561,69,559,576" CornerRadius="20" Background="#FFF17734">
@@ -40,7 +40,7 @@
             <Border x:Name="Panel_Pay_Copy1" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Padding="20" Margin="494,87,494,502">
                 <StackPanel Orientation="Horizontal" Margin="12,0">
                     <Label VerticalContentAlignment="Center" FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64" Content="Max"/>
-                    <TextBox IsEnabled="False" Name="TextBox_MaxAddBeforeSupplying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10"/>
+                    <TextBox IsEnabled="False" Name="TextBox_MaxAddBeforeSupplying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10" PreviewTextInput="TextBox_MaxAddBeforeSupplying_PreviewTextInput" />
                 </StackPanel>
             </Border>
             <Border Panel.ZIndex="2" Margin="561,224,559,421" CornerRadius="20" Background="#FFF17734">
@@ -49,7 +49,7 @@
             <Border x:Name="Panel_Pay_Copy2" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Padding="20" Margin="494,242,494,347">
                 <StackPanel Orientation="Horizontal" Margin="12,0">
                     <Label VerticalContentAlignment="Center" FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64" Content="Min"/>
-                    <TextBox Background="Transparent" IsEnabled="False" Name="TextBox_MinExBeforeSupplying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10"/>
+                    <TextBox Background="Transparent" IsEnabled="False" Name="TextBox_MinExBeforeSupplying" materialDesign:HintAssist.Hint="Enter here" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="18" Foreground="#000" FontWeight="DemiBold" Canvas.Left="1010" Canvas.Top="64" Width="152" Margin="0,10" PreviewTextInput="TextBox_MinExBeforeSupplying_PreviewTextInput" />
                 </StackPanel>
             </Border>
             <Border Panel.ZIndex="2" Margin="1009,69,175,576" CornerRadius="20" Background="#FFF17734">

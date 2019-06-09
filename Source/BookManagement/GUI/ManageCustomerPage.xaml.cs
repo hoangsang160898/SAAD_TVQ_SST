@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO;
 using BUS;
+using System.Text.RegularExpressions;
+
 namespace GUI
 {
     /// <summary>
@@ -85,6 +87,12 @@ namespace GUI
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Debt_TextBoxCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
     public class BooleanDebtConverter : IValueConverter

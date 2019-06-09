@@ -16,6 +16,7 @@ namespace DTO
         private double donGiaBan;
         private int soLuong;
         private int maLoai;
+        private string tenLoai;
         private string ngaySX;
         private string ngayNhap;
         private BitmapImage hinhAnh;
@@ -31,6 +32,7 @@ namespace DTO
         public double DonGiaBan { get => donGiaBan; set => donGiaBan = value; }
         public int SoLuong { get => soLuong; set => soLuong = value; }
         public int MaLoai { get => maLoai; set => maLoai = value; }
+        public string TenLoai { get => tenLoai; set => tenLoai = value; }
         public string NgaySX { get => ngaySX; set => ngaySX = value; }
         public string NgayNhap { get => ngayNhap; set => ngayNhap = value; }
         public string sourceHinhAnh { get => sourceHinh; set => sourceHinh = value; }
@@ -39,7 +41,7 @@ namespace DTO
         //public BitmapImage HinhAnhCover { get => hinhAnhCover; set => hinhAnhCover = value; }
 
         //public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, BitmapImage hinhAnh, BitmapImage hinhAnhCover)
-        public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, string sourceImg, string sourceCover)
+        public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai,string tenLoai, string ngaySX, string ngayNhap, string sourceImg, string sourceCover)
         {
             this.maSach = maSach;
             this.tenSach = tenSach;
@@ -48,10 +50,28 @@ namespace DTO
             this.donGiaBan = donGiaBan;
             this.soLuong = soLuong;
             this.maLoai = maLoai;
+            this.tenLoai = tenLoai;
             this.ngaySX = ngaySX;
             this.ngayNhap = ngayNhap;
             this.sourceHinh = sourceImg;
             this.sourceCoverSach = sourceCover;
+            //this.hinhAnh = hinhAnh;
+            //this.hinhAnhCover = hinhAnhCover;
+        }
+        public SachDTO()
+        {
+            this.maSach = 0;
+            this.tenSach = "";
+            this.tacGia = "";
+            this.donGiaNhap = 0.0;
+            this.donGiaBan = 0.0;
+            this.soLuong = 0;
+            this.maLoai = 0;
+            this.tenLoai = "";
+            this.ngaySX = "";
+            this.ngayNhap = "";
+            this.sourceHinh = "";
+            this.sourceCoverSach = "";
             //this.hinhAnh = hinhAnh;
             //this.hinhAnhCover = hinhAnhCover;
         }
