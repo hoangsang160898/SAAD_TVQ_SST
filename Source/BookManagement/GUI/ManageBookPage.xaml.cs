@@ -232,5 +232,20 @@ namespace GUI
             Textbox__addBook_exist.Text = "0";
             Loaded_CategoriesBook(sender, e);
         }
+
+        private void BtnCancel_addBook_Click(object sender, RoutedEventArgs e)
+        {
+            addBook.Visibility = Visibility.Collapsed;
+            reviewBook.Visibility = Visibility.Visible;
+            ListViewBooks.IsEnabled = true;
+            Textbox__addBook_id.Text = "";
+            //Img__addBook_avatar.ImageSource = "";
+            //Img__addBook_cover.ImageSource = "";
+            Textbox__addBook_author.Text = "";
+            Textbox__addBook_id.Text = "";
+            Textbox__addBook_priceRoot.Text = "";
+            Textbox__addBook_priceSell.Text = "";
+            Textbox__addBook_exist.Text = "0";
+        }
     }
 }

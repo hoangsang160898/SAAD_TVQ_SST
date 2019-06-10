@@ -259,7 +259,7 @@
                     </Label>
                     <ComboBox materialDesign:HintAssist.Hint="Book Category" IsEditable="True" SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Loaded="Loaded_CategoriesBook" Padding="10,0,0,0" x:Name="Textbox__addBook_type" VerticalContentAlignment="Center" FontSize="15" Width="206" Height="36"/>
                 </StackPanel>
-
+                <Button Visibility="Visible" Background="#6c757d" BorderBrush="#6c757d" Content="Cancel" Canvas.Left="322" Canvas.Top="550" Width="75" Name="btnCancel_addBook" Click="BtnCancel_addBook_Click"/>
                 <Button Background="#28a745" Visibility="Visible" BorderBrush="#28a745" Content="Done" Canvas.Left="402" Canvas.Top="550" Width="75" Name="btnDone_addBook" Click="BtnDone_addBook_Click"/>
             </Canvas>
             <Border Visibility="Collapsed" Name="AddExistBookForm" CornerRadius="10" Effect="{StaticResource z-depth}" Background="#fff" Margin="477,251">

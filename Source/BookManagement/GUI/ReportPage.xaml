@@ -7,9 +7,135 @@
       xmlns:local="clr-namespace:GUI"
       mc:Ignorable="d" 
       d:DesignHeight="683" d:DesignWidth="1314"
-      Title="Report Page">
+      Title="Report Page" Loaded="Page_Loaded">
 
-    <Grid>
-        <Label>5</Label>
-    </Grid>
+    <Page.Resources>
+        <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
+        <DataTemplate x:Key="ProductTemplate" DataType="BaoCaoTonSachDTO">
+            <Border BorderBrush="#ccc" BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="637">
+                    <Label Foreground="#242424" VerticalContentAlignment="Center" Content="{Binding Id}" Width="84" Padding="15,0,10,0" FontSize="14">
+                    </Label>
+                    <Label Width="300" Padding="0,0,0,0" VerticalContentAlignment="Center" FontSize="14">
+                        <AccessText Foreground="#242424" Text="{Binding TenSach}" TextWrapping="Wrap"></AccessText>
+                    </Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding TonDau}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding PhatSinh}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding TonCuoi}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="CustomerTemplate" DataType="BaoCaoCongNoDTO">
+            <Border BorderBrush="#ccc" BorderThickness="0,0,0,1">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="637">
+                    <Label Foreground="#242424" VerticalContentAlignment="Center" Content="{Binding Id}" Width="84" Padding="15,0,10,0" FontSize="14">
+                    </Label>
+                    <Label Width="300" Padding="0,0,0,0" VerticalContentAlignment="Center" FontSize="14">
+                        <AccessText Foreground="#242424" Text="{Binding TenKH}" TextWrapping="Wrap"></AccessText>
+                    </Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding NoDau}" ContentStringFormat="${0}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding PhatSinh}" ContentStringFormat="${0}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Width="84" Padding="0,0,0,0" Content="{Binding NoCuoi}" ContentStringFormat="${0}" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+        <Grid>
+            <Label FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38">Report</Label>
+            <Canvas Margin="0,43,657,0">
+                <Border Background="#fededc" CornerRadius="20" Width="215" Canvas.Left="210" Height="37">
+                    <Label FontWeight="DemiBold" HorizontalContentAlignment="Center" Foreground="#d24a36" FontSize="16" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Canvas.Left="201" Width="215">Books Existence</Label>
+                </Border>
+                <DatePicker Padding="5,0,15,1.5" Height="30" VerticalContentAlignment="Center" FontSize="14" Width="151" materialDesign:HintAssist.Hint="From" Canvas.Left="10" Canvas.Top="47">
+
+                </DatePicker>
+                <DatePicker Padding="5,0,15,1.5" Height="30" VerticalContentAlignment="Center" FontSize="14" Width="151" materialDesign:HintAssist.Hint="To" Canvas.Left="172" Canvas.Top="47">
+                </DatePicker>
+                <Border BorderBrush="#ccc" BorderThickness="0,0,0,2" Canvas.Left="10" Canvas.Top="82" Width="637">
+                    <StackPanel  Orientation="Horizontal">
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold" Width="74" Content="ID"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="295" Canvas.Top="68" Canvas.Left="550" Content="Book Name"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Canvas.Top="68" Canvas.Left="645" Content="Old"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Content="Added"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Content="Current"/>
+                    </StackPanel>
+                </Border>
+                <ScrollViewer IsEnabled="True" Name="ScrollViewer_BookReports" PreviewMouseWheel="ScrollViewerBookReports_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="515" Canvas.Top="115" Width="637" Canvas.Left="10">
+                    <ListView Name="ListViewBookReports" ItemTemplate="{StaticResource ProductTemplate}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border x:Name="RootBorder">
+                                                <ContentPresenter/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListView>
+                </ScrollViewer>
+            </Canvas>
+            <Canvas Margin="657,43,0,0">
+                <Border Background="#fededc" CornerRadius="20" Width="218" Canvas.Left="221" Height="37">
+                    <Label FontWeight="DemiBold" HorizontalContentAlignment="Center" Foreground="#d24a36" FontSize="16" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38" Canvas.Left="201" Width="215">Customers Debt</Label>
+                </Border>
+                <DatePicker Padding="5,0,15,1.5" Height="30" VerticalContentAlignment="Center" FontSize="14" Width="151" materialDesign:HintAssist.Hint="From" Canvas.Left="333" Canvas.Top="47">
+
+                </DatePicker>
+                <DatePicker Padding="5,0,15,1.5" Height="30" VerticalContentAlignment="Center" FontSize="14" Width="151" materialDesign:HintAssist.Hint="To" Canvas.Left="496" Canvas.Top="47">
+                </DatePicker>
+                <Border BorderBrush="#ccc" BorderThickness="0,0,0,2" Canvas.Left="10" Canvas.Top="82" Width="637">
+                    <StackPanel  Orientation="Horizontal">
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold" Width="74" Content="ID"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="295" Canvas.Top="68" Canvas.Left="550" Content="Customer Name"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Canvas.Top="68" Canvas.Left="645" Content="Old"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Content="Added"/>
+                        <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Content="Current"/>
+                    </StackPanel>
+                </Border>
+                <ScrollViewer IsEnabled="True" Name="ScrollViewer_CustomerReports" PreviewMouseWheel="ScrollViewerBookReports_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="515" Canvas.Top="115" Width="637" Canvas.Left="10">
+                    <ListView Name="ListViewCustomerReports" ItemTemplate="{StaticResource CustomerTemplate}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border x:Name="RootBorder">
+                                                <ContentPresenter/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListView>
+                </ScrollViewer>
+            </Canvas>
+            <Rectangle Fill="#e1e1e1" HorizontalAlignment="Left" Height="547" Margin="657,126,0,0" Stroke="#e1e1e1" VerticalAlignment="Top" Width="2"/>
+        </Grid>
+    </materialDesign:TransitioningContent>
 </Page>
