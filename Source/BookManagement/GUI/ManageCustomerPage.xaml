@@ -31,7 +31,7 @@
     </Page.Resources>
     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
         <Grid>
-            <TextBox MaxLength="57" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" Panel.ZIndex="1" Foreground="#202020" FontSize="14" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Center" Width="480" materialDesign:HintAssist.Hint="Enter search here..." Margin="424,35,410,613" SelectionBrush="{x:Null}" CaretBrush="{x:Null}">
+            <TextBox Name ="txtSearch" MaxLength="57" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" Panel.ZIndex="1" Foreground="#202020" FontSize="14" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Center" Width="480" materialDesign:HintAssist.Hint="Enter search here..." Margin="424,35,410,613" SelectionBrush="{x:Null}" CaretBrush="{x:Null}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="4"/>

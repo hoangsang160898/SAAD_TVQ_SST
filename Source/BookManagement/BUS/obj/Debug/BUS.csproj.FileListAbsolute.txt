@@ -9,3 +9,14 @@ S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.csproj.CopyComplete
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.dll
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\BUS.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\BUS.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\DAO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\DTO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\DAO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\bin\Debug\DTO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.csprojAssemblyReference.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.csproj.CopyComplete
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\BUS\obj\Debug\BUS.pdb

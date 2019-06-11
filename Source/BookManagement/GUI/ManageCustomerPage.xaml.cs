@@ -23,9 +23,10 @@ namespace GUI
     /// </summary>
     public partial class ManageCustomerPage : Page
     {
+        private int idCustomer;
         public ManageCustomerPage()
         {
-            var customers = new List<KhachHangDTO>();
+           /* var customers = new List<KhachHangDTO>();
             customers.Add(new KhachHangDTO(1, "Leo Nguyen", "D1/3, duong 385, phuong Tang Nhon A, Quan 9, TPHCM", "1612556@student.hcmus.edu.com", "0399029922", 0));
             customers.Add(new KhachHangDTO(2, "Le Hoang Sang", "O dau do trong thanh pho", "1612557@student.hcmus.edu.com", "0432423423", 0.5));
             customers.Add(new KhachHangDTO(3, "Nguyen Thi Thu Quyen", "Ki tuc xa Quan 5", "thuquyen@gmail.com", "0312312312", 0.4));
@@ -38,13 +39,23 @@ namespace GUI
             customers.Add(new KhachHangDTO(10, "Chau Hoang Phuc", "O dau do trong thanh pho", "chphuc@student.hcmus.edu.com", "012312312", 0));
             customers.Add(new KhachHangDTO(11, "Le Quoc Duy Quang", "O dau do trong thanh pho", "lqduyquang@student.hcmus.edu.com", "0312312321", 0.7));
             customers.Add(new KhachHangDTO(12, "Dang Vinh Phat", "Go Vap - TPHCM", "dvphat@student.hcmus.edu.com", "0564565456", 0));
-            Global.Customers = customers;
+            Global.Customers = customers;*/
 
             InitializeComponent();
+            txtSearch.TextChanged += TxtSearch_TextChanged;
         }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+           if (txtSearch.Text == "")
+            {
+                ListViewCustomers.ItemsSource = KhachHangBUS.loadAll();
+            }
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ListViewCustomers.ItemsSource = Global.Customers;
+            ListViewCustomers.ItemsSource = KhachHangBUS.loadAll();
         }
         private void ScrollViewerCustomers_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
@@ -63,7 +74,7 @@ namespace GUI
         private void Btn_Debt_Click(object sender, RoutedEventArgs e)
         {
             KhachHangDTO item = (KhachHangDTO)((Button)sender).DataContext;
-            Debt_IdCustomer.Content = item.MaKH;
+            Debt_IdCustomer.Content = idCustomer =item.MaKH;
             Debt_NameCustomer.Content = item.HoTen;
             Debt_PhoneNumberCustomer.Content = item.Sdt;
             Debt_TextBoxCustomer.Text = item.TienNo.ToString();
@@ -76,24 +87,32 @@ namespace GUI
         {
             ScrollViewer_Customers.IsEnabled = true;
             Debt.Visibility = Visibility.Collapsed;
+            ListViewCustomers.ItemsSource = KhachHangBUS.loadAll();
         }
 
         private void Debt_BtnCusomer_Click(object sender, RoutedEventArgs e)
         {
             ScrollViewer_Customers.IsEnabled = true;
             Debt.Visibility = Visibility.Collapsed;
+            if ( !KhachHangBUS.changeDebt(int.Parse(Debt_IdCustomer.Content.ToString()), double.Parse(Debt_TextBoxCustomer.Text)))
+            {
+                MessageBox.Show("Giá trị nhập không hợp lệ!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            ListViewCustomers.ItemsSource = KhachHangBUS.loadAll();
         }
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
-
+            ListViewCustomers.ItemsSource = KhachHangBUS.searchCustomer(txtSearch.Text);
         }
 
         private void Debt_TextBoxCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            var regrex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
+            e.Handled = !regrex.IsMatch(e.Text);
         }
+
+       
     }
     public class BooleanDebtConverter : IValueConverter
     {

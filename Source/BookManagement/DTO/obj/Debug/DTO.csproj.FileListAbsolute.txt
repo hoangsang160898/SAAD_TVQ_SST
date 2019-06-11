@@ -4,3 +4,9 @@ S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.dll
 S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\bin\Debug\DTO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\bin\Debug\DTO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Debug\DTO.pdb
