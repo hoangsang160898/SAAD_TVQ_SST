@@ -1,4 +1,7 @@
 ﻿-- Tao database ten BookManagement trước rồi chạy code ở dưới
+CREATE DATABASE BookManagement
+Use BookManagement
+
 CREATE TABLE SACH(
 	MASACH INT IDENTITY(1,1) ,
 	TENSACH NVARCHAR(200),
