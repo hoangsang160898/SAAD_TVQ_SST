@@ -193,3 +193,63 @@ VALUES ('Leo Nguyen','D13, duong 385, phuong Tang Nhon A, Quan 9, TPHCM','161255
 		 ('Dang Vinh Phat', 'Go Vap - TPHCM', 'dvphat@student.hcmus.edu.com', '0564565456', 0)
 
 
+
+-- Add to TheLoai
+INSERT INTO THELOAI(TENLOAI)
+VALUES ('Information Technology'),('Math'),('English'),('Biology')
+--Add to Sach
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Python Crash Course, 2nd Edition','Eric Matthes',59.5,161.65,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\1.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\1_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Clean Code','Robert C.Martin',60,67.7,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\2.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\2_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'The Clean Coder','Robert C.Martin',55.1,59.85,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\3.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\3_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Refactoring','Martin Fowler',55.1,59.85,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\4.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\4_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Clean Architecture','Robert C.Martin',46,54.11,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\5.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\5_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Building Microsevices','Sam Newman',41.25,48.69,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\6.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\6_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Pattern of Enterprise Application Architecture','Main Fowler',65,80.62,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\7.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\7_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Domain-Driven Design','Gregor Hohpe',70,75.04,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\8.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\8_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Domain-Driven Design Reference','Eric Evans',21,25.5,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\9.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\9_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Domain-Driven Design Distilled','Eric Evans',47,50.22,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\10.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\10_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH)
+SELECT 'Implementing Domain-Driven Design','Vaughn Vernon',71.2,78.22,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\11.jpg', Single_Blob) as HINHANH
+UPDATE SACH
+SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\11_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)

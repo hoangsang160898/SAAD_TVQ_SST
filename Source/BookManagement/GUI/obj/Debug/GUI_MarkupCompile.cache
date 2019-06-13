@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\
 GUI
 none
 false
 DEBUG;TRACE
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\App.xaml
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\App.xaml
 12750167821
 
 16-174272245
-19-1737212323
+19154547700
 AboutPage.xaml;DashboardWindow.xaml;HomePage.xaml;MainWindow.xaml;ManageBillPage.xaml;ManageBookPage.xaml;ManageCustomerPage.xaml;ManageRulePage.xaml;ManageSalePage.xaml;ReportPage.xaml;SellPage.xaml;ToggleButton.xaml;
 
 False

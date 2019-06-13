@@ -29,7 +29,7 @@ namespace GUI
 
 
             var books = new List<SachDTO>();
-            books.Add(new SachDTO(1, "Python Crash Course, 2nd Edition", "Eric Matthes", 59.5, 161.65, 10, 1, "Information Technology", "05/2019", "05/26/2019", "products/1.jpg", "products/1_cover.jpg"));
+          /*  books.Add(new SachDTO(1, "Python Crash Course, 2nd Edition", "Eric Matthes", 59.5, 161.65, 10, 1, "Information Technology", "05/2019", "05/26/2019", "products/1.jpg", "products/1_cover.jpg"));
             books.Add(new SachDTO(2, "Clean Code", "Robert C. Martin", 60, 67.7, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/2.jpg", "products/2_cover.jpg"));
             books.Add(new SachDTO(3, "The Clean Coder", "Robert C. Martin", 55.1, 59.85, 5,2, "Information Technology", "05/2019", "05/26/2019", "products/3.jpg", "products/3_cover.jpg"));
             books.Add(new SachDTO(4, "Refactoring", "Martin Fowler", 55.1, 59.85, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/4.jpg", "products/4_cover.jpg"));
@@ -39,7 +39,7 @@ namespace GUI
             books.Add(new SachDTO(8, "Domain-Driven Design", "Gregor Hohpe", 70, 75.04, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/8.jpg", "products/8_cover.jpg"));
             books.Add(new SachDTO(9, "Domain-Driven Design Reference", "Eric Evans", 21, 25.5, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/9.jpg", "products/9_cover.jpg"));
             books.Add(new SachDTO(10, "Domain-Driven Design Distilled", "Vaughn Vernon", 47, 50.22, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/10.jpg", "products/10_cover.jpg"));
-            books.Add(new SachDTO(11, "Implementing Domain-Driven Design", "Vaughn Vernon", 71.2, 78.22, 5, 4, "Information Technology", "05/2019", "05/26/2019", "products/11.jpg", "products/11_cover.jpg"));
+            books.Add(new SachDTO(11, "Implementing Domain-Driven Design", "Vaughn Vernon", 71.2, 78.22, 5, 4, "Information Technology", "05/2019", "05/26/2019", "products/11.jpg", "products/11_cover.jpg"));*/
             Global.Books = books;
 
             var types = new List<TheLoaiDTO>();
@@ -61,10 +61,10 @@ namespace GUI
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ListViewBooks.ItemsSource = Global.Books;
-            Combobox_CategoriesBook.ItemsSource = Global.Categories;
-            Textbox__book_type.ItemsSource = Global.BookCategories;
-            Textbox__addBook_type.ItemsSource = Global.BookCategories;
+            ListViewBooks.ItemsSource = SachBUS.loadAll();
+            Combobox_CategoriesBook.ItemsSource = TheLoaiBUS.loadAllAndConvertToFillCombobox();
+            Textbox__book_type.ItemsSource = TheLoaiBUS.loadAll();
+            Textbox__addBook_type.ItemsSource = TheLoaiBUS.loadAll();
         }
         private void Loaded_CategoriesBook(object sender, RoutedEventArgs e)
         {
@@ -82,8 +82,8 @@ namespace GUI
             if (ListViewBooks.SelectedItems.Count > 0)
             {
                SachDTO item = (SachDTO)ListViewBooks.SelectedItems[0];
-                //Img__book_cover.ImageSource = item.sourceCover;
-                //Img__book_cover.ImageSource = item.sourceHinhAnh;
+                Img__book_avartar.ImageSource = item.HinhAnh;
+                Img__book_cover.ImageSource = item.HinhAnhCover;
                 Textbox__book_id.Text = item.TenSach;
                 Textbox__book_author.Text = item.TacGia;
                 Textbox__book_priceRoot.Text = item.DonGiaNhap.ToString();
@@ -97,12 +97,16 @@ namespace GUI
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
-
+            string textToSearch = txtSearch.Text;
+            ListViewBooks.ItemsSource = SachBUS.loadBySearch(textToSearch, Combobox_CategoriesBook.SelectedValue.ToString());
         }
 
         private void Combobox_CategoriesBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (Combobox_CategoriesBook.SelectedValue != null)
+            {
+                ListViewBooks.ItemsSource = SachBUS.loadByMaLoai(Combobox_CategoriesBook.SelectedValue.ToString());
+            }
         }
 
         private void btnUpadateImgCover_Click(object sender, RoutedEventArgs e)
@@ -246,6 +250,14 @@ namespace GUI
             Textbox__addBook_priceRoot.Text = "";
             Textbox__addBook_priceSell.Text = "";
             Textbox__addBook_exist.Text = "0";
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                ListViewBooks.ItemsSource = SachBUS.loadByMaLoai(Combobox_CategoriesBook.SelectedValue.ToString());
+            }
         }
     }
 }
