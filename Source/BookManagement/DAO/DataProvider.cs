@@ -34,15 +34,24 @@ namespace DAO
 
         public static bool executeNonQuery(string sCommand, SqlConnection con)
         {
+            SqlCommand com = new SqlCommand(sCommand, con, con.BeginTransaction());
             try
             {
-                SqlCommand com = new SqlCommand(sCommand, con);
                 com.ExecuteNonQuery();
+                com.Transaction.Commit();
                 return true;
             }
             catch (Exception ex)
             {
-                return false;
+                try
+                {
+                    com.Transaction.Rollback();
+                    return false;
+                }
+                catch (Exception ex2)
+                {
+                    return false;
+                }
             }
 
         }

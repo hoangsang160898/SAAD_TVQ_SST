@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
 namespace DTO
 {
     public class SachDTO
@@ -22,8 +27,7 @@ namespace DTO
         private BitmapImage hinhAnh;
         private BitmapImage hinhAnhCover;
 
-        public string sourceHinh;
-        public string sourceCoverSach;
+
 
         public int MaSach { get => maSach; set => maSach = value; }
         public string TenSach { get => tenSach; set => tenSach = value; }
@@ -35,13 +39,11 @@ namespace DTO
         public string TenLoai { get => tenLoai; set => tenLoai = value; }
         public string NgaySX { get => ngaySX; set => ngaySX = value; }
         public string NgayNhap { get => ngayNhap; set => ngayNhap = value; }
-        public string sourceHinhAnh { get => sourceHinh; set => sourceHinh = value; }
-        public string sourceCover { get => sourceCoverSach; set => sourceCoverSach = value; }
-        //public BitmapImage HinhAnh { get => hinhAnh; set => hinhAnh = value; }
-        //public BitmapImage HinhAnhCover { get => hinhAnhCover; set => hinhAnhCover = value; }
+        public BitmapImage HinhAnh { get => hinhAnh; set => hinhAnh = value; }
+        public BitmapImage HinhAnhCover { get => hinhAnhCover; set => hinhAnhCover = value; }
 
         //public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai, string ngaySX, string ngayNhap, BitmapImage hinhAnh, BitmapImage hinhAnhCover)
-        public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai,string tenLoai, string ngaySX, string ngayNhap, string sourceImg, string sourceCover)
+        public SachDTO(int maSach, string tenSach, string tacGia, double donGiaNhap, double donGiaBan, int soLuong, int maLoai,string tenLoai, string ngaySX, string ngayNhap)
         {
             this.maSach = maSach;
             this.tenSach = tenSach;
@@ -53,27 +55,54 @@ namespace DTO
             this.tenLoai = tenLoai;
             this.ngaySX = ngaySX;
             this.ngayNhap = ngayNhap;
-            this.sourceHinh = sourceImg;
-            this.sourceCoverSach = sourceCover;
-            //this.hinhAnh = hinhAnh;
-            //this.hinhAnhCover = hinhAnhCover;
+          
         }
         public SachDTO()
         {
-            this.maSach = 0;
-            this.tenSach = "";
-            this.tacGia = "";
-            this.donGiaNhap = 0.0;
-            this.donGiaBan = 0.0;
-            this.soLuong = 0;
-            this.maLoai = 0;
-            this.tenLoai = "";
-            this.ngaySX = "";
-            this.ngayNhap = "";
-            this.sourceHinh = "";
-            this.sourceCoverSach = "";
-            //this.hinhAnh = hinhAnh;
-            //this.hinhAnhCover = hinhAnhCover;
+     
+        }
+         
+
+        public static BitmapImage LoadImage(string filename)
+        {
+            return new BitmapImage(new Uri("pack://application:,,,/" + filename));
+        }
+
+        public static BitmapImage BitmapImageFromBytes(byte[] bytes)
+        {
+            using (var ms = new System.IO.MemoryStream(bytes))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                return image;
+            }
+        }
+
+        public static byte[] ImageToByte(BitmapImage imageSource)
+        {
+            byte[] data;
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(imageSource));
+            using (MemoryStream ms = new MemoryStream())
+            {
+                encoder.Save(ms);
+                data = ms.ToArray();
+            }
+            return data;
+        }
+        public byte[] FileToByteArray(string fileName)
+        {
+            byte[] buff = null;
+            FileStream fs = new FileStream(fileName,
+                                           FileMode.Open,
+                                           FileAccess.Read);
+            BinaryReader br = new BinaryReader(fs);
+            long numBytes = new FileInfo(fileName).Length;
+            buff = br.ReadBytes((int)numBytes);
+            return buff;
         }
     }
 }
