@@ -1,6 +1,0 @@
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\bin\Release\DTO.dll
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\bin\Release\DTO.pdb
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Release\DTO.csprojAssemblyReference.cache
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Release\DTO.csproj.CoreCompileInputs.cache
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Release\DTO.dll
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DTO\obj\Release\DTO.pdb
