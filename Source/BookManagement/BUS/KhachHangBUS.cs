@@ -27,5 +27,19 @@ namespace BUS
                 return KhachHangDAO.searchCustomer(textToSearch);
             return KhachHangDAO.loadAll();
         }
+        public static KhachHangDTO searchByPhone(string phone)
+        {
+            return KhachHangDAO.searchByPhone(phone);
+        }
+        public static bool checkNoToiDa(string idCustomer)
+        {
+            double tienNo = KhachHangDAO.searchById(idCustomer).TienNo;
+            if (Global.ControlRules[0] == 1)
+            {
+                if (tienNo > Global.quyDinh.NoToiDa)
+                    return false;
+            }
+            return true;
+        }
     }
 }

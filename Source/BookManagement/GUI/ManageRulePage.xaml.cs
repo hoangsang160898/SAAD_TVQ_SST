@@ -36,13 +36,9 @@ namespace GUI
             controlRules.Add(0);
             Global.ControlRules = controlRules;
 
-            var rules = new List<double>();
-            rules.Add(1);
-            rules.Add(20);
-            rules.Add(150);
-            rules.Add(300);
+            var rules = QuyDinhBUS.loadQuyDinh();
 
-            Global.Rules = rules;
+            Global.quyDinh = rules;
 
             InitializeComponent();
         }
@@ -69,10 +65,10 @@ namespace GUI
                 btnChangeRule4.Dot.Margin = RightSide;
             }
 
-            TextBox_MaxDebt.Text = Global.Rules[0].ToString();
-            TextBox_MinExAfterBuying.Text = Global.Rules[1].ToString();
-            TextBox_MaxAddBeforeSupplying.Text = Global.Rules[2].ToString();
-            TextBox_MinExBeforeSupplying.Text = Global.Rules[3].ToString();
+            TextBox_MaxDebt.Text = Global.quyDinh.NoToiDa.ToString();
+            TextBox_MinExAfterBuying.Text = Global.quyDinh.LuongTonSauKhiBan.ToString();
+            TextBox_MinAddBeforeSupplying.Text = Global.quyDinh.LuongNhapToiThieu.ToString();
+            TextBox_MinExBeforeSupplying.Text = Global.quyDinh.LuongTonToiThieuKhiNhap.ToString();
 
         }
         private void btnChangeRule1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -127,12 +123,27 @@ namespace GUI
             edit.Visibility = Visibility.Visible;
             TextBox_MaxDebt.IsEnabled = false;
             TextBox_MinExAfterBuying.IsEnabled = false;
-            TextBox_MaxAddBeforeSupplying.IsEnabled = false;
+            TextBox_MinAddBeforeSupplying.IsEnabled = false;
             TextBox_MinExBeforeSupplying.IsEnabled = false;
             btnChangeRule4.IsEnabled = false;
             btnChangeRule3.IsEnabled = false;
             btnChangeRule2.IsEnabled = false;
             btnChangeRule1.IsEnabled = false;
+
+            QuyDinhDTO quyDinhMoi = new QuyDinhDTO(double.Parse(TextBox_MaxDebt.Text), int.Parse(TextBox_MinExAfterBuying.Text), int.Parse(TextBox_MinAddBeforeSupplying.Text), int.Parse(TextBox_MinExBeforeSupplying.Text));
+            if (QuyDinhBUS.thayDoiQuyDinh(quyDinhMoi))
+            {
+                Global.quyDinh = quyDinhMoi;
+            }
+            else
+            {
+                MessageBox.Show("Thay đổi quy định thất bại", "Thông báo");
+                TextBox_MaxDebt.Text = Global.quyDinh.NoToiDa.ToString();
+                TextBox_MinExAfterBuying.Text = Global.quyDinh.LuongTonSauKhiBan.ToString();
+                TextBox_MinAddBeforeSupplying.Text = Global.quyDinh.LuongNhapToiThieu.ToString();
+                TextBox_MinExBeforeSupplying.Text = Global.quyDinh.LuongTonToiThieuKhiNhap.ToString();
+            }
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -142,7 +153,7 @@ namespace GUI
             edit.Visibility = Visibility.Visible;
             TextBox_MaxDebt.IsEnabled = false;
             TextBox_MinExAfterBuying.IsEnabled = false;
-            TextBox_MaxAddBeforeSupplying.IsEnabled = false;
+            TextBox_MinAddBeforeSupplying.IsEnabled = false;
             TextBox_MinExBeforeSupplying.IsEnabled = false;
             btnChangeRule4.IsEnabled = false;
             btnChangeRule3.IsEnabled = false;
@@ -158,7 +169,7 @@ namespace GUI
             edit.Visibility = Visibility.Collapsed;
             TextBox_MaxDebt.IsEnabled = true;
             TextBox_MinExAfterBuying.IsEnabled = true;
-            TextBox_MaxAddBeforeSupplying.IsEnabled = true;
+            TextBox_MinAddBeforeSupplying.IsEnabled = true;
             TextBox_MinExBeforeSupplying.IsEnabled = true;
             btnChangeRule4.IsEnabled = true;
             btnChangeRule3.IsEnabled = true;

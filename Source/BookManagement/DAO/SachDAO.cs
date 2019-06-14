@@ -199,5 +199,65 @@ namespace DAO
             DataProvider.closeConnection(con);
             return result;
         }
+
+        public static bool updateSoLuong(string id, string soLuong)
+        {
+            string sCommand = string.Format(@"Update sach set SoLuong = {0} where id ={1}", int.Parse(soLuong), int.Parse(id));
+            con = DataProvider.openConnection();
+            bool result;
+            try
+            {
+                result = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result = false;
+                DataProvider.closeConnection(con);
+            }
+            return result;
+        }
+        public static SachDTO loadByID(string id)
+        {
+            string sCommand = "select* from sach where id = " + int.Parse(id);
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            int n = dt.Rows.Count;
+            if (n <= 0)
+            {
+                DataProvider.closeConnection(con);
+                return null;
+            }
+            SachDTO sach = new SachDTO();
+            sach.MaSach = int.Parse(dt.Rows[0]["MaSach"].ToString());
+            sach.TenSach = dt.Rows[0]["tenSach"].ToString();
+            sach.TacGia = dt.Rows[0]["tacGia"].ToString();
+            sach.DonGiaNhap = double.Parse(dt.Rows[0]["DonGiaNhap"].ToString());
+            sach.DonGiaBan = double.Parse(dt.Rows[0]["DonGiaBan"].ToString());
+            sach.SoLuong = int.Parse(dt.Rows[0]["soLuong"].ToString());
+            sach.MaLoai = int.Parse(dt.Rows[0]["MaLoai"].ToString());
+            sach.NgaySX = dt.Rows[0]["NgaySanXuat"].ToString();
+            sach.NgayNhap = dt.Rows[0]["NgayNhap"].ToString();
+            byte[] hinhAnh = (byte[])(dt.Rows[0]["hinhAnh"]);
+            if (hinhAnh == null)
+            {
+                sach.HinhAnh = null;
+            }
+            else
+            {
+                sach.HinhAnh = SachDTO.BitmapImageFromBytes(hinhAnh);
+            }
+            byte[] hinhAnhCover = (byte[])(dt.Rows[0]["HinhAnhCover"]);
+            if (hinhAnhCover == null)
+            {
+                sach.HinhAnhCover = null;
+            }
+            else
+            {
+                sach.HinhAnhCover = SachDTO.BitmapImageFromBytes(hinhAnhCover);
+            }
+            DataProvider.closeConnection(con);
+            return sach;
+        }
     }
 }

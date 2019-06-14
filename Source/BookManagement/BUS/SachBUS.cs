@@ -33,5 +33,23 @@ namespace BUS
             }
             return SachDAO.loadBySearch(textToSearch, MaLoai);
         }
+        public static bool CheckUpdateSoLuong(string id, string soLuong)
+        { 
+            int luongTon = SachDAO.loadByID(id).SoLuong - int.Parse(soLuong);
+            if (luongTon < 0)
+                return false;
+            if (Global.ControlRules[2] == 1)
+            {
+                if (luongTon < Global.quyDinh.LuongTonSauKhiBan)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static bool updateSoLuong(string id, string soLuong)
+        {
+            return SachDAO.updateSoLuong(id, soLuong);
+        }
     } 
 }

@@ -28,7 +28,7 @@ namespace GUI
         {
 
 
-            var books = new List<SachDTO>();
+       //     var books = new List<SachDTO>();
           /*  books.Add(new SachDTO(1, "Python Crash Course, 2nd Edition", "Eric Matthes", 59.5, 161.65, 10, 1, "Information Technology", "05/2019", "05/26/2019", "products/1.jpg", "products/1_cover.jpg"));
             books.Add(new SachDTO(2, "Clean Code", "Robert C. Martin", 60, 67.7, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/2.jpg", "products/2_cover.jpg"));
             books.Add(new SachDTO(3, "The Clean Coder", "Robert C. Martin", 55.1, 59.85, 5,2, "Information Technology", "05/2019", "05/26/2019", "products/3.jpg", "products/3_cover.jpg"));
@@ -40,31 +40,31 @@ namespace GUI
             books.Add(new SachDTO(9, "Domain-Driven Design Reference", "Eric Evans", 21, 25.5, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/9.jpg", "products/9_cover.jpg"));
             books.Add(new SachDTO(10, "Domain-Driven Design Distilled", "Vaughn Vernon", 47, 50.22, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/10.jpg", "products/10_cover.jpg"));
             books.Add(new SachDTO(11, "Implementing Domain-Driven Design", "Vaughn Vernon", 71.2, 78.22, 5, 4, "Information Technology", "05/2019", "05/26/2019", "products/11.jpg", "products/11_cover.jpg"));*/
-            Global.Books = books;
+         //   Global.Books = books;
 
-            var types = new List<TheLoaiDTO>();
+          /*  var types = new List<TheLoaiDTO>();
             types.Add(new TheLoaiDTO(0, "All types"));
             types.Add(new TheLoaiDTO(1, "Information Technology"));
             types.Add(new TheLoaiDTO(2, "Math"));
             types.Add(new TheLoaiDTO(3, "English"));
             types.Add(new TheLoaiDTO(4, "Biology"));
-            Global.Categories = types;
+            Global.Categories = types;*/
 
-            var typesBook = new List<TheLoaiDTO>();
+           /* var typesBook = new List<TheLoaiDTO>();
             typesBook.Add(new TheLoaiDTO(1, "Information Technology"));
             typesBook.Add(new TheLoaiDTO(2, "Math"));
             typesBook.Add(new TheLoaiDTO(3, "English"));
             typesBook.Add(new TheLoaiDTO(4, "Biology"));
-            Global.BookCategories = typesBook;
+            Global.BookCategories = typesBook;*/
 
             InitializeComponent();
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ListViewBooks.ItemsSource = SachBUS.loadAll();
-            Combobox_CategoriesBook.ItemsSource = TheLoaiBUS.loadAllAndConvertToFillCombobox();
-            Textbox__book_type.ItemsSource = TheLoaiBUS.loadAll();
-            Textbox__addBook_type.ItemsSource = TheLoaiBUS.loadAll();
+            ListViewBooks.ItemsSource = Global.Books;
+            Combobox_CategoriesBook.ItemsSource = Global.Categories;
+            Textbox__book_type.ItemsSource = Global.BookCategories;
+            Textbox__addBook_type.ItemsSource = Global.BookCategories;
         }
         private void Loaded_CategoriesBook(object sender, RoutedEventArgs e)
         {
@@ -213,12 +213,24 @@ namespace GUI
 
         private void btnAddImgCover_Click(object sender, RoutedEventArgs e)
         {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+            Nullable<bool> result = dlg.ShowDialog();
+            MessageBox.Show(dlg.FileName.ToString());
         }
 
         private void btnAddImgAvatar_Click(object sender, RoutedEventArgs e)
         {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
+            dlg.DefaultExt = ".png";
+            dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
+
+            Nullable<bool> result = dlg.ShowDialog();
+            MessageBox.Show(dlg.FileName.ToString());
         }
 
         private void BtnDone_addBook_Click(object sender, RoutedEventArgs e)

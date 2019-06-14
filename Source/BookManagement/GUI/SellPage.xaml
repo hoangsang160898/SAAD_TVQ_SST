@@ -43,7 +43,7 @@
                     </Canvas>
                     <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="235" RadiusX="5" RadiusY="5">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                            <ImageBrush ImageSource="{Binding HinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Margin="17.5,5,17.5,0" Width="200">
@@ -66,7 +66,7 @@
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="212" Width="909" VerticalAlignment="Center" Margin="0,0,0,5">
                         <Rectangle Margin="15,0,0,0" Effect="{StaticResource z-depth}" Width="140" Height="185" RadiusX="5" RadiusY="5">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                                <ImageBrush ImageSource="{Binding Sach.HinhAnh}"/>
                             </Rectangle.Fill>
                         </Rectangle>
                         <Canvas Panel.ZIndex="2">
@@ -98,13 +98,13 @@
                         </Canvas>
                         <StackPanel Margin="17.5,0,17.5,0" Width="490" VerticalAlignment="Center">
                             <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14">
-                                <AccessText Foreground="#FFF17734" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                                <AccessText Foreground="#FFF17734" Text="{Binding Sach.TenSach}" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
                             </Label>
                             <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13">
-                                <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
+                                <AccessText Foreground="#8d8d8d" Text="{Binding Sach.TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
                             </Label>
                         </StackPanel>
-                        <Label HorizontalContentAlignment="Center" Height="212" Width="95" VerticalContentAlignment="Center" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#444444" Padding="0" FontSize="13"/>
+                        <Label HorizontalContentAlignment="Center" Height="212" Width="95" VerticalContentAlignment="Center" Content="{Binding Sach.DonGiaBan}" ContentStringFormat="${0}" Foreground="#444444" Padding="0" FontSize="13"/>
 
                         <ComboBox FontSize="13" materialDesign:ComboBoxAssist.ClassicMode="true" Width="40" Margin="0,0,0,0" Name="Combobox_countBookBought" SelectedIndex="{Binding SoLuong}" Background="Transparent" SelectionChanged="Combobox_countBookBought_SelectionChanged">
                             <ComboBoxItem Visibility="Collapsed">0</ComboBoxItem>
@@ -130,7 +130,7 @@
 
                         <Rectangle Margin="15,0,0,0" Effect="{StaticResource z-depth}" Width="140" Height="185" RadiusX="5" RadiusY="5">
                             <Rectangle.Fill>
-                                <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                                <ImageBrush ImageSource="{Binding Sach.HinhAnh}"/>
                             </Rectangle.Fill>
                         </Rectangle>
 
@@ -155,10 +155,10 @@
                         </Canvas>
                         <StackPanel Margin="17.5,0,17.5,0" Width="200" VerticalAlignment="Center">
                             <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14">
-                                <AccessText Foreground="#4b4b4b" Text="{Binding TenSach}" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                                <AccessText Foreground="#4b4b4b" Text="{Binding Sach.TenSach}" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
                             </Label>
                             <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13">
-                                <AccessText Foreground="#8d8d8d" Text="{Binding TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
+                                <AccessText Foreground="#8d8d8d" Text="{Binding Sach.TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
                             </Label>
                         </StackPanel>
                         <Label HorizontalContentAlignment="Center" Height="212" Width="95" VerticalContentAlignment="Center" Content="{Binding TongDonGia}" ContentStringFormat="${0}" Foreground="#000" Padding="0" FontSize="16"/>
@@ -178,7 +178,7 @@
                 </Button>
             </materialDesign:Badged>
 
-            <TextBox MaxLength="57" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" Panel.ZIndex="1" Foreground="#202020" FontSize="14" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Center" Width="480" materialDesign:HintAssist.Hint="Enter search here..." Margin="417,8,403,640" SelectionBrush="{x:Null}" CaretBrush="{x:Null}">
+            <TextBox x:Name="txtSearch" MaxLength="57" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" Panel.ZIndex="1" Foreground="#202020" FontSize="14" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Center" Width="480" materialDesign:HintAssist.Hint="Enter search here..." Margin="417,8,403,640" SelectionBrush="{x:Null}" CaretBrush="{x:Null}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="4"/>
@@ -387,7 +387,7 @@
                                 </Style>
                             </TextBox.Resources>
                         </TextBox>
-                        <TextBox Name="TextBox_PhoneNumberCustomer" MaxLength="10" materialDesign:HintAssist.Hint=" Phone number" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" FontSize="14" Height="36" Canvas.Left="140" TextWrapping="Wrap" Canvas.Top="52" Width="159" PreviewTextInput="TextBox_PhoneNumberCustomer_PreviewTextInput">
+                        <TextBox Name="TextBox_PhoneNumberCustomer" MaxLength="10" materialDesign:HintAssist.Hint=" Phone number" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" FontSize="14" Height="36" Canvas.Left="140" TextWrapping="Wrap" Canvas.Top="52" Width="159" PreviewTextInput="TextBox_PhoneNumberCustomer_PreviewTextInput" TextChanged="TextBox_PhoneNumberCustomer_TextChanged">
                             <TextBox.Resources>
                                 <Style TargetType="{x:Type Border}">
                                     <Setter Property="CornerRadius" Value="4"/>

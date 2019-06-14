@@ -82,5 +82,49 @@ namespace DAO
             DataProvider.closeConnection(con);
             return result;
         }
+
+        public static KhachHangDTO searchByPhone(string phone)
+        {
+            string sCommand = string.Format(@"select* from KhachHang where sdt = '{0}'", phone);
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            int n = dt.Rows.Count;
+            if (n <= 0)
+            {
+                DataProvider.closeConnection(con);
+                return null;
+            }
+            int maKh = int.Parse(dt.Rows[0]["MaKH"].ToString());
+            string hoTen = dt.Rows[0]["HoTen"].ToString();
+            string diaChi = dt.Rows[0]["DiaChi"].ToString();
+            string email = dt.Rows[0]["email"].ToString();
+            string sdt = dt.Rows[0]["sdt"].ToString();
+            double tienNo = double.Parse(dt.Rows[0]["tienNo"].ToString());
+            DataProvider.closeConnection(con);
+            return new KhachHangDTO(maKh, hoTen, diaChi, email, sdt, tienNo);
+        }
+
+        public static KhachHangDTO searchById(string id)
+        {
+            string sCommand = string.Format(@"select* from KhachHang where id = {0}", int.Parse(id));
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            int n = dt.Rows.Count;
+            if (n <= 0)
+            {
+                DataProvider.closeConnection(con);
+                return null;
+            }
+            int maKh = int.Parse(dt.Rows[0]["MaKH"].ToString());
+            string hoTen = dt.Rows[0]["HoTen"].ToString();
+            string diaChi = dt.Rows[0]["DiaChi"].ToString();
+            string email = dt.Rows[0]["email"].ToString();
+            string sdt = dt.Rows[0]["sdt"].ToString();
+            double tienNo = double.Parse(dt.Rows[0]["tienNo"].ToString());
+            DataProvider.closeConnection(con);
+            return new KhachHangDTO(maKh, hoTen, diaChi, email, sdt, tienNo);
+        }
+
+       
     }
 }

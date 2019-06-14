@@ -44,12 +44,12 @@ namespace GUI
             Global.Bills = bills;
 
             var booksBoughtBillPreview = new List<ChiTietHoaDonBanSachDTO>();
-            booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(1, 1, "Python Crash Course, 2nd Edition", "Eric Matthes", 3, 161.65, "products/1.jpg"));
+            /*booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(1, 1, "Python Crash Course, 2nd Edition", "Eric Matthes", 3, 161.65, "products/1.jpg"));
             booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(2, 2, "Patterns of Enterprise Application Architecture", "Martin Fowler", 1, 80.62, "products/7.jpg"));
             booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(3, 3, "The Clean Coder", "Robert C. Martin", 2, 59.85, "products/3.jpg"));
             booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(4, 4, "Refactoring", "Martin Fowler", 4, 59.85, "products/4.jpg"));
             booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(5, 5, "Clean Architecture", "Robert C. Martin", 6, 54.11, "products/5.jpg"));
-            booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(6, 6, "Building Microservices", "Sam Newman", 7, 48.69, "products/6.jpg"));
+            booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(6, 6, "Building Microservices", "Sam Newman", 7, 48.69, "products/6.jpg"));*/
             Global.BookBoughtBillsPreview = booksBoughtBillPreview;
 
             InitializeComponent();

@@ -56,6 +56,7 @@
     <Compile Include="PhieuThuTienNoDTO.cs" />
     <Compile Include="PhieuThuTienSachDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuyDinhDTO.cs" />
     <Compile Include="SachDTO.cs" />
     <Compile Include="TheLoaiDTO.cs" />
   </ItemGroup>

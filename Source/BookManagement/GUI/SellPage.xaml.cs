@@ -23,11 +23,12 @@ namespace GUI
     /// </summary>
     public partial class SellPage : Page
     {
+        private List<ChiTietHoaDonBanSachDTO> listChiTietHoaDon = new List<ChiTietHoaDonBanSachDTO>();
         public SellPage()
         {
 
             // test books
-            var books = new List<SachDTO>();
+        //    var books = new List<SachDTO>();
         /*    books.Add(new SachDTO(1, "Python Crash Course, 2nd Edition", "Eric Matthes", 59.5, 161.65, 10, 1, "Information Technology", "05/2019", "05/26/2019", "products/1.jpg", "products/1_cover.jpg"));
             books.Add(new SachDTO(2, "Patterns of Enterprise Application Architecture", "Martin Fowler", 65, 80.62, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/7.jpg", "products/7_cover.jpg"));
             books.Add(new SachDTO(3, "The Clean Coder", "Robert C. Martin", 55.1, 59.85, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/3.jpg", "products/3_cover.jpg"));
@@ -41,22 +42,22 @@ namespace GUI
             books.Add(new SachDTO(11, "Implementing Domain-Driven Design", "Vaughn Vernon", 71.2, 78.22, 5, 1, "Information Technology", "05/2019", "05/26/2019", "products/11.jpg", "products/11_cover.jpg"));*/
 
             // test categories
-            var types = new List<TheLoaiDTO>();
+        /*    var types = new List<TheLoaiDTO>();
             types.Add(new TheLoaiDTO(0, "All types"));
             types.Add(new TheLoaiDTO(1, "Information Technology"));
             types.Add(new TheLoaiDTO(2, "Math"));
             types.Add(new TheLoaiDTO(3, "English"));
             types.Add(new TheLoaiDTO(4, "Biology"));
-            Global.Categories = types;
+            Global.Categories = types;*/
 
             //test bill
             var booksBoughtBill = new List<ChiTietHoaDonBanSachDTO>();
-            booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(1, 1, "Python Crash Course, 2nd Edition", "Eric Matthes", 3, 161.65, "products/1.jpg"));
+          /*  booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(1, 1, "Python Crash Course, 2nd Edition", "Eric Matthes", 3, 161.65, "products/1.jpg"));
             booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(2, 2, "Patterns of Enterprise Application Architecture", "Martin Fowler", 1, 80.62, "products/7.jpg"));
             booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(3, 3, "The Clean Coder", "Robert C. Martin", 2, 59.85, "products/3.jpg"));
             booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(4, 4, "Refactoring", "Martin Fowler", 4, 59.85, "products/4.jpg"));
             booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(5, 5, "Clean Architecture", "Robert C. Martin", 6, 54.11, "products/5.jpg"));
-            booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(6, 6, "Building Microservices", "Sam Newman", 7, 48.69, "products/6.jpg"));
+            booksBoughtBill.Add(new ChiTietHoaDonBanSachDTO(6, 6, "Building Microservices", "Sam Newman", 7, 48.69, "products/6.jpg"));*/
             Global.BookBoughtBills = booksBoughtBill;
 
             InitializeComponent();
@@ -64,19 +65,12 @@ namespace GUI
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Global.BookBoughtBills == null)
+            int countBooksBought = 0;
+            listChiTietHoaDon.ForEach(i =>
             {
-                countProductBuy.Badge = 0;
-            }
-            else
-            {
-                int countBooksBought = 0;
-                for (int i = 0; i < Global.BookBoughtBills.Count; i++)
-                {
-                    countBooksBought += Global.BookBoughtBills[i].SoLuong;
-                }
-                countProductBuy.Badge = countBooksBought;
-            }
+                countBooksBought += i.SoLuong;
+            });
+            countProductBuy.Badge = countBooksBought;
             ListViewProducts.ItemsSource = Global.Books;
             Combobox_CategoriesBook.ItemsSource = Global.Categories;
         }
@@ -84,13 +78,27 @@ namespace GUI
         private void BtnBuyProduct_Click(object sender, RoutedEventArgs e)
         {
             SachDTO item = (SachDTO)((Button)sender).DataContext;
-            MessageBox.Show(item.TenSach);
+            bool check = false;
             int countBooksBought = 0;
-            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            listChiTietHoaDon.ForEach(i =>
             {
-                countBooksBought += Global.BookBoughtBills[i].SoLuong;
+                countBooksBought += i.SoLuong;
+                if (i.Sach.MaSach == item.MaSach)
+                {
+                    i.SoLuong++;
+                    check = true;
+                }
+            });
+            if (check == false)
+            {
+                var chiTietHoaDon = new ChiTietHoaDonBanSachDTO();
+                chiTietHoaDon.Sach = item;
+                chiTietHoaDon.SoLuong = 1;
+                listChiTietHoaDon.Add(chiTietHoaDon);
             }
+            countBooksBought++;
             countProductBuy.Badge = countBooksBought;
+
         }
 
         private void ScrollViewerProducts_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -107,7 +115,7 @@ namespace GUI
 
         private void BtnShoppingCart_Click(object sender, RoutedEventArgs e)
         {
-            if (Global.BookBoughtBills != null)
+           /* if (Global.BookBoughtBills != null)
             {
                 double sumPrice = 0;
                 for (int i = 0; i < Global.BookBoughtBills.Count; i++)
@@ -124,13 +132,35 @@ namespace GUI
                 ShoppingCart_Empty.Visibility = Visibility.Visible;
                 ShoppingCart_NoEmprty.Visibility = Visibility.Collapsed;
             }
+            ProductsBought.Visibility = Visibility.Visible;*/
+
+
+            if (listChiTietHoaDon.Count > 0)
+            {
+                double sumPrice = 0;
+                listChiTietHoaDon.ForEach(i => {
+                    sumPrice += i.SoLuong * i.Sach.DonGiaBan;
+                    i.TongDonGia = i.SoLuong * i.Sach.DonGiaBan;
+                });
+         
+                ListViewProductsBought.ItemsSource = new List<ChiTietHoaDonBanSachDTO>();
+                ListViewProductsBought.ItemsSource = listChiTietHoaDon;
+                Label_SummaryPriceOfBill.Content = sumPrice;
+                ShoppingCart_Empty.Visibility = Visibility.Collapsed;
+                ShoppingCart_NoEmprty.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ShoppingCart_Empty.Visibility = Visibility.Visible;
+                ShoppingCart_NoEmprty.Visibility = Visibility.Collapsed;
+            }
             ProductsBought.Visibility = Visibility.Visible;
         }
 
         private void Btn_DeleteAll_Click(object sender, RoutedEventArgs e)
         {
-            Global.BookBoughtBills.Clear();
-            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+            listChiTietHoaDon.Clear();
+            ListViewProductsBought.ItemsSource = listChiTietHoaDon;
             Label_SummaryPriceOfBill.Content = "";
             countProductBuy.Badge = 0;
             ShoppingCart_Empty.Visibility = Visibility.Visible;
@@ -140,32 +170,33 @@ namespace GUI
         private void Btn_BuyMore_Click(object sender, RoutedEventArgs e)
         {
             int countBooksBought = 0;
-            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            listChiTietHoaDon.ForEach(i =>
             {
-                countBooksBought += Global.BookBoughtBills[i].SoLuong;
-            }
+                countBooksBought += i.SoLuong;
+            });
             countProductBuy.Badge = countBooksBought;
+        
             ProductsBought.Visibility = Visibility.Collapsed;
         }
 
         private void Btn_Pay_Click(object sender, RoutedEventArgs e)
         {
-            Receipt.Visibility = Visibility.Visible;
-            ListViewProductsBoughtPreview.ItemsSource = Global.BookBoughtBills;
+            Receipt.Visibility = Visibility.Visible; 
             double sumPrice = 0;
-            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+            listChiTietHoaDon.ForEach(i =>
             {
-                sumPrice += Global.BookBoughtBills[i].SoLuong * Global.BookBoughtBills[i].DonGiaBan;
-            }
-            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+                sumPrice += i.SoLuong * i.Sach.DonGiaBan;
+            });
+            ListViewProductsBoughtPreview.ItemsSource = new List<ChiTietHoaDonBanSachDTO>();
+            ListViewProductsBoughtPreview.ItemsSource = listChiTietHoaDon;
             Label_SumPriceFinal.Content = sumPrice;
         }
 
         private void BtnRemoveFromShoppingCart_Click(object sender, RoutedEventArgs e)
         {
             ChiTietHoaDonBanSachDTO item = (ChiTietHoaDonBanSachDTO)((Button)sender).DataContext;
-            MessageBox.Show(item.TenSach);
-            if (Global.BookBoughtBills == null)
+           // MessageBox.Show(item.TenSach);
+            if (listChiTietHoaDon.Count <= 0)
             {
                 countProductBuy.Badge = 0;
                 ShoppingCart_Empty.Visibility = Visibility.Visible;
@@ -175,31 +206,50 @@ namespace GUI
             {
                 int countBooksBought = 0;
                 double sumPrice = 0;
-                for (int i = 0; i < Global.BookBoughtBills.Count; i++)
+               
+                listChiTietHoaDon.ForEach(i =>
                 {
-                    countBooksBought += Global.BookBoughtBills[i].SoLuong;
-                    sumPrice += Global.BookBoughtBills[i].TongDonGia;
-                }
+                    countBooksBought += i.SoLuong;
+                    sumPrice += i.SoLuong * i.Sach.DonGiaBan;
+                    if (i.Sach.MaSach == item.Sach.MaSach)
+                    {
+                        countBooksBought -= i.SoLuong;
+                        sumPrice -= i.SoLuong * i.Sach.DonGiaBan;
+                    }
+                });
+                listChiTietHoaDon.RemoveAll(i => (i.Sach.MaSach == item.Sach.MaSach));
                 countProductBuy.Badge = countBooksBought;
-                ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+                ListViewProductsBought.ItemsSource = new List<ChiTietHoaDonBanSachDTO>();
+                ListViewProductsBought.ItemsSource = listChiTietHoaDon;
                 Label_SummaryPriceOfBill.Content = sumPrice;
             }
         }
 
         private void Combobox_countBookBought_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ChiTietHoaDonBanSachDTO item = (ChiTietHoaDonBanSachDTO)((ComboBox)sender).DataContext; //Ở đây không dùng messagebox được. muốn test thì gán giá trị vào label nào đó test
-            //Label_SummaryPriceOfBill.Content = item.TenSach;
+             ChiTietHoaDonBanSachDTO item = (ChiTietHoaDonBanSachDTO)((ComboBox)sender).DataContext; //Ở đây không dùng messagebox được. muốn test thì gán giá trị vào label nào đó test
+
+
+
+
             int countBooksBought = 0;
             double sumPrice = 0;
-            for (int i = 0; i < Global.BookBoughtBills.Count; i++)
-            {
-                countBooksBought += Global.BookBoughtBills[i].SoLuong;
-                sumPrice += Global.BookBoughtBills[i].TongDonGia;
-            }
-            countProductBuy.Badge = countBooksBought;
-            ListViewProductsBought.ItemsSource = Global.BookBoughtBills;
+               listChiTietHoaDon.ForEach(i => {
+                   if (i.Sach.MaSach == item.Sach.MaSach)
+                   {
+                       i.SoLuong = item.SoLuong;
+                   }
+                   countBooksBought += i.SoLuong;
+                   sumPrice = sumPrice + i.SoLuong * i.Sach.DonGiaBan;
+                   i.TongDonGia = i.Sach.DonGiaBan * i.SoLuong;
+               });
+               countProductBuy.Badge = countBooksBought;
+           // ListViewProductsBought.ItemsSource = new List<ChiTietHoaDonBanSachDTO>();
+            ListViewProductsBought.ItemsSource = listChiTietHoaDon;
             Label_SummaryPriceOfBill.Content = sumPrice;
+      
+
+       
         }
 
         private void Btn_BackBuyingMore_Click(object sender, RoutedEventArgs e)
@@ -210,12 +260,16 @@ namespace GUI
 
         private void Combobox_CategoriesBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            if (Combobox_CategoriesBook.SelectedValue != null)
+            {
+                ListViewProducts.ItemsSource = SachBUS.loadByMaLoai(Combobox_CategoriesBook.SelectedValue.ToString());
+            }
         }
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)
         {
-
+            string textToSearch = txtSearch.Text;
+            ListViewProducts.ItemsSource = SachBUS.loadBySearch(textToSearch, Combobox_CategoriesBook.SelectedValue.ToString());
         }
 
         private void Btn_BackShoppingCart_Click(object sender, RoutedEventArgs e)
@@ -236,8 +290,30 @@ namespace GUI
 
         private void TextBox_PayCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
+            var regrex = new Regex(@"^[0-9]*(?:\.[0-9]*)?$");
+            e.Handled = !regrex.IsMatch(e.Text);
+        }
+
+        private void TxtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (txtSearch.Text == "")
+            {
+                ListViewProducts.ItemsSource = SachBUS.loadByMaLoai(Combobox_CategoriesBook.SelectedValue.ToString());
+            }
+        }
+
+       
+
+        private void TextBox_PhoneNumberCustomer_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            KhachHangDTO khachHang = KhachHangBUS.searchByPhone(TextBox_PhoneNumberCustomer.Text);
+            if (khachHang != null)
+            {
+                TextBox_FullNameCustomer.Text = khachHang.HoTen;
+                TextBox_EmailCustomer.Text = khachHang.Email;
+                TextBox_AddressCustomer.Text = khachHang.DiaChi;
+                TextBox_DebtCustomer.Text = khachHang.TienNo.ToString();
+            }
         }
     }
 }

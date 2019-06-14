@@ -61,7 +61,23 @@ namespace DTO
         {
      
         }
-         
+        public SachDTO(SachDTO src)
+        {
+            maSach = src.maSach;
+            tenSach = src.tenSach;
+            tacGia = src.tacGia;
+            donGiaNhap = src.donGiaNhap;
+            donGiaBan = src.donGiaBan;
+            soLuong = src.soLuong;
+            maLoai = src.maLoai;
+            tenLoai = src.tenLoai;
+            ngaySX = src.ngaySX;
+            ngaySX = src.ngayNhap;
+            HinhAnh = src.hinhAnh;
+            HinhAnhCover = src.HinhAnhCover;
+        }
+
+       
 
         public static BitmapImage LoadImage(string filename)
         {

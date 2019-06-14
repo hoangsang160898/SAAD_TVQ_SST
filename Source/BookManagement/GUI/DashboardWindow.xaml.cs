@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BUS;
+using DTO;
 namespace GUI
 {
     /// <summary>
@@ -22,6 +23,9 @@ namespace GUI
         public DashboardWindow()
         {
             InitializeComponent();
+            Global.Books = SachBUS.loadAll();
+            Global.Categories = TheLoaiBUS.loadAllAndConvertToFillCombobox();
+            Global.BookCategories = TheLoaiBUS.loadAll();
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
