@@ -253,3 +253,31 @@ INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,
 SELECT 'Implementing Domain-Driven Design','Vaughn Vernon',71.2,78.22,160,1,'2018-03-06','2018-04-06',BulkColumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\11.jpg', Single_Blob) as HINHANH
 UPDATE SACH
 SET HINHANHCOVER =(SELECT bulkcolumn from Openrowset (Bulk 'C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\GUI\products\11_cover.jpg', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)
+
+SELECT* FROM PHIEUTHUTIENSACH
+
+ALTER TABLE PHIEUTHUTIENSACH
+ADD MAHOADON INT
+
+select* from sach
+select* from HOADONBANSACH
+select* from CHITIETHOADONBANSACH
+select* from LOG_SACH
+select* from LOG_KHACHHANG
+select* from PHIEUTHUTIENSACH
+select* from KHACHHANG
+
+insert into ChiTietHoaDonBanSach(MaHoaDon,MaSach,SoLuong) values(0,4,1)
+
+select top 1 * from Sach order by MASACH desc
+
+update sach set soluong = 400 where masach = 2
+update sach set soluong = 400 where masach = 4
+
+
+delete from LOG_KHACHHANG
+delete from LOG_SACH
+delete from HOADONBANSACH
+delete from PHIEUTHUTIENSACH
+
+select NGAYTHUTIEN from PHIEUTHUTIENSACH

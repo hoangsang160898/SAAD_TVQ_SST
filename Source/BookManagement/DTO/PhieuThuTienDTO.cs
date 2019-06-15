@@ -16,6 +16,8 @@ namespace DTO
         private int soLuongSachKhac;
         private string tenKhachHang;
         private string tenSachBatKi; //Lấy bất kì tên 1 quyển sách trong tất cả các phiếu thu tiền sách DTO
+        private string maHoaDon;
+
 
         public int MaPhieu { get => maPhieu; set => maPhieu = value; }
         public string NgayThuTien { get => ngayThuTien; set => ngayThuTien = value; }
@@ -25,6 +27,8 @@ namespace DTO
         public string TenSachBatKi { get => tenSachBatKi; set => tenSachBatKi = value; }
         public string TenKhachHang { get => tenKhachHang; set => tenKhachHang = value; }
         public double SoTienHoaDonBanSach { get => soTienHoaDonBanSach; set => soTienHoaDonBanSach = value; }
+        public string MaHoaDon { get => maHoaDon; set => maHoaDon = value; }
+
         public PhieuThuTienDTO(int maPhieu, double soTienThu, int maKH, string ngayThuTien, int soLuongSachKhac, string tenSachBatKi, string tenKhachHang, double soTienHoaDonBanSach)
         {
             this.maPhieu = maPhieu;
@@ -35,6 +39,10 @@ namespace DTO
             this.tenSachBatKi = tenSachBatKi;
             this.tenKhachHang = tenKhachHang;
             this.soTienHoaDonBanSach = soTienHoaDonBanSach;
+        }
+        public PhieuThuTienDTO()
+        {
+
         }
     }
 }

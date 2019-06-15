@@ -25,7 +25,7 @@ namespace GUI
         int currentPage = 0;
         public ManageBillPage()
         {
-            var bills = new List<PhieuThuTienDTO>();
+           /* var bills = new List<PhieuThuTienDTO>();
             bills.Add(new PhieuThuTienDTO(1, 899, 2, "06/03/2019", 0, "Patterns of Enterprise Application Architecture","Leo Nguyen",889));
             bills.Add(new PhieuThuTienDTO(2, 999, 3, "06/02/2019", 4, "The Clean Coder", "aaG oaahT", 999));
             bills.Add(new PhieuThuTienDTO(3, 1409, 1, "06/02/2019", 3, "Patterns of Enterprise Application Architecture","Le Sang", 1410));
@@ -40,8 +40,17 @@ namespace GUI
             bills.Add(new PhieuThuTienDTO(12, 654, 13, "05/26/2019", 4, "Patterns of Enterprise Application Architecture","Truong Quang", 654));
             bills.Add(new PhieuThuTienDTO(13, 1234, 16, "05/25/2019", 2, "Patterns of Enterprise Application Architecture","Huynh Lam Phu Si", 1234));
             bills.Add(new PhieuThuTienDTO(14, 123.23, 23, "05/20/2019", 4, "Building Microservices", "Phan Quoc Phong", 123.23));
-            bills.Add(new PhieuThuTienDTO(15, 1090.8, 25, "05/20/2019", 6, "Building Microservices", "Pham Ngoc Son", 1090.8));
-            Global.Bills = bills;
+            bills.Add(new PhieuThuTienDTO(15, 1090.8, 25, "05/20/2019", 6, "Building Microservices", "Pham Ngoc Son", 1090.8));*/
+
+
+            var listPhieuThuTienSach = PhieuThuTienSachBUS.loadAll();
+            listPhieuThuTienSach.ForEach(i => {
+                int count = ChiTietHoaDonBanSachBUS.countByMaHoaDon(i.HoaDonBanSach.MaHoaDon.ToString());
+                i.SoLuongSachKhac = count - 1;
+                i.TenSachDaiDien = SachBUS.loadByID(ChiTietHoaDonBanSachBUS.loadOneDetail(i.HoaDonBanSach.MaHoaDon.ToString()).Sach.MaSach.ToString()).TenSach;
+            });
+
+            Global.Bills = listPhieuThuTienSach;
 
             var booksBoughtBillPreview = new List<ChiTietHoaDonBanSachDTO>();
             /*booksBoughtBillPreview.Add(new ChiTietHoaDonBanSachDTO(1, 1, "Python Crash Course, 2nd Edition", "Eric Matthes", 3, 161.65, "products/1.jpg"));
@@ -137,10 +146,10 @@ namespace GUI
         {
             if (ListViewBills.SelectedItems.Count > 0)
             {
-                PhieuThuTienDTO item = (PhieuThuTienDTO)ListViewBills.SelectedItems[0];
+                PhieuThuTienSachDTO item = (PhieuThuTienSachDTO)ListViewBills.SelectedItems[0];
                 DetailBill.Visibility = Visibility.Visible;
-                ListViewProductsBought.ItemsSource = Global.BookBoughtBillsPreview;
-                Label_SummaryPriceOfBill.Content = item.SoTienHoaDonBanSach;
+                ListViewProductsBought.ItemsSource = ChiTietHoaDonBanSachBUS.loadByMaHoaDon(item.HoaDonBanSach.MaHoaDon.ToString());
+                Label_SummaryPriceOfBill.Content = item.HoaDonBanSach.TongTien;
                 Label_PaidPriceOfBill.Content = item.SoTienThu;
             }
         }

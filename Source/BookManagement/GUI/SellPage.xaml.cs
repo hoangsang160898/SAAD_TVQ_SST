@@ -24,6 +24,7 @@ namespace GUI
     public partial class SellPage : Page
     {
         private List<ChiTietHoaDonBanSachDTO> listChiTietHoaDon = new List<ChiTietHoaDonBanSachDTO>();
+        private KhachHangDTO khachHangMuaHang;
         public SellPage()
         {
 
@@ -279,6 +280,101 @@ namespace GUI
 
         private void Btn_PlaceOrder_Click(object sender, RoutedEventArgs e)
         {
+           listChiTietHoaDon.ForEach(i =>
+             {
+                 if (SachBUS.CheckUpdateSoLuong(i.Sach.MaSach.ToString(),i.SoLuong.ToString()) == false)
+                 {
+                     MessageBox.Show("Lượng tồn sau khi bán của sách " + i.Sach.TenSach + " không hợp lệ", "Thông báo");
+                     return;
+                 }
+             });
+             if (KhachHangBUS.checkNoToiDa(khachHangMuaHang.MaKH.ToString()) == false)
+             {
+                 MessageBox.Show("Khách hàng " + khachHangMuaHang.HoTen + " có tiền nợ vượt mức cho phép mua hàng", "Thông báo");
+                 return;
+             }
+
+             // Cập nhật lại số lượng sách
+             listChiTietHoaDon.ForEach(i =>
+             {
+                 if (SachBUS.updateSoLuong(i.Sach.MaSach.ToString(),i.SoLuong.ToString()) == false)
+                 {
+                     MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật số lượng sách", "Thông báo");
+                     return;
+                 }
+             });
+             // Cập nhật hóa đơn bán sách
+             HoaDonBanSachDTO hoaDon = new HoaDonBanSachDTO();
+             hoaDon.TongTien = double.Parse(Label_SummaryPriceOfBill.Content.ToString());
+             hoaDon.MaKH = khachHangMuaHang.MaKH;
+             hoaDon.NgayTaoHoaDon = datePickerNgayMua.ToString();
+             if (HoaDonBanSachBUS.insertHoaDon(hoaDon) == false)
+             {
+                 MessageBox.Show("Có lỗi xảy ra trong quá trình tạo hóa đơn", "Thông báo");
+                 return;
+             }
+            // Cập nhật chi tiết hóa đơn bán sách
+            hoaDon = HoaDonBanSachBUS.getLastHoaDon();
+            listChiTietHoaDon.ForEach(i =>
+            {
+                i.MaHoaDon = hoaDon.MaHoaDon;
+                if (ChiTietHoaDonBanSachBUS.insertChiTietHoaDon(i) == false)
+                {
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật chi tiết hóa đơn bán sách", "Thông báo");
+                    return;
+                }
+            });
+            // Cập nhật tiền nợ của khách hàng
+            double noTangThem = double.Parse(Label_SummaryPriceOfBill.Content.ToString()) - double.Parse(TextBox_PayCustomer.Text);
+            double tienNoMoi = khachHangMuaHang.TienNo + noTangThem;
+            if (tienNoMoi != khachHangMuaHang.TienNo)
+            {
+                if (KhachHangBUS.changeDebt(khachHangMuaHang.MaKH, tienNoMoi) == false)
+                {
+                    MessageBox.Show("Cập nhật tiền nợ của khách hàng thất bại", "Thông báo");
+                    return;
+                }
+            }
+            //Tạo log sách
+            listChiTietHoaDon.ForEach(i =>
+            {
+                LogSachDTO logSach = new LogSachDTO();
+                logSach.MaSach = i.Sach.MaSach;
+                logSach.SoLuong = i.Sach.SoLuong - i.SoLuong;
+                logSach.ThoiGian = datePickerNgayMua.ToString();
+                logSach.HanhDong = "Sell a book";
+                if (LogSachBUS.insertToLog(logSach) == false)
+                {
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình tạo log sách", "Thông báo");
+                    return;
+                }
+            });
+            // Tạo log khách hàng
+            if (tienNoMoi != khachHangMuaHang.TienNo)
+            {
+                LogKhachHangDTO logKhachHang = new LogKhachHangDTO();
+                logKhachHang.MaKH = khachHangMuaHang.MaKH;
+                logKhachHang.ThoiGian = datePickerNgayMua.ToString();
+                logKhachHang.TienNo = tienNoMoi;
+                if (LogKhachHangBUS.insertToLog(logKhachHang) == false)
+                {
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình tạo log khách hàng", "Thông báo");
+                    return;
+                }
+            }
+
+            // Tạo phiếu thu tiền
+            PhieuThuTienSachDTO phieuThu = new PhieuThuTienSachDTO();
+            phieuThu.HoaDonBanSach = hoaDon;
+            phieuThu.SoTienThu = double.Parse(TextBox_PayCustomer.Text);
+            if (PhieuThuTienSachBUS.insert(phieuThu) == false)
+            {
+                MessageBox.Show("Có lỗi xảy ra trong quá trình tạo phiếu thu tiền", "Thông báo");
+                return;
+            }
+            MessageBox.Show("Thanh toán thành công", "Thông báo");
+            listChiTietHoaDon.Clear();
+            countProductBuy.Badge = 0;
 
         }
 
@@ -313,6 +409,7 @@ namespace GUI
                 TextBox_EmailCustomer.Text = khachHang.Email;
                 TextBox_AddressCustomer.Text = khachHang.DiaChi;
                 TextBox_DebtCustomer.Text = khachHang.TienNo.ToString();
+                khachHangMuaHang = new KhachHangDTO(khachHang.MaKH, khachHang.HoTen,khachHang.DiaChi, khachHang.Email, khachHang.Sdt, khachHang.TienNo);
             }
         }
     }

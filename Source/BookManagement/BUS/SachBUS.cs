@@ -49,7 +49,12 @@ namespace BUS
         }
         public static bool updateSoLuong(string id, string soLuong)
         {
-            return SachDAO.updateSoLuong(id, soLuong);
+            int luongTon = SachDAO.loadByID(id).SoLuong - int.Parse(soLuong);
+            return SachDAO.updateSoLuong(id, luongTon.ToString());
+        }
+        public static SachDTO loadByID(string id)
+        {
+            return SachDAO.loadByID(id);
         }
     } 
 }

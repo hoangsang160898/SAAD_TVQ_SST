@@ -106,7 +106,7 @@ namespace DAO
 
         public static KhachHangDTO searchById(string id)
         {
-            string sCommand = string.Format(@"select* from KhachHang where id = {0}", int.Parse(id));
+            string sCommand = string.Format(@"select* from KhachHang where MaKH = {0}", id);
             con = DataProvider.openConnection();
             DataTable dt = DataProvider.getDataTable(sCommand, con);
             int n = dt.Rows.Count;

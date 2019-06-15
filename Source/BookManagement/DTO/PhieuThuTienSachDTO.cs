@@ -6,18 +6,24 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class PhieuThuTienSachDTO
+    public class PhieuThuTienSachDTO
     {
         private int maPhieu;
-        private int maHoaDon;
-
+        private double soTienThu;
+        private HoaDonBanSachDTO hoaDonBanSach;
+        private int soLuongSachKhac;
+        private string tenSachDaiDien;
+        private string tenKH;
         public int MaPhieu { get => maPhieu; set => maPhieu = value; }
-        public int MaHoaDon { get => maHoaDon; set => maHoaDon = value; }
+        public double SoTienThu { get => soTienThu; set => soTienThu = value; }
+        public HoaDonBanSachDTO HoaDonBanSach { get => hoaDonBanSach; set => hoaDonBanSach = value; }
+        public int SoLuongSachKhac { get => soLuongSachKhac; set => soLuongSachKhac = value; }
+        public string TenSachDaiDien { get => tenSachDaiDien; set => tenSachDaiDien = value; }
+        public string TenKH { get => tenKH; set => tenKH = value; }
 
-        public PhieuThuTienSachDTO(int maPhieu, int maHoaDon)
+        public PhieuThuTienSachDTO()
         {
-            this.maPhieu = maPhieu;
-            this.maHoaDon = maHoaDon;
+            HoaDonBanSach = new HoaDonBanSachDTO();
         }
     }
 }

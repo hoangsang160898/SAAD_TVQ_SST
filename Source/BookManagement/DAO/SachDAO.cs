@@ -202,7 +202,7 @@ namespace DAO
 
         public static bool updateSoLuong(string id, string soLuong)
         {
-            string sCommand = string.Format(@"Update sach set SoLuong = {0} where id ={1}", int.Parse(soLuong), int.Parse(id));
+            string sCommand = string.Format(@"Update sach set SoLuong = {0} where MaSach ={1}", int.Parse(soLuong), int.Parse(id));
             con = DataProvider.openConnection();
             bool result;
             try
@@ -219,7 +219,7 @@ namespace DAO
         }
         public static SachDTO loadByID(string id)
         {
-            string sCommand = "select* from sach where id = " + int.Parse(id);
+            string sCommand = "select* from sach where MaSach = " + int.Parse(id);
             con = DataProvider.openConnection();
             DataTable dt = DataProvider.getDataTable(sCommand, con);
             int n = dt.Rows.Count;

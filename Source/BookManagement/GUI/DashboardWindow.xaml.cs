@@ -26,6 +26,16 @@ namespace GUI
             Global.Books = SachBUS.loadAll();
             Global.Categories = TheLoaiBUS.loadAllAndConvertToFillCombobox();
             Global.BookCategories = TheLoaiBUS.loadAll();
+            var controlRules = new List<int>();
+            controlRules.Add(1);
+            controlRules.Add(1);
+            controlRules.Add(1);
+            controlRules.Add(1);
+            Global.ControlRules = controlRules;
+
+            var rules = QuyDinhBUS.loadQuyDinh();
+
+            Global.quyDinh = rules;
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)

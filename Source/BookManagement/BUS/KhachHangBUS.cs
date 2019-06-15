@@ -15,10 +15,6 @@ namespace BUS
         }
         public static bool changeDebt(int idCustomer, double debt)
         {
-            if (debt > 1 || debt < 0)
-            {
-                return false;
-            }
             return KhachHangDAO.changeDebt(idCustomer, debt);
         }
         public static List<KhachHangDTO> searchCustomer(string textToSearch)
@@ -40,6 +36,10 @@ namespace BUS
                     return false;
             }
             return true;
+        }
+        public static KhachHangDTO searchById(string id)
+        {
+            return KhachHangDAO.searchById(id);
         }
     }
 }

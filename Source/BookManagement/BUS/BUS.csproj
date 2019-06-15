@@ -45,6 +45,9 @@
     <Compile Include="Global.cs" />
     <Compile Include="HoaDonBanSachBUS.cs" />
     <Compile Include="KhachHangBUS.cs" />
+    <Compile Include="LogKhachHangBUS.cs" />
+    <Compile Include="LogSachBUS.cs" />
+    <Compile Include="PhieuThuTienSachBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuyDinhBUS.cs" />
     <Compile Include="SachBUS.cs" />

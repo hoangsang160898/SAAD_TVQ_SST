@@ -27,5 +27,32 @@ namespace BUS
         {
             return ChiTietHoaDonBanSachDAO.insertChiTietHoaDon(chiTiet);
         }
+        public static List<ChiTietHoaDonBanSachDTO> loadAll()
+        {
+            var listChiTiet = ChiTietHoaDonBanSachDAO.loadAll();
+            listChiTiet.ForEach(i =>
+            {
+                i.Sach = SachBUS.loadByID(i.Sach.MaSach.ToString());
+            });
+            return listChiTiet;
+        }
+        public static int countByMaHoaDon(string maHoaDon)
+        {
+            return ChiTietHoaDonBanSachDAO.countByMaHoaDon(maHoaDon);
+        }
+        public static ChiTietHoaDonBanSachDTO loadOneDetail(string MaHoaDon)
+        {
+            return ChiTietHoaDonBanSachDAO.loadOneDetail(MaHoaDon);
+        }
+        public static List<ChiTietHoaDonBanSachDTO> loadByMaHoaDon(string MaHoaDon)
+        {
+            var listChiTiet = ChiTietHoaDonBanSachDAO.loadByMaHoaDon(MaHoaDon);
+            listChiTiet.ForEach(i =>
+            {
+                i.Sach = SachBUS.loadByID(i.Sach.MaSach.ToString());
+                i.TongDonGia = i.SoLuong * i.Sach.DonGiaBan;
+            });
+            return listChiTiet;
+        }
     }
 }

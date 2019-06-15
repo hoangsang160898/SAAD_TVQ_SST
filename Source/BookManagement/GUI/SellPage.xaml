@@ -401,7 +401,7 @@
                                 </Style>
                             </TextBox.Resources>
                         </TextBox>
-                        <DatePicker Padding="5,0,15,1.5" Height="36" VerticalContentAlignment="Center" FontSize="14" Width="213" materialDesign:HintAssist.Hint="Deal Date" Canvas.Left="140" Canvas.Top="252">
+                        <DatePicker x:Name="datePickerNgayMua" Padding="5,0,15,1.5" Height="36" VerticalContentAlignment="Center" FontSize="14" Width="213" materialDesign:HintAssist.Hint="Deal Date" Canvas.Left="140" Canvas.Top="252">
 
                         </DatePicker>
                         <TextBox IsEnabled="False" Text="Debt is 0" Name="TextBox_DebtCustomer" Margin="0,45,0,0" materialDesign:HintAssist.Hint=" Debt" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" FontSize="14" Height="35" Canvas.Left="140" TextWrapping="Wrap" Canvas.Top="158" Width="450">

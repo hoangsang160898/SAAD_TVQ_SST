@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class LogKhachHangDTO
+   public  class LogKhachHangDTO
     {
         private int idLog;
         private int maKH;
@@ -24,6 +24,10 @@ namespace DTO
             this.maKH = maKH;
             this.thoiGian = thoiGian;
             this.tienNo = tienNo;
+        }
+        public LogKhachHangDTO()
+        {
+
         }
     }
 }

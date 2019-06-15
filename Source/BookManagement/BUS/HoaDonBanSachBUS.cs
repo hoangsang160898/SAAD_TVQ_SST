@@ -13,5 +13,13 @@ namespace BUS
         {
             return HoaDonBanSachDAO.insertHoaDon(hoaDon);
         }
+        public static HoaDonBanSachDTO getLastHoaDon()
+        {
+            return HoaDonBanSachDAO.getLastHoaDon();
+        }
+        public static HoaDonBanSachDTO loadByMaHoaDon(string MaHoaDon)
+        {
+            return HoaDonBanSachDAO.loadByMaHoaDon(MaHoaDon);
+        }
     }
 }

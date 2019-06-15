@@ -24,7 +24,10 @@ namespace DTO
             this.tongTien = tongTien;
             this.maKH = maKH;
             this.ngayTaoHoaDon = ngayTaoHoaDon;
-        
+        }
+        public HoaDonBanSachDTO()
+        {
+
         }
     }
 }

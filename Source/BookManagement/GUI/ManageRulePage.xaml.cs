@@ -29,16 +29,9 @@ namespace GUI
         SolidColorBrush On = new SolidColorBrush(Color.FromRgb(88, 212, 75));
         public ManageRulePage()
         {
-            var controlRules = new List<int>();
-            controlRules.Add(1);
-            controlRules.Add(1);
-            controlRules.Add(1);
-            controlRules.Add(0);
-            Global.ControlRules = controlRules;
+           
 
-            var rules = QuyDinhBUS.loadQuyDinh();
-
-            Global.quyDinh = rules;
+           
 
             InitializeComponent();
         }

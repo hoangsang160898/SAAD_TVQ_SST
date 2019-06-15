@@ -34,7 +34,7 @@ namespace DTO
 
         public ChiTietHoaDonBanSachDTO()
         {
-
+            Sach = new SachDTO();
         }
         public ChiTietHoaDonBanSachDTO(ChiTietHoaDonBanSachDTO src)
         {
