@@ -259,5 +259,59 @@ namespace DAO
             DataProvider.closeConnection(con);
             return sach;
         }
+
+         public static bool updateSach(SachDTO newSach)
+         {
+            string sCommand = string.Format("Update sach set tenSach = '{0}', TacGia = '{1}', DonGiaNhap = {2}, DonGiaBan = {3}, SoLuong = {4}, MaLoai = {5} where MaSach = {6}", newSach.TenSach, newSach.TacGia, newSach.DonGiaNhap, newSach.DonGiaBan, newSach.SoLuong, newSach.MaLoai, newSach.MaSach);
+            con = DataProvider.openConnection();
+            bool result;
+            try
+            {
+                result = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result = false;
+                DataProvider.closeConnection(con);
+            }
+            return result;
+        }
+
+        public static bool updateImage(SachDTO newSach, string link)
+        {
+            string sCommand = string.Format("Update sach set HinhAnh = (Select HinhAnh.* from Openrowset(Bulk '{0}', Single_Blob) as HinhAnh) where MaSach = {1}", link, newSach.MaSach);
+            con = DataProvider.openConnection();
+            bool result;
+            try
+            {
+                result = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result = false;
+                DataProvider.closeConnection(con);
+            }
+            return result;
+        }
+
+        public static bool updateImageCover(SachDTO newSach, string link)
+        {
+            string sCommand = string.Format("Update sach set HinhAnhCover = (Select HinhAnhCover.* from Openrowset(Bulk '{0}', Single_Blob) as HinhAnhCover) where MaSach = {1}", link, newSach.MaSach);
+            con = DataProvider.openConnection();
+            bool result;
+            try
+            {
+                result = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result = false;
+                DataProvider.closeConnection(con);
+            }
+            return result;
+        }
     }
 }

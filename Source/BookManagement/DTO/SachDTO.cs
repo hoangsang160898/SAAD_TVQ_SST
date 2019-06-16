@@ -109,7 +109,7 @@ namespace DTO
             }
             return data;
         }
-        public byte[] FileToByteArray(string fileName)
+        public static byte[] FileToByteArray(string fileName)
         {
             byte[] buff = null;
             FileStream fs = new FileStream(fileName,

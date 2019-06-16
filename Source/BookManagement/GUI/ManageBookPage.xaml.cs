@@ -24,6 +24,11 @@ namespace GUI
     public partial class ManageBookPage : Page
     {
         SachDTO temp = new SachDTO();
+        byte[] bytes;
+        string imgLoc;
+        string imgCoverLoc;
+        bool isImageChange = false;
+        bool isImageCoverChange = false;
         public ManageBookPage()
         {
 
@@ -89,7 +94,7 @@ namespace GUI
                 Textbox__book_priceRoot.Text = item.DonGiaNhap.ToString();
                 Textbox__book_priceSell.Text = item.DonGiaBan.ToString();
                 Textbox__book_exist.Content = item.SoLuong.ToString();
-                Textbox__book_type.SelectedIndex = item.MaLoai;
+                Textbox__book_type.SelectedIndex = item.MaLoai - 1;
                 btn_AddExist.IsEnabled = true;
                 temp = item;
             }
@@ -116,8 +121,14 @@ namespace GUI
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            Nullable<bool> result = dlg.ShowDialog();
-            MessageBox.Show(dlg.FileName.ToString());
+           if (dlg.ShowDialog() == true)
+            {
+                imgCoverLoc = dlg.FileName.ToString();
+                bytes = SachDTO.FileToByteArray(imgCoverLoc);
+                Img__book_cover.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+                isImageCoverChange = true;
+            }
+            
         }
 
         private void btnUpadateImgAvatar_Click(object sender, RoutedEventArgs e)
@@ -127,8 +138,13 @@ namespace GUI
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            Nullable<bool> result = dlg.ShowDialog();
-            MessageBox.Show(dlg.FileName.ToString());
+            if (dlg.ShowDialog() == true)
+            {
+                imgLoc = dlg.FileName.ToString();
+                bytes = SachDTO.FileToByteArray(imgLoc);
+                Img__book_avartar.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+                isImageChange = true;
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -170,7 +186,7 @@ namespace GUI
             Textbox__book_priceRoot.Text = temp.DonGiaNhap.ToString();
             Textbox__book_priceSell.Text = temp.DonGiaBan.ToString();
             Textbox__book_exist.Content = temp.SoLuong.ToString();
-            Textbox__book_type.SelectedIndex = temp.MaLoai;
+            Textbox__book_type.SelectedIndex = temp.MaLoai - 1;
         }
 
         private void BtnDone_Click(object sender, RoutedEventArgs e)
@@ -185,6 +201,43 @@ namespace GUI
             Textbox__book_priceRoot.IsEnabled = false;
             Textbox__book_priceSell.IsEnabled = false;
             Textbox__book_author.IsEnabled = false;
+
+            SachDTO newSach = new SachDTO();
+            newSach.TenSach = Textbox__book_id.Text;
+            newSach.TacGia = Textbox__book_author.Text;
+            newSach.DonGiaNhap =double.Parse(Textbox__book_priceRoot.Text);
+            newSach.DonGiaBan = double.Parse(Textbox__book_priceSell.Text);
+            newSach.SoLuong = int.Parse(Textbox__book_exist.Content.ToString());
+            newSach.MaLoai = int.Parse(Textbox__book_type.SelectedIndex.ToString()) + 1;
+            newSach.MaSach = temp.MaSach;
+
+            if (SachBUS.updateSach(newSach) == false)
+            {
+                MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật thông tin sách", "Thông báo");
+                return;
+            }
+            if (isImageChange)
+            {
+                isImageChange = false;
+                if (SachBUS.updateImage(newSach, imgLoc) == false)
+                {
+                
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật hình ảnh", "Thông báo");
+                    return;
+                }
+                
+            }
+            if (isImageCoverChange)
+            {
+                isImageCoverChange = false;
+                if (SachBUS.updateImageCover(newSach, imgCoverLoc) == false)
+                {
+                   
+                    MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật ảnh cover", "Thông báo");
+                    return;
+                }
+            }
+                
         }
 
         private void Btn_AddExist_Click(object sender, RoutedEventArgs e)
@@ -218,8 +271,13 @@ namespace GUI
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
 
-            Nullable<bool> result = dlg.ShowDialog();
-            MessageBox.Show(dlg.FileName.ToString());
+            if (dlg.ShowDialog() == true)
+            {
+                imgCoverLoc = dlg.FileName.ToString();
+                bytes = SachDTO.FileToByteArray(imgCoverLoc);
+                Img__book_cover.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+                isImageCoverChange = true;
+            }
         }
 
         private void btnAddImgAvatar_Click(object sender, RoutedEventArgs e)
@@ -228,9 +286,13 @@ namespace GUI
 
             dlg.DefaultExt = ".png";
             dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-
-            Nullable<bool> result = dlg.ShowDialog();
-            MessageBox.Show(dlg.FileName.ToString());
+            if (dlg.ShowDialog() == true)
+            {
+                imgLoc = dlg.FileName.ToString();
+                bytes = SachDTO.FileToByteArray(imgLoc);
+                Img__book_avartar.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+                isImageChange = true;
+            }
         }
 
         private void BtnDone_addBook_Click(object sender, RoutedEventArgs e)
@@ -271,5 +333,7 @@ namespace GUI
                 ListViewBooks.ItemsSource = SachBUS.loadByMaLoai(Combobox_CategoriesBook.SelectedValue.ToString());
             }
         }
+
+        
     }
 }

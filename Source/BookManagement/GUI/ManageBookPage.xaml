@@ -138,7 +138,7 @@
                     <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
                         <materialDesign:PackIcon  Kind="RenameBox" Height="33" Width="35"/>
                     </Label>
-                    <TextBox IsEnabled="False" Padding="10,0,0,0" x:Name="Textbox__book_id" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Name" Width="410"/>
+                    <TextBox IsEnabled="False" Padding="10,0,0,0" x:Name="Textbox__book_id" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Name" Width="410" />
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="374" Width="445" Height="37">
                     <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">

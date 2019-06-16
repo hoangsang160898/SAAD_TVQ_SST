@@ -56,5 +56,17 @@ namespace BUS
         {
             return SachDAO.loadByID(id);
         }
+        public static bool updateSach(SachDTO newSach)
+        {
+            return SachDAO.updateSach(newSach);
+        }
+        public static bool updateImage(SachDTO newSach, string link)
+        {
+            return SachDAO.updateImage(newSach, link);
+        }
+        public static bool updateImageCover(SachDTO newSach, string link)
+        {
+            return SachDAO.updateImageCover(newSach, link);
+        }
     } 
 }
