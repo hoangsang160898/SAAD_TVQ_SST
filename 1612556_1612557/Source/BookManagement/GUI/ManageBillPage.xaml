@@ -1,0 +1,189 @@
+﻿<Page x:Class="GUI.ManageBillPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="683" d:DesignWidth="1314"
+      Title="Manage Bill Page" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <local:BooleanBooksConverter x:Key="BooleanBooksConverter"/>
+        <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
+        <DataTemplate x:Key="BillTemplate" DataType="PhieuThuTienSachDTO">
+            <Border BorderBrush="#ccc" BorderThickness="1" CornerRadius="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="1290">
+                    <Label Foreground="#242424" VerticalContentAlignment="Center" Content="{Binding MaPhieu}" Width="100" Padding="15,0,10,0" FontSize="14">
+                    </Label>
+                    <Label Width="390" Padding="0,0,0,0" VerticalContentAlignment="Center" FontSize="14">
+                        <AccessText  Width="370" Foreground="#242424" Text="{Binding TenKH}" TextWrapping="Wrap"></AccessText>
+                    </Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Content="{Binding HoaDonBanSach.NgayTaoHoaDon}" Width="200" Padding="0,0,0,0" FontSize="14">
+                    </Label>
+                    <StackPanel Name="test" Width="390" VerticalAlignment="Center" Orientation="Vertical">
+                        <Label  Padding="0,0,0,0" HorizontalContentAlignment="Left" FontSize="14">
+                            <AccessText MaxWidth="370" Foreground="#242424" Text="{Binding TenSachDaiDien}"  HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"></AccessText>
+                        </Label>
+                        <Label Foreground="#242424" Visibility="{Binding SoLuongSachKhac,Converter={StaticResource BooleanBooksConverter}}" Padding="0,0,0,0" Content="{Binding SoLuongSachKhac}" ContentStringFormat="and {0} others" HorizontalContentAlignment="Left" FontSize="14"></Label>
+                    </StackPanel>
+                    <Label VerticalContentAlignment="Center" Content="{Binding HoaDonBanSach.TongTien}" ContentStringFormat="${0}" Foreground="#242424" Width="100" Padding="0" FontSize="14"/>
+                    <Label VerticalContentAlignment="Center" Content="{Binding SoTienThu}" ContentStringFormat="${0}" Foreground="#242424" Width="100" Padding="0" FontSize="14"/>
+
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="ProductBoughtTemplate" DataType="ChiTietHoaDonBanSachDTO">
+            <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+                <Border BorderBrush="#ddd" BorderThickness="0,0,0,2">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="212" Width="909" VerticalAlignment="Center" Margin="0,0,0,5">
+                        <Rectangle Margin="15,0,0,0" Effect="{StaticResource z-depth}" Width="140" Height="185" RadiusX="5" RadiusY="5">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding Sach.HinhAnh}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <StackPanel Margin="17.5,0,17.5,0" Width="490" VerticalAlignment="Center">
+                            <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="14">
+                                <AccessText Foreground="#FFF17734" Text="{Binding Sach.TenSach}" TextWrapping="Wrap" FontWeight="DemiBold"></AccessText>
+                            </Label>
+                            <Label Padding="0,0,0,0" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontSize="13">
+                                <AccessText Foreground="#8d8d8d" Text="{Binding Sach.TacGia}" MaxWidth="275" TextWrapping="Wrap"></AccessText>
+                            </Label>
+                        </StackPanel>
+                        <Label HorizontalContentAlignment="Center" Height="212" Width="95" VerticalContentAlignment="Center" Content="{Binding Sach.DonGiaBan}" ContentStringFormat="${0}" Foreground="#444444" Padding="0" FontSize="13"/>
+
+                        <Label FontSize="13" VerticalContentAlignment="Center" materialDesign:ComboBoxAssist.ClassicMode="true" Width="40" Margin="0,0,0,0" Name="Combobox_countBookBought" Content="{Binding SoLuong}" Background="Transparent">
+                        </Label>
+                        <Label HorizontalContentAlignment="Center" Height="212" Width="95" VerticalContentAlignment="Center" Content="{Binding TongDonGia}" ContentStringFormat="${0}" Foreground="#FFF17734" Padding="0" FontSize="13"/>
+                    </StackPanel>
+                </Border>
+            </materialDesign:TransitioningContent>
+        </DataTemplate>
+    </Page.Resources>
+
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+        <Grid>
+            <Label FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38">Manage Bills</Label>
+
+            <StackPanel Margin="10,42,10,601" Orientation="Horizontal">
+                <Label VerticalContentAlignment="Center" Foreground="#787878" Margin="0,0,0,0" FontSize="16" FontWeight="DemiBold" Width="95" Canvas.Top="68" Canvas.Left="10">ID</Label>
+                <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="385" Canvas.Top="68" Canvas.Left="550">Customer Name</Label>
+                <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="200" Canvas.Top="68" Canvas.Left="645">Trading Date</Label>
+                <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="390" Content="Books"/>
+                <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="100" Content="Sub Total"/>
+                <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="100" Content="Paid Total"/>
+            </StackPanel>
+
+            <ScrollViewer Name="ScrollViewer_Bills" PreviewMouseWheel="ScrollViewerBills_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,82,0,45">
+                <ListView MouseUp="selectItemBill" Name="ListViewBills" ItemTemplate="{StaticResource BillTemplate}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1" Rows="8"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+            </ScrollViewer>
+            <Button Cursor="Hand" Background="Transparent" Name="btnPrev" Click="btnPrev_Click" Padding="0" HorizontalAlignment="Left" Margin="1167,638,0,0" VerticalAlignment="Top" Width="60" Height="40">
+                <Button.Content>
+                    <materialDesign:PackIcon Height="30" Width="30" Kind="ChevronLeft"></materialDesign:PackIcon>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#2980b9"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="34">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button Cursor="Hand" Background="Transparent" Name="btnNext" Click="btnNext_Click" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Margin="1227,638,0,0">
+                <Button.Content>
+                    <materialDesign:PackIcon Kind="ChevronRight" Height="40" Width="30"></materialDesign:PackIcon>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Foreground" Value="#2980b9"></Setter>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="34">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Canvas Background="#fff" Visibility="Collapsed" Name="DetailBill" Height="683" Width="1314">
+                <Label Margin="10,0,0,0" HorizontalContentAlignment="Center" FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Width="160">Detail Bill</Label>
+                <Border Name="Panel_HeaderListViewProductsBought" BorderBrush="#ccc" BorderThickness="0,0,0,1" Height="29" Canvas.Top="37" Canvas.Left="10" Width="909">
+                    <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                        <Label Margin="5,0,0,0" FontSize="14" FontWeight="DemiBold" Width="659" Canvas.Top="68" Canvas.Left="10">Item</Label>
+                        <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="95" Canvas.Top="68" Canvas.Left="550">Price</Label>
+                        <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="40" Canvas.Top="68" Canvas.Left="645">Qty</Label>
+                        <Label FontSize="14" HorizontalContentAlignment="Center" FontWeight="DemiBold" Width="95" Content="Sub total"/>
+                    </StackPanel>
+                </Border>
+                <ScrollViewer Name="ScrollViewer_ProductsBought" PreviewMouseWheel="ScrollViewerProducts_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Height="609" Width="909" Canvas.Top="66" Canvas.Left="10">
+                    <ListView Name="ListViewProductsBought" ItemTemplate="{StaticResource ProductBoughtTemplate}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border x:Name="RootBorder">
+                                                <ContentPresenter/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="RootBorder" Property="Background" Value="transparent"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="1"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ListView>
+                </ScrollViewer>
+                <Label Name="Label_TitleSummary" Foreground="#FFF17734" FontSize="24" Width="147" Canvas.Left="958" Height="47" Canvas.Top="21">Summary</Label>
+                <Border Name="Panel_Pay" BorderBrush="#ccc" CornerRadius="5" BorderThickness="1" Canvas.Left="958" Padding="20" Canvas.Top="68">
+                    <StackPanel Width="257">
+                        <StackPanel Orientation="Horizontal">
+                            <Label FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64">Order Total</Label>
+                            <Label HorizontalContentAlignment="Right" ContentStringFormat="${0}" FontSize="18" Foreground="#000" FontWeight="DemiBold" Name="Label_SummaryPriceOfBill" Canvas.Left="1010" Canvas.Top="64" Width="150"></Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label FontWeight="DemiBold" Width="107" Foreground="#7b858a" FontSize="18" Canvas.Left="903" Canvas.Top="64">Paid Total</Label>
+                            <Label HorizontalContentAlignment="Right" ContentStringFormat="${0}" FontSize="18" Foreground="#000" FontWeight="DemiBold" Name="Label_PaidPriceOfBill" Canvas.Left="1010" Canvas.Top="64" Width="150"></Label>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Button Name="btn_BackManageBills" FontWeight="Normal" Cursor="Hand" Margin="0,0,0,0" Padding="0" FontSize="14" Background="Transparent" BorderThickness="0" Canvas.Left="946" Canvas.Top="183" Height="28" Width="110" Click="Btn_BackManageBills_Click">
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Foreground="#ffbf00" Kind="ChevronLeft" Width="16" Height="19"></materialDesign:PackIcon>
+                            <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="0" Foreground="#ffbf00" FontSize="14" >Manage Bills</Label>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </Canvas>
+        </Grid>
+    </materialDesign:TransitioningContent>
+</Page>
