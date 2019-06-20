@@ -1,0 +1,7 @@
+PHÂN TÍCH VÀ THIẾT KẾ PHẦN MỀM - CQ2016/32
+
+NHÓM SS 
+1612556	Nguyễn Hoàng Sang
+1612557	Lê Hoàng Sang
+
+CÁCH BUILD CODE VÀ CẤU HÌNH:
