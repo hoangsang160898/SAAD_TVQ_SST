@@ -58,6 +58,14 @@ namespace BUS
         }
         public static bool updateSach(SachDTO newSach)
         {
+            int chenhLech = newSach.SoLuong - SachDAO.loadByID(newSach.MaSach.ToString()).SoLuong;
+            if (Global.ControlRules[3] == 1)
+            {
+                if (chenhLech <= Global.quyDinh.LuongNhapToiThieu)
+                {
+                    return false;
+                }
+            }
             return SachDAO.updateSach(newSach);
         }
         public static bool updateImage(SachDTO newSach, string link)
@@ -67,6 +75,10 @@ namespace BUS
         public static bool updateImageCover(SachDTO newSach, string link)
         {
             return SachDAO.updateImageCover(newSach, link);
+        }
+        public static bool addBook(SachDTO newSach, string link, string linkCover)
+        {
+            return SachDAO.addBook(newSach, link, linkCover);
         }
     } 
 }

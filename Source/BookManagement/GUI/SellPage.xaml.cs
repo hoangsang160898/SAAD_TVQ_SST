@@ -375,7 +375,7 @@ namespace GUI
             MessageBox.Show("Thanh toán thành công", "Thông báo");
             listChiTietHoaDon.Clear();
             countProductBuy.Badge = 0;
-
+            Global.Books = SachBUS.loadAll();
         }
 
         private void TextBox_PhoneNumberCustomer_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -313,5 +313,40 @@ namespace DAO
             }
             return result;
         }
+
+        public static bool addBook(SachDTO newSach, string link, string linkCover)
+        {
+            string sCommand = string.Format("INSERT INTO SACH(TENSACH,TACGIA,DONGIANHAP,DONGIABAN,SOLUONG,MALOAI,NGAYSANXUAT,NGAYNHAP,HINHANH) SELECT '{0}', '{1}', {2}, {3}, {4}, {5}, '{6}', '{7}', BulkColumn from Openrowset (Bulk '{8}', Single_Blob) as HINHANH", newSach.TenSach, newSach.TacGia, newSach.DonGiaNhap, newSach.DonGiaBan, newSach.SoLuong, newSach.MaLoai, newSach.NgaySX, newSach.NgayNhap, link);
+            con = DataProvider.openConnection();
+            bool result1;
+            try
+            {
+                result1 = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result1 = false;
+                DataProvider.closeConnection(con);
+            }
+            if (result1 == true)
+            {
+                sCommand = string.Format("UPDATE SACH SET HINHANHCOVER = (SELECT bulkcolumn from Openrowset (Bulk '{0}', Single_Blob) as HINHANHCOVER) WHERE SACH.MASACH = (select top 1 MASACH from sach order by MASACH desc)", linkCover);
+                con = DataProvider.openConnection();
+                bool result2;
+                try
+                {
+                    result2 = DataProvider.executeNonQuery(sCommand, con);
+                    DataProvider.closeConnection(con);
+                }
+                catch
+                {
+                    result2 = false;
+                    DataProvider.closeConnection(con);
+                }
+                return result2;
+            }
+            return result1;
+        }
     }
 }

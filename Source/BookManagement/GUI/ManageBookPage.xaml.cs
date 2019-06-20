@@ -29,6 +29,7 @@ namespace GUI
         string imgCoverLoc;
         bool isImageChange = false;
         bool isImageCoverChange = false;
+        int soLuongBanDau = 0;
         public ManageBookPage()
         {
 
@@ -221,10 +222,11 @@ namespace GUI
                 isImageChange = false;
                 if (SachBUS.updateImage(newSach, imgLoc) == false)
                 {
-                
+                    imgLoc = "";
                     MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật hình ảnh", "Thông báo");
                     return;
                 }
+                imgLoc = "";
                 
             }
             if (isImageCoverChange)
@@ -232,12 +234,23 @@ namespace GUI
                 isImageCoverChange = false;
                 if (SachBUS.updateImageCover(newSach, imgCoverLoc) == false)
                 {
-                   
+                    imgCoverLoc = "";
                     MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật ảnh cover", "Thông báo");
                     return;
                 }
+                imgCoverLoc = "";
             }
-                
+            if (newSach.SoLuong != temp.SoLuong)
+            {
+                LogSachDTO logSach = new LogSachDTO();
+                logSach.SoLuong = newSach.SoLuong;
+                logSach.ThoiGian = DateTime.Now.ToString();
+                logSach.MaSach = newSach.MaSach;
+                logSach.HanhDong = "Update book";
+                LogSachBUS.insertToLog(logSach);
+            }
+            Global.Books = SachBUS.loadAll();
+            ListViewBooks.ItemsSource = Global.Books;
         }
 
         private void Btn_AddExist_Click(object sender, RoutedEventArgs e)
@@ -255,6 +268,8 @@ namespace GUI
 
         private void AddExistBook_Click(object sender, RoutedEventArgs e)
         {
+            AddExistBookForm.Visibility = Visibility.Collapsed;
+            Textbox__book_exist.Content = countAddBook.Text;
 
         }
 
@@ -275,7 +290,7 @@ namespace GUI
             {
                 imgCoverLoc = dlg.FileName.ToString();
                 bytes = SachDTO.FileToByteArray(imgCoverLoc);
-                Img__book_cover.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+                Img__addBook_avatar.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
                 isImageCoverChange = true;
             }
         }
@@ -290,7 +305,7 @@ namespace GUI
             {
                 imgLoc = dlg.FileName.ToString();
                 bytes = SachDTO.FileToByteArray(imgLoc);
-                Img__book_avartar.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
+               Img__addBook_cover.ImageSource = SachDTO.BitmapImageFromBytes(bytes);
                 isImageChange = true;
             }
         }
@@ -300,6 +315,38 @@ namespace GUI
             addBook.Visibility = Visibility.Collapsed;
             reviewBook.Visibility = Visibility.Visible;
             ListViewBooks.IsEnabled = true;
+
+            SachDTO newSach = new SachDTO();
+            newSach.TenSach = Textbox__addBook_id.Text;
+            newSach.TacGia = Textbox__book_author.Text;
+            newSach.DonGiaNhap = int.Parse(Textbox__addBook_priceRoot.Text);
+            newSach.DonGiaBan = int.Parse(Textbox__addBook_priceSell.Text);
+            newSach.SoLuong = int.Parse(Textbox__addBook_exist.Text);
+            newSach.NgaySX = "";
+            newSach.NgayNhap = DateTime.Now.ToString();
+            newSach.MaLoai = int.Parse(Textbox__addBook_type.SelectedValue.ToString());
+            if (imgLoc == "")
+            {
+                MessageBox.Show("Vui lòng chọn hình ảnh","Thông báo");
+                return;
+            }
+            if (imgCoverLoc == "")
+            {
+                MessageBox.Show("Vui lòng chọn hình ảnh cover", "Thông báo");
+                return;
+            }
+            if (SachBUS.addBook(newSach,imgLoc,imgCoverLoc) == false)
+            {
+                MessageBox.Show("Có lỗi xảy ra trong quá trình cập nhật sách", "Thông báo");
+                imgCoverLoc = imgLoc = "";
+                return;
+            }
+           
+
+            MessageBox.Show("Thêm sách mới thành công", "Thông báo");
+            Global.Books = SachBUS.loadAll();
+            ListViewBooks.ItemsSource = Global.Books;
+            imgCoverLoc = imgLoc = "";
             Textbox__addBook_id.Text = "";
             //Img__addBook_avatar.ImageSource = "";
             //Img__addBook_cover.ImageSource = "";
