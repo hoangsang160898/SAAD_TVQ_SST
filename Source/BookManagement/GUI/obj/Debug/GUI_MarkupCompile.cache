@@ -4,29 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< Updated upstream
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\
-=======
 C:\Users\hoang\Desktop\Do an Phan Tich Thiet Ke\SAAD_TVQ_SST\Source\BookManagement\GUI\obj\Debug\
->>>>>>> Stashed changes
 GUI
 none
 false
 DEBUG;TRACE
-<<<<<<< Updated upstream
-S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\GUI\App.xaml
-12750167821
-
-17-592753745
-19-1737212323
-=======
 C:\Users\hoang\Desktop\Do an Phan Tich Thiet Ke\SAAD_TVQ_SST\Source\BookManagement\GUI\App.xaml
 12750167821
 
 16-174272245
 19-1367037218
->>>>>>> Stashed changes
 AboutPage.xaml;DashboardWindow.xaml;HomePage.xaml;MainWindow.xaml;ManageBillPage.xaml;ManageBookPage.xaml;ManageCustomerPage.xaml;ManageRulePage.xaml;ManageSalePage.xaml;ReportPage.xaml;SellPage.xaml;ToggleButton.xaml;
 
-True
+False
 
