@@ -27,6 +27,7 @@ namespace GUI
         Thickness RightSide = new Thickness(0, 0, -39, 0);
         SolidColorBrush Off = new SolidColorBrush(Color.FromRgb(160, 160, 160));
         SolidColorBrush On = new SolidColorBrush(Color.FromRgb(88, 212, 75));
+        
         public ManageRulePage()
         {
            
@@ -37,22 +38,22 @@ namespace GUI
         }
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (Global.ControlRules[0] == 1)
+            if (Global.ControlRules.NoToiDa == 1)
             {
                 btnChangeRule1.Back.Fill = On;
                 btnChangeRule1.Dot.Margin = RightSide;
             }
-            if (Global.ControlRules[1] == 1)
+            if (Global.ControlRules.LuongTonSauKhiBan == 1)
             {
                 btnChangeRule2.Back.Fill = On;
                 btnChangeRule2.Dot.Margin = RightSide;
             }
-            if (Global.ControlRules[2] == 1)
+            if (Global.ControlRules.LuongNhapToiThieu == 1)
             {
                 btnChangeRule3.Back.Fill = On;
                 btnChangeRule3.Dot.Margin = RightSide;
             }
-            if (Global.ControlRules[3] == 1)
+            if (Global.ControlRules.LuongTonToiThieuKhiNhap == 1)
             {
                 btnChangeRule4.Back.Fill = On;
                 btnChangeRule4.Dot.Margin = RightSide;
@@ -68,44 +69,44 @@ namespace GUI
         {
             if (btnChangeRule1.isActived == true)
             {
-
+                Global.ControlRules.NoToiDa = 1;
             }
             else
             {
-
+                Global.ControlRules.NoToiDa = 0;
             }
         }
         private void btnChangeRule2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (btnChangeRule2.isActived == true)
             {
-                MessageBox.Show("true 2");
+                Global.ControlRules.LuongTonSauKhiBan = 1;
             }
             else
             {
-                MessageBox.Show("false 2");
+                Global.ControlRules.LuongTonSauKhiBan = 0;
             }
         }
         private void btnChangeRule3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (btnChangeRule3.isActived == true)
             {
-                MessageBox.Show("true 3");
+                Global.ControlRules.LuongNhapToiThieu = 1;
             }
             else
             {
-                MessageBox.Show("false 3");
+                Global.ControlRules.LuongNhapToiThieu = 0;
             }
         }
         private void btnChangeRule4_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (btnChangeRule4.isActived == true)
             {
-                MessageBox.Show("true 4");
+                Global.ControlRules.LuongTonToiThieuKhiNhap = 1;
             }
             else
             {
-                MessageBox.Show("false 4");
+                Global.ControlRules.LuongTonToiThieuKhiNhap = 0;
             }
         }
 
@@ -136,7 +137,7 @@ namespace GUI
                 TextBox_MinAddBeforeSupplying.Text = Global.quyDinh.LuongNhapToiThieu.ToString();
                 TextBox_MinExBeforeSupplying.Text = Global.quyDinh.LuongTonToiThieuKhiNhap.ToString();
             }
-
+            QuyDinhBUS.thayDoiKiemTraQuyDinh(Global.ControlRules);
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

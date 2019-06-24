@@ -30,7 +30,7 @@ namespace BUS
         public static bool checkNoToiDa(string idCustomer)
         {
             double tienNo = KhachHangDAO.searchById(idCustomer).TienNo;
-            if (Global.ControlRules[0] == 1)
+            if (Global.ControlRules.NoToiDa == 1)
             {
                 if (tienNo > Global.quyDinh.NoToiDa)
                     return false;
@@ -40,6 +40,15 @@ namespace BUS
         public static KhachHangDTO searchById(string id)
         {
             return KhachHangDAO.searchById(id);
+        }
+
+        public static bool addCustomer(KhachHangDTO customer)
+        {
+            return KhachHangDAO.addCustomer(customer);
+        }
+        public static int getLastedID()
+        {
+            return KhachHangDAO.getLastedID();
         }
     }
 }

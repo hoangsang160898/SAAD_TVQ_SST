@@ -43,7 +43,7 @@
                     </Canvas>
                     <Rectangle Panel.ZIndex="1" Effect="{StaticResource z-depth}" Width="350" Height="185" RadiusX="10" RadiusY="10">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="{Binding sourceCover}"/>
+                            <ImageBrush ImageSource="{Binding HinhAnhCover}"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Margin="20,7,0,0">
@@ -94,7 +94,7 @@
                     </Canvas>
                     <Rectangle Effect="{StaticResource z-depth}" Width="180" Height="222" RadiusX="5" RadiusY="5">
                         <Rectangle.Fill>
-                            <ImageBrush ImageSource="{Binding sourceHinhAnh}"/>
+                            <ImageBrush ImageSource="{Binding HinhAnh}"/>
                         </Rectangle.Fill>
                     </Rectangle>
                     <StackPanel Margin="17.5,7,17.5,0" Width="200">

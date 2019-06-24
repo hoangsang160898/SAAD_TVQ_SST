@@ -31,5 +31,9 @@ namespace DTO
             this.sdt = sdt;
             this.tienNo = tienNo;
         }
+        public KhachHangDTO()
+        {
+
+        }
     }
 }

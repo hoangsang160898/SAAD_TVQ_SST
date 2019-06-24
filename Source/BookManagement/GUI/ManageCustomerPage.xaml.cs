@@ -63,14 +63,7 @@ namespace GUI
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
-        //private void selectItemCustomer(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (ListViewCustomers.SelectedItems.Count > 0)
-        //    {
-        //        KhachHangDTO item = (KhachHangDTO)ListViewCustomers.SelectedItems[0];
-
-        //    }
-        //}
+       
         private void Btn_Debt_Click(object sender, RoutedEventArgs e)
         {
             KhachHangDTO item = (KhachHangDTO)((Button)sender).DataContext;
@@ -98,7 +91,13 @@ namespace GUI
             {
                 MessageBox.Show("Giá trị nhập không hợp lệ!!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            ListViewCustomers.ItemsSource = KhachHangBUS.loadAll();
+            LogKhachHangDTO logKhachHang = new LogKhachHangDTO();
+            logKhachHang.MaKH = int.Parse(Debt_IdCustomer.Content.ToString());
+            logKhachHang.ThoiGian = DateTime.Now.ToString();
+            logKhachHang.TienNo = double.Parse(Debt_TextBoxCustomer.Text);
+            LogKhachHangBUS.insertToLog(logKhachHang);
+            Global.Customers = KhachHangBUS.loadAll();
+            ListViewCustomers.ItemsSource = Global.Customers;
         }
 
         private void Btn_Search_Click(object sender, RoutedEventArgs e)

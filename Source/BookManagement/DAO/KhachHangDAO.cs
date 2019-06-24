@@ -125,6 +125,30 @@ namespace DAO
             return new KhachHangDTO(maKh, hoTen, diaChi, email, sdt, tienNo);
         }
 
-       
+        public static bool addCustomer(KhachHangDTO customer)
+        {
+            string sCommand = string.Format(@"Insert into KhachHang(HoTen,DiaChi,Email,SDT,TienNo) values('{0}','{1}','{2}','{3}',{4})", customer.HoTen, customer.DiaChi, customer.Email, customer.Sdt, customer.TienNo);
+            con = DataProvider.openConnection();
+            bool result;
+            try
+            {
+                result = DataProvider.executeNonQuery(sCommand, con);
+                DataProvider.closeConnection(con);
+            }
+            catch
+            {
+                result = false;
+                DataProvider.closeConnection(con);
+            }
+            return result;
+        }
+        public static int getLastedID()
+        {
+            string sCommand = "select top 1 MAKH from KHACHHANG order by MAKH desc";
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            DataProvider.closeConnection(con);
+            return int.Parse(dt.Rows[0][0].ToString());
+        }
     }
 }

@@ -348,5 +348,72 @@ namespace DAO
             }
             return result1;
         }
+        public static List<SachDTO> loadLastedBook()
+        {
+            string sCommand = "select top 5 * from SACH order by NGAYNHAP desc ";
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            int n = dt.Rows.Count;
+            if (n <= 0)
+            {
+                DataProvider.closeConnection(con);
+                return null;
+            }
+            List<SachDTO> result = new List<SachDTO>();
+            for (int i = 0; i < n; i++)
+            {
+                SachDTO sach = new SachDTO();
+                sach.MaSach = int.Parse(dt.Rows[i]["MaSach"].ToString());
+                sach.TenSach = dt.Rows[i]["tenSach"].ToString();
+                sach.TacGia = dt.Rows[i]["tacGia"].ToString();
+                sach.DonGiaNhap = double.Parse(dt.Rows[i]["DonGiaNhap"].ToString());
+                sach.DonGiaBan = double.Parse(dt.Rows[i]["DonGiaBan"].ToString());
+                sach.SoLuong = int.Parse(dt.Rows[i]["soLuong"].ToString());
+                sach.MaLoai = int.Parse(dt.Rows[i]["MaLoai"].ToString());
+                sach.NgaySX = dt.Rows[i]["NgaySanXuat"].ToString();
+                sach.NgayNhap = dt.Rows[i]["NgayNhap"].ToString();
+                byte[] hinhAnh = (byte[])(dt.Rows[i]["hinhAnh"]);
+                if (hinhAnh == null)
+                {
+                    sach.HinhAnh = null;
+                }
+                else
+                {
+                    sach.HinhAnh = SachDTO.BitmapImageFromBytes(hinhAnh);
+                }
+                byte[] hinhAnhCover = (byte[])(dt.Rows[i]["HinhAnhCover"]);
+                if (hinhAnhCover == null)
+                {
+                    sach.HinhAnhCover = null;
+                }
+                else
+                {
+                    sach.HinhAnhCover = SachDTO.BitmapImageFromBytes(hinhAnhCover);
+                }
+                result.Add(sach);
+            }
+            DataProvider.closeConnection(con);
+            return result;
+        }
+
+        public static List<int> loadIDMostBuy()
+        {
+            string sCommand = "select top 5 MASACH, sum(SoLuong)  as TongSoLuong from CHITIETHOADONBANSACH group by MASACH";
+            con = DataProvider.openConnection();
+            DataTable dt = DataProvider.getDataTable(sCommand, con);
+            int n = dt.Rows.Count;
+            if (n <= 0)
+            {
+                DataProvider.closeConnection(con);
+                return null;
+            }
+            List<int> result = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                result.Add(int.Parse(dt.Rows[i]["MaSach"].ToString()));
+            }
+            DataProvider.closeConnection(con);
+            return result;
+        }
     }
 }

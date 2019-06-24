@@ -11,5 +11,7 @@ namespace BUS
     {
         public static QuyDinhDTO loadQuyDinh() => QuyDinhDAO.loadQuyDinh();
         public static bool thayDoiQuyDinh(QuyDinhDTO quyDinhMoi) => QuyDinhDAO.thayDoiQuyDinh(quyDinhMoi);
+        public static bool thayDoiKiemTraQuyDinh(KiemTraQuyDinh kt) => QuyDinhDAO.thayDoiKiemTraQuyDinh(kt);
+        public static KiemTraQuyDinh loadKiemTraQuyDinh() => QuyDinhDAO.loadKiemTraQuyDinh();
     }
 }

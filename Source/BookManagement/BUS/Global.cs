@@ -16,7 +16,7 @@ namespace BUS
         public static List<ChiTietHoaDonBanSachDTO> BookBoughtBillsPreview;
         public static List<PhieuThuTienSachDTO> Bills;
         public static List<KhachHangDTO> Customers;
-        public static List<int> ControlRules;
+        public static KiemTraQuyDinh ControlRules;
         public static List<double> Rules;
         public static List<BaoCaoTonSachDTO> BookReport;
         public static List<BaoCaoCongNoDTO> CustomerReport;

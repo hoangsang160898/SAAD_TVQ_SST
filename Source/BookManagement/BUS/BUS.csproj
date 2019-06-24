@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoCongNoBUS.cs" />
+    <Compile Include="BaoCaoTonSachBUS.cs" />
     <Compile Include="ChiTietHoaDonBanSachBUS.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="HoaDonBanSachBUS.cs" />

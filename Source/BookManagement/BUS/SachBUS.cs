@@ -38,7 +38,7 @@ namespace BUS
             int luongTon = SachDAO.loadByID(id).SoLuong - int.Parse(soLuong);
             if (luongTon < 0)
                 return false;
-            if (Global.ControlRules[2] == 1)
+            if (Global.ControlRules.LuongTonSauKhiBan == 1)
             {
                 if (luongTon < Global.quyDinh.LuongTonSauKhiBan)
                 {
@@ -59,7 +59,7 @@ namespace BUS
         public static bool updateSach(SachDTO newSach)
         {
             int chenhLech = newSach.SoLuong - SachDAO.loadByID(newSach.MaSach.ToString()).SoLuong;
-            if (Global.ControlRules[3] == 1)
+            if (Global.ControlRules.LuongNhapToiThieu == 1)
             {
                 if (chenhLech <= Global.quyDinh.LuongNhapToiThieu)
                 {
@@ -79,6 +79,17 @@ namespace BUS
         public static bool addBook(SachDTO newSach, string link, string linkCover)
         {
             return SachDAO.addBook(newSach, link, linkCover);
+        }
+        public static List<SachDTO> loadLastedBook() => SachDAO.loadLastedBook();
+        public static List<SachDTO> loadMostBuy()
+        {
+            var listID = SachDAO.loadIDMostBuy();
+            var result = new List<SachDTO>();
+            listID.ForEach(i =>
+            {
+                result.Add(loadByID(i.ToString()));
+            });
+            return result;
         }
     } 
 }

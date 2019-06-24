@@ -346,6 +346,13 @@ namespace GUI
             MessageBox.Show("Thêm sách mới thành công", "Thông báo");
             Global.Books = SachBUS.loadAll();
             ListViewBooks.ItemsSource = Global.Books;
+
+            LogSachDTO logSach = new LogSachDTO();
+            logSach.HanhDong = "Add a book";
+            logSach.SoLuong = newSach.SoLuong;
+            logSach.ThoiGian = newSach.NgayNhap;
+            logSach.MaSach = Global.Books[Global.Books.Count - 1].MaSach;
+            LogSachBUS.insertToLog(logSach);
             imgCoverLoc = imgLoc = "";
             Textbox__addBook_id.Text = "";
             //Img__addBook_avatar.ImageSource = "";

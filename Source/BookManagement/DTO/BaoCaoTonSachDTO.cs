@@ -9,8 +9,7 @@ namespace DTO
     public class BaoCaoTonSachDTO
     {
         private int id;
-        private int maSach;
-        private string tenSach;
+        private SachDTO sach;
         private string ngayBaoCao;
         private string ngayBatDau;
         private string ngayKetThuc;
@@ -19,8 +18,7 @@ namespace DTO
         private int tonCuoi;
 
         public int Id { get => id; set => id = value; }
-        public int MaSach { get => maSach; set => maSach = value; }
-        public string TenSach { get => tenSach; set => tenSach = value; }
+        public SachDTO Sach { get => sach; set => sach = value; }
         public string NgayBaoCao { get => ngayBaoCao; set => ngayBaoCao = value; }
         public string NgayBatDau { get => ngayBatDau; set => ngayBatDau = value; }
         public string NgayKetThuc { get => ngayKetThuc; set => ngayKetThuc = value; }
@@ -28,17 +26,9 @@ namespace DTO
         public int PhatSinh { get => phatSinh; set => phatSinh = value; }
         public int TonCuoi { get => tonCuoi; set => tonCuoi = value; }
 
-        public BaoCaoTonSachDTO(int id, int maSach,string tenSach, string ngayBaoCao, string ngayBatDau, string ngayKetThuc, int tonDau, int phatSinh ,int tonCuoi)
+        public BaoCaoTonSachDTO()
         {
-            this.id = id;
-            this.maSach = maSach;
-            this.tenSach = tenSach;
-            this.ngayBaoCao = ngayBaoCao;
-            this.ngayBatDau = ngayBatDau;
-            this.ngayKetThuc = ngayKetThuc;
-            this.tonDau = tonDau;
-            this.phatSinh = phatSinh;
-            this.tonCuoi = tonCuoi;
+            sach = new SachDTO();
         }
     }
 }
