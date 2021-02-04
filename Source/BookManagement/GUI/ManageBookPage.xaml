@@ -1,0 +1,308 @@
+﻿<Page x:Class="GUI.ManageBookPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="683" d:DesignWidth="1314"
+      Title="Manage Book Page" Loaded="Page_Loaded">
+    <Page.Resources>
+        <DropShadowEffect x:Key="z-depth" BlurRadius="14" ShadowDepth="4.5" Direction="270" Color="#BBBBBB"/>
+        <DataTemplate x:Key="ProductTemplate" DataType="SachDTO">
+            <Border BorderBrush="#ccc" BorderThickness="1" CornerRadius="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="50" VerticalAlignment="Center" Width="763">
+                    <Label Foreground="#242424" VerticalContentAlignment="Center" Width="310" Padding="15,0,10,0" FontSize="14">
+                        <AccessText  Width="290" Foreground="#242424" Text="{Binding TenSach}" TextWrapping="Wrap"></AccessText>
+                    </Label>
+                    <Label Width="280" Padding="0,0,0,0" VerticalContentAlignment="Center" FontSize="14">
+                        <AccessText  Width="270" Foreground="#242424" Text="{Binding TacGia}" TextWrapping="Wrap"></AccessText>
+                    </Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#242424" Content="{Binding SoLuong}" Width="84" Padding="0,0,0,0" FontSize="14">
+                    </Label>
+                    <Label VerticalContentAlignment="Center" Content="{Binding DonGiaBan}" ContentStringFormat="${0}" Foreground="#242424" Width="90" Padding="0" FontSize="14"/>
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+    <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect Kind=SlideInFromLeft, Duration=0:0:0.5}">
+        <Grid>
+            <Label FontWeight="DemiBold" Foreground="#FFF17734" FontSize="20" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="38">Manage Books</Label>
+            <TextBox Name="txtSearch" MaxLength="57" Padding="5,0,15,1.5" BorderBrush="#c1c1c1" BorderThickness="1" Panel.ZIndex="1" Foreground="#202020" FontSize="14" HorizontalAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Center" Width="480" materialDesign:HintAssist.Hint="Enter search here..." Margin="152,43,682,605" SelectionBrush="{x:Null}" CaretBrush="{x:Null}" TextChanged="TextBox_TextChanged">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="4"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Button Name="btn_Search" Panel.ZIndex="2" Foreground="#333" Background="Transparent" BorderThickness="0" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="35" Margin="592,43,0,0" Click="Btn_Search_Click">
+                <Image Width="25" Height="25" Source="icons/icons8-search.png"/>
+            </Button>
+            <ComboBox SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Name="Combobox_CategoriesBook" Loaded="Loaded_CategoriesBook" materialDesign:ComboBoxAssist.ClassicMode="true" Margin="482,83,0,572" HorizontalAlignment="Left" Width="150" SelectionChanged="Combobox_CategoriesBook_SelectionChanged">
+            </ComboBox>
+            <Border Margin="10,116,520,531" BorderBrush="#ccc" BorderThickness="0,0,0,2">
+                <StackPanel  Orientation="Horizontal">
+                    <Label VerticalContentAlignment="Center" Foreground="#787878" Margin="10,0,0,0" FontSize="16" FontWeight="DemiBold" Width="305" Canvas.Top="68" Canvas.Left="10">Name</Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="280" Canvas.Top="68" Canvas.Left="550">Author</Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="84" Canvas.Top="68" Canvas.Left="645">Exist</Label>
+                    <Label VerticalContentAlignment="Center" Foreground="#787878" FontSize="16" HorizontalContentAlignment="Left" FontWeight="DemiBold" Width="90" Content="Price"/>
+                </StackPanel>
+            </Border>
+            <ScrollViewer Name="ScrollViewer_Books" PreviewMouseWheel="ScrollViewerBooks_PreviewMouseWheel" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="10,152,520,10">
+                <ListView MouseUp="selectItemBook" Name="ListViewBooks" ItemTemplate="{StaticResource ProductTemplate}" >
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="1"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ListView>
+            </ScrollViewer>
+            <Canvas Name="reviewBook" Visibility="Visible" Margin="804,43,0,0">
+                <Button Name="btnAdd" Cursor="Hand" Background="#dc3545" BorderBrush="#f9ca24" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Click="btnAdd_Click" Canvas.Left="32" Canvas.Top="24">
+                    <Button.Content>
+                        <materialDesign:PackIcon Foreground="#fff" VerticalContentAlignment="Center" Kind="Plus" Height="25" Width="25"></materialDesign:PackIcon>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#dc3535"/>
+                            <Setter Property="Foreground" Value="#000"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Opacity" Value="0.8"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Rectangle Effect="{StaticResource z-depth}" Width="168" Height="220" RadiusX="5" RadiusY="5" Canvas.Left="309" Canvas.Top="75">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="Img__book_avartar" ImageSource="products/1.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Button Panel.ZIndex="2" Visibility="Collapsed"  Name = "btnUpdateImg_Cover" Click="btnUpadateImgCover_Click" Cursor="Hand" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Canvas.Left="254" Canvas.Top="220">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Image" Height="25" Width="25"></materialDesign:PackIcon>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#e4e4e4"/>
+                            <Setter Property="Foreground" Value="#000"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Rectangle Effect="{StaticResource z-depth}" Width="251" Height="135" RadiusX="5" RadiusY="5" Canvas.Left="32" Canvas.Top="116">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="Img__book_cover" ImageSource="products/1_cover.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Button Panel.ZIndex="2" Visibility="Collapsed"  Name = "btnUpdateImg_Avatar" Click="btnUpadateImgAvatar_Click" Cursor="Hand" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Canvas.Left="451" Canvas.Top="64">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Image" Height="25" Width="25"></materialDesign:PackIcon>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#e4e4e4"/>
+                            <Setter Property="Foreground" Value="#000"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="332" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="RenameBox" Height="33" Width="35"/>
+                    </Label>
+                    <TextBox IsEnabled="False" Padding="10,0,0,0" x:Name="Textbox__book_id" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Name" Width="410" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="374" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="Account" Height="33" Width="35"/>
+                    </Label>
+                    <TextBox IsEnabled="False" Padding="10,0,0,0" x:Name="Textbox__book_author" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Author" Width="400"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="416" Height="33">
+                    <Label Padding="5,0,5,0" Foreground="#6D4C41" VerticalContentAlignment="Center">
+                        <Label.Content>
+                            <materialDesign:PackIcon Kind="Wallet" Height="31" Width="35" Foreground="Black"/>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Padding="10,0,0,0" IsEnabled="False" Height="33" Width="190" Name="Textbox__book_priceRoot" materialDesign:HintAssist.Hint="Buy Book Price"  VerticalContentAlignment="Center" FontSize="15"></TextBox>
+                    <TextBox Padding="10,0,0,0" IsEnabled="False" Height="33" Margin="18,0,0,0" x:Name="Textbox__book_priceSell"  VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Sell Book Pricer" Width="190"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="454" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="Counter" Height="33" Width="35"/>
+                    </Label>
+                    <Label Padding="10,0,0,0" x:Name="Textbox__book_exist" VerticalContentAlignment="Center" FontSize="15" Content="0" Width="71"/>
+                    <Button Name="btn_AddExist" IsEnabled="False" BorderBrush="#ffc107" Background="#ffc107" Padding="0" Margin="0,5" Height="Auto" Width="28" Click="Btn_AddExist_Click">
+                        <materialDesign:PackIcon Background="#ffc107"  Kind="Plus" Height="24" Width="24"/>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="496" Width="251" Height="36">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="FormatListBulletedType" Height="33" Width="35"/>
+                    </Label>
+                    <ComboBox materialDesign:HintAssist.Hint="Book Category" IsEditable="True" IsEnabled="False" SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Loaded="Loaded_CategoriesBook" Padding="10,0,0,0" x:Name="Textbox__book_type" VerticalContentAlignment="Center" FontSize="15" Width="206" Height="36"/>
+                </StackPanel>
+                <Button Content="Edit" Canvas.Left="402" Canvas.Top="550" Width="75" Name="btnEdit" Click="BtnEdit_Click"/>
+                <Button Visibility="Collapsed" Background="#6c757d" BorderBrush="#6c757d" Content="Cancel" Canvas.Left="322" Canvas.Top="550" Width="75" Name="btnCancel" Click="BtnCancel_Click"/>
+                <Button Background="#28a745" Visibility="Collapsed" BorderBrush="#28a745" Content="Done" Canvas.Left="402" Canvas.Top="550" Width="75" Name="btnDone" Click="BtnDone_Click"/>
+            </Canvas>
+            <Canvas Name="addBook" Visibility="Collapsed" Margin="804,43,0,0">
+             
+                <Rectangle Effect="{StaticResource z-depth}" Width="168" Height="220" RadiusX="5" RadiusY="5" Canvas.Left="309" Canvas.Top="75">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="Img__addBook_cover" ImageSource="products/1.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Button Panel.ZIndex="2" Name = "btnAddImg_Cover" Click="btnAddImgCover_Click" Cursor="Hand" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Canvas.Left="254" Canvas.Top="220">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Image" Height="25" Width="25"></materialDesign:PackIcon>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#e4e4e4"/>
+                            <Setter Property="Foreground" Value="#000"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Rectangle Effect="{StaticResource z-depth}" Width="251" Height="135" RadiusX="5" RadiusY="5" Canvas.Left="32" Canvas.Top="116">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="Img__addBook_avatar" ImageSource="products/1_cover.jpg"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Button Panel.ZIndex="2"  Name = "btnAddImg_Avatar" Click="btnAddImgAvatar_Click" Cursor="Hand" Padding="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="40" Height="40" Canvas.Left="451" Canvas.Top="64">
+                    <Button.Content>
+                        <materialDesign:PackIcon Kind="Image" Height="25" Width="25"></materialDesign:PackIcon>
+                    </Button.Content>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Background" Value="#e4e4e4"/>
+                            <Setter Property="Foreground" Value="#000"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="25">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="332" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="RenameBox" Height="33" Width="35"/>
+                    </Label>
+                    <TextBox Padding="10,0,0,0" x:Name="Textbox__addBook_id" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Name" Width="410"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="374" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="Account" Height="33" Width="35"/>
+                    </Label>
+                    <TextBox Padding="10,0,0,0" x:Name="Textbox__addBook_author" VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Book Author" Width="400"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="416" Height="33">
+                    <Label Padding="5,0,5,0" Foreground="#6D4C41" VerticalContentAlignment="Center">
+                        <Label.Content>
+                            <materialDesign:PackIcon Kind="Wallet" Height="31" Width="35" Foreground="Black"/>
+                        </Label.Content>
+                    </Label>
+                    <TextBox Padding="10,0,0,0" Height="33" Width="190" Name="Textbox__addBook_priceRoot" materialDesign:HintAssist.Hint="Buy Book Price"  VerticalContentAlignment="Center" FontSize="15"></TextBox>
+                    <TextBox Padding="10,0,0,0" Height="33" Margin="18,0,0,0" x:Name="Textbox__addBook_priceSell"  VerticalContentAlignment="Center" FontSize="15" materialDesign:HintAssist.Hint="Sell Book Pricer" Width="190"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="454" Width="445" Height="37">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="Counter" Height="33" Width="35"/>
+                    </Label>
+                    <TextBox Padding="10,0,0,0" x:Name="Textbox__addBook_exist" VerticalContentAlignment="Center" FontSize="15" Text="0" Width="71"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Canvas.Left="32" Canvas.Top="496" Width="251" Height="36">
+                    <Label Foreground="#000" Padding="5,0,5,0" VerticalContentAlignment="Center">
+                        <materialDesign:PackIcon  Kind="FormatListBulletedType" Height="33" Width="35"/>
+                    </Label>
+                    <ComboBox materialDesign:HintAssist.Hint="Book Category" IsEditable="True" SelectedValuePath="MaLoai" DisplayMemberPath="TenLoai" Loaded="Loaded_CategoriesBook" Padding="10,0,0,0" x:Name="Textbox__addBook_type" VerticalContentAlignment="Center" FontSize="15" Width="206" Height="36"/>
+                </StackPanel>
+                <Button Visibility="Visible" Background="#6c757d" BorderBrush="#6c757d" Content="Cancel" Canvas.Left="322" Canvas.Top="550" Width="75" Name="btnCancel_addBook" Click="BtnCancel_addBook_Click"/>
+                <Button Background="#28a745" Visibility="Visible" BorderBrush="#28a745" Content="Done" Canvas.Left="402" Canvas.Top="550" Width="75" Name="btnDone_addBook" Click="BtnDone_addBook_Click"/>
+            </Canvas>
+            <Border Visibility="Collapsed" Name="AddExistBookForm" CornerRadius="10" Effect="{StaticResource z-depth}" Background="#fff" Margin="477,251">
+                <Canvas  Width="360" Height="180">
+                    <Button Cursor="Hand" HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" FontWeight="Bold" Click="btn_CloseAddExist" RenderTransformOrigin="0.6,0.3" Canvas.Left="322" Canvas.Top="10">
+                        <Button.Content>
+                            <materialDesign:PackIcon Kind="Close" Height="25" Width="25" RenderTransformOrigin="4.857,1.465"/>
+                        </Button.Content>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#fff"/>
+                                <Setter Property="Foreground" Value="#BDBDBD"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" CornerRadius="0,15,0,0">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#fff"/>
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Image Source="icons/logo.png" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="35" RenderTransformOrigin="0.389,0.767" Canvas.Left="10" Canvas.Top="10"/>
+                    <Label Name="IdBook" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="4" FontSize="15" Height="32" Width="267" Canvas.Left="50" Canvas.Top="10"></Label>
+                    <Label Name="NameBook" FontWeight="DemiBold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="Dang Vinh Phat" FontSize="15" Height="32" Width="276" Canvas.Left="41" Canvas.Top="52"></Label>
+                    <Label Name="AuthorBook" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="0123123221" FontSize="15" Height="32" Width="276" Canvas.Left="41" Canvas.Top="84"></Label>
+                    <TextBox Name="countAddBook" materialDesign:HintAssist.Hint="Number" Height="32" Canvas.Left="93" FontSize="15" TextWrapping="Wrap" Canvas.Top="121" Width="125" PreviewTextInput="CountAddBook_PreviewTextInput"/>
+                    <Button Name="AddExistBook" Padding="0" Background="#28a745" BorderBrush="#28a745" Canvas.Left="223" Canvas.Top="121" Width="40" Click="AddExistBook_Click">
+                        <Button.Content>
+                            <materialDesign:PackIcon Width="20" Height="20" Kind="Check"></materialDesign:PackIcon>
+                        </Button.Content>
+                    </Button>
+
+                </Canvas>
+            </Border>
+        </Grid>
+    </materialDesign:TransitioningContent>
+</Page>

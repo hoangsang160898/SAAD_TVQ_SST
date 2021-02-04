@@ -1,0 +1,27 @@
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DAO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DAO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DTO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DTO.pdb
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csprojAssemblyReference.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csproj.CoreCompileInputs.cache
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csproj.CopyComplete
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.dll
+S:\University\Nam3_HKII\PT&TKPM\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DAO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DAO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DTO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\bin\Release\DTO.pdb
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csprojAssemblyReference.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csproj.CoreCompileInputs.cache
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.csproj.CopyComplete
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.dll
+C:\Users\hoang\Desktop\SAAD_TVQ_SST\Source\BookManagement\DAO\obj\Release\DAO.pdb
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\bin\Release\DAO.dll
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\bin\Release\DAO.pdb
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\bin\Release\DTO.dll
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\bin\Release\DTO.pdb
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\obj\Release\DAO.csprojAssemblyReference.cache
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\obj\Release\DAO.csproj.CoreCompileInputs.cache
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\obj\Release\DAO.csproj.CopyComplete
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\obj\Release\DAO.dll
+C:\Users\hoang\Desktop\New folder\BookManagement\DAO\obj\Release\DAO.pdb
